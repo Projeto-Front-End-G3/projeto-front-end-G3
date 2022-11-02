@@ -9,6 +9,21 @@ export default createGlobalStyle`
         font-family: 'Inter', sans-serif;
     }
 
+    a{
+        text-decoration: none;
+    }
+
+    button{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        background: transparent;
+        border: transparent;
+        
+        cursor: pointer;
+    }
+
     :root {
         --color-blue-1: #191970;
         --color-blue-2: #0000CD;

@@ -1,11 +1,7 @@
-/* eslint-disable no-else-return */
-/* eslint-disable consistent-return */
 import styled, { css } from 'styled-components';
 
 interface iStyledContainerProps {
-  isUser?: boolean;
   isClick?: boolean;
-  isClickModal?: boolean;
 }
 
 export const StyledContainer = styled.div<iStyledContainerProps>`
@@ -85,15 +81,6 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
         border-radius: 5px;
       }
     }
-    ${({ isUser }) => {
-      if (isUser) {
-        return css`
-          .buttons {
-            display: none;
-          }
-        `;
-      }
-    }}
   }
   @media (min-width: 800px) {
     .menu > a {
