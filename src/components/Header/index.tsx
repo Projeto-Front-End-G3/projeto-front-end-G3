@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoMdClose } from 'react-icons/io';
 import { ImMenu } from 'react-icons/im';
 import logo from '../../assets/logo.svg';
-import { StyledContainer, StyledHeader, StyledMenu } from './style';
+import {
+  StyledContainer,
+  StyledHeader,
+  StyledViewButtons,
+  StyledViewMenu,
+  StyledViewUser,
+} from './style';
+import Menu from './Menu';
+import Buttons from './Buttons';
+import User from './User';
+import { UserContextNormal } from '../../contexts/UserContextNormal';
 
 const Header = () => {
+  const { user } = useContext(UserContextNormal);
   const [isClick, setIsClick] = useState(false);
+
   return (
     <>
       <StyledHeader isClick={isClick}>
@@ -23,32 +34,29 @@ const Header = () => {
           >
             <ImMenu />
           </button>
-          <nav className='menu'>
-            <Link to='/'>Inicio</Link>
-            <Link to='/'>Quem Somos</Link>
-            <Link to='/'>Contato</Link>
-          </nav>
-          <nav className='buttons'>
-            <Link to='/'>Logar</Link>
-            <Link to='/'>Cadastrar</Link>
-          </nav>
+          <StyledViewMenu mediaView='medium'>
+            <Menu />
+            <StyledViewButtons mediaView='medium'>
+              <Buttons />
+            </StyledViewButtons>
+          </StyledViewMenu>
+          <StyledViewButtons mediaView='big'>
+            <Buttons />
+          </StyledViewButtons>
+          <StyledViewUser mediaView='medium' isClick={isClick}>
+            <User />
+          </StyledViewUser>
         </StyledContainer>
       </StyledHeader>
-      <StyledMenu isClick={isClick}>
-        <div className='modal'>
-          <Link to='/'>Inicio</Link>
-          <Link to='/'>Quem Somos</Link>
-          <Link to='/'>Contato</Link>
-          <button
-            type='button'
-            onClick={() => {
-              setIsClick(false);
-            }}
-          >
-            <IoMdClose />
-          </button>
-        </div>
-      </StyledMenu>
+      <StyledViewMenu user={user} mediaView='small' isClick={isClick}>
+        <Menu isClick={isClick} setIsClick={setIsClick} />
+        <StyledViewUser mediaView='small' isClick={isClick}>
+          <User />
+        </StyledViewUser>
+      </StyledViewMenu>
+      <StyledViewButtons mediaView='small'>
+        <Buttons />
+      </StyledViewButtons>
     </>
   );
 };
