@@ -93,6 +93,7 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
   flex-direction: column;
   align-items: center;
 
+  background-color: var(--color-white);
   border-bottom: 0.5px solid var(--color-blue-5);
 `;
 

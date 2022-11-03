@@ -15,6 +15,8 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
     flex-direction: column;
     gap: 5px;
 
+    background-color: var(--color-white);
+
     a {
       color: var(--color-blue-1);
       font-size: 12px;

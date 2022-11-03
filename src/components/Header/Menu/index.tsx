@@ -11,7 +11,7 @@ const Menu = ({ isClick, setIsClick }: iMenuProps) => (
   <StyledMenu isClick={isClick}>
     <nav>
       <Link to='/'>Inicio</Link>
-      <Link to='/'>Quem Somos</Link>
+      <Link to='/sobre'>Quem Somos</Link>
       <Link to='/contato'>Contato</Link>
       {setIsClick && (
         <button
