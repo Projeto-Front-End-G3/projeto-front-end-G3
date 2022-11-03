@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ImMenu } from 'react-icons/im';
+import { MdMenu } from 'react-icons/md';
 import logo from '../../assets/logo.svg';
 import {
   StyledContainer,
@@ -32,7 +32,7 @@ const Header = () => {
               setIsClick(true);
             }}
           >
-            <ImMenu />
+            <MdMenu />
           </button>
           <StyledViewMenu mediaView='medium'>
             <Menu />

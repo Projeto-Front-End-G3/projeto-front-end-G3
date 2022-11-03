@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ImMenu3 } from 'react-icons/im';
+import { MdMenuOpen } from 'react-icons/md';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
-import logo from '../../../assets/logo.svg';
+import perfil from '../../../assets/moeda.png';
 import { UserContextNormal } from '../../../contexts/UserContextNormal';
 import { StyledContainer, StyledUser } from './style';
 
@@ -16,7 +16,7 @@ const User = () => {
         <StyledUser isClick={isClick}>
           <StyledContainer>
             <figure>
-              <img src={logo} alt='user' />
+              <img src={perfil} alt='user' />
             </figure>
             <button
               type='button'
@@ -24,7 +24,7 @@ const User = () => {
                 setIsClick(true);
               }}
             >
-              <ImMenu3 />
+              <MdMenuOpen />
             </button>
           </StyledContainer>
           <nav>
