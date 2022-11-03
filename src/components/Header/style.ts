@@ -75,14 +75,14 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
   width: 100vw;
   height: 100px;
 
-  @media(max-width: 200px){
+  @media (max-width: 200px) {
     height: 150px;
   }
 
   ${({ isClick }) => {
     if (isClick) {
       return css`
-        @media(max-width: 200px){
+        @media (max-width: 200px) {
           height: 100px;
         }
       `;
@@ -199,7 +199,7 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
     display: unset;
     font-size: 16px;
   }
-  
+
   ${({ mediaView }) => {
     switch (mediaView) {
       case 'small':
