@@ -40,12 +40,12 @@ const Header = () => {
               <Buttons />
             </StyledViewButtons>
           </StyledViewMenu>
-          <StyledViewButtons mediaView='big'>
-            <Buttons />
-          </StyledViewButtons>
           <StyledViewUser mediaView='medium' isClick={isClick}>
             <User />
           </StyledViewUser>
+          <StyledViewButtons mediaView='big'>
+            <Buttons />
+          </StyledViewButtons>
         </StyledContainer>
       </StyledHeader>
       <StyledViewMenu user={user} mediaView='small' isClick={isClick}>

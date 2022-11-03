@@ -41,6 +41,7 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
       font-size: 12px;
     }
   }
+
   button {
     font-size: 18px;
     color: var(--color-blue-1);
@@ -51,6 +52,7 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
       font-size: 40px;
     }
   }
+
   @media (min-width: 500px) {
     button {
       display: none;
@@ -71,12 +73,18 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
 
 export const StyledHeader = styled.header<iStyledContainerProps>`
   width: 100vw;
-  height: 150px;
+  height: 100px;
+
+  @media(max-width: 200px){
+    height: 150px;
+  }
 
   ${({ isClick }) => {
     if (isClick) {
       return css`
-        height: 100px;
+        @media(max-width: 200px){
+          height: 100px;
+        }
       `;
     }
   }}
@@ -186,10 +194,12 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
   a {
     width: unset;
   }
+
   button {
     display: unset;
     font-size: 16px;
   }
+  
   ${({ mediaView }) => {
     switch (mediaView) {
       case 'small':
