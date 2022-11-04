@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -13,29 +13,30 @@ export interface iLogin {
   password: string;
 }
 export interface iValuesTypes {
-  LoginRequest: (data: iLogin) => void;
+  loginUser: (data: iLogin) => void;
   registerUser: (formData: iUserFormValue) => Promise<void>;
 }
 
 export const UserContext = createContext({} as iValuesTypes);
 
 const UserProvider = ({ children }: iUserProviderProps) => {
+  const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
-  const LoginRequest = (data: iLogin) => {
+  const loginUser = async (formData: iLogin) => {
     try {
-      api
-        .post("/login", data)
-        .then((resp) => {
-          window.localStorage.setItem("@TOKEN", resp.data.accessToken);
-          navigate("/");
-          toast.success("Acesso autorizado!", { autoClose: 2000 });
-        })
-        .catch((err) =>
-          toast.error("Usuário não existe!", { autoClose: 2000 })
-        );
-    } catch (error) {
-      console.log("oi");
+      const { data } = await api.post("/login", formData);
+      const { user, accessToken } = data;
+
+      api.defaults.headers.authorization = `Bearer ${accessToken}`;
+      localStorage.setItem("@Disclosure:token", JSON.stringify(accessToken));
+      localStorage.setItem("@Disclosure:userId", JSON.stringify(user["id"]));
+
+      setUserData(user);
+
+      toast.success("Acesso autorizado!", { autoClose: 2000 });
+    } catch (_) {
+      toast.error("Usuário não existe!", { autoClose: 2000 });
     }
   };
 
@@ -49,10 +50,38 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     } catch (_) {
       toast.error("Email já cadastrado");
     }
-    LoginRequest;
   };
 
-  const value = { registerUser, LoginRequest };
+  useEffect(() => {
+    const loadUser = async () => {
+      const token: string = JSON.parse(
+        localStorage.getItem("@Disclosure:token")!
+      );
+
+      const id: string = JSON.parse(
+        localStorage.getItem("@Disclosure:userId")!
+      );
+
+      if (token) {
+        try {
+          api.defaults.headers.authorization = `Bearer ${token}`;
+
+          const { data } = await api.get(`/users/${id}`);
+
+          setUserData(data);
+
+          navigate("/dashboard");
+        } catch (_) {
+          localStorage.removeItem("@Disclosure:token");
+          localStorage.removeItem("@Disclosure:userId");
+        }
+      }
+    };
+
+    loadUser();
+  }, []);
+
+  const value = { registerUser, loginUser };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
