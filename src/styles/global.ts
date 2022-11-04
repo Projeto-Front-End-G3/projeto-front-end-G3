@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
@@ -33,3 +33,20 @@ export default createGlobalStyle`
         --radius-3: 50%;
     }
 `;
+
+export const Container = styled.div`
+    width: 90%;
+    margin: 0 auto;
+
+    @media (min-width: 500px) {
+        width: 70%;
+    }
+
+    @media (min-width: 1024px) {
+        width: 80%;
+    }
+
+    @media (min-width: 1350px) {
+        width: 80%;
+    }
+`
