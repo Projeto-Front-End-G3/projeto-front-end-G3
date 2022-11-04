@@ -48,12 +48,4 @@ export default createGlobalStyle`
         --radius-2: 10px;
         --radius-3: 50%;
     }
-
-    a {
-        text-decoration: none;
-    }
-
-    button {
-        cursor: pointer;
-    }
 `;

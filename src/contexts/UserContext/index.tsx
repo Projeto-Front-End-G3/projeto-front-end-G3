@@ -8,35 +8,36 @@ import api from "../../services/api";
 type iUserProviderProps = {
   children: React.ReactNode;
 };
-export interface iLogin{
-  email: string
-  password: string
+export interface iLogin {
+  email: string;
+  password: string;
 }
 export interface iValuesTypes {
   LoginRequest: (data: iLogin) => void;
   registerUser: (formData: iUserFormValue) => Promise<void>;
-} 
+}
 
 export const UserContext = createContext({} as iValuesTypes);
 
 const UserProvider = ({ children }: iUserProviderProps) => {
-
-  const navigate = useNavigate()
-
-  const LoginRequest = (data: iLogin) =>{
-    try {
-      axios.post('https://projeto-frontend-api.herokuapp.com/login', data)
-      .then(resp => {
-        window.localStorage.setItem('@TOKEN', resp.data.accessToken)
-        navigate('/')
-        toast.success('Acesso autorizado!', {autoClose: 2000})
-      }).catch(err => toast.error('Usuário não existe!', {autoClose: 2000}))
-    } catch (error){
-      console.log('oi')
-    }
-  }
-
   const navigate = useNavigate();
+
+  const LoginRequest = (data: iLogin) => {
+    try {
+      api
+        .post("/login", data)
+        .then((resp) => {
+          window.localStorage.setItem("@TOKEN", resp.data.accessToken);
+          navigate("/");
+          toast.success("Acesso autorizado!", { autoClose: 2000 });
+        })
+        .catch((err) =>
+          toast.error("Usuário não existe!", { autoClose: 2000 })
+        );
+    } catch (error) {
+      console.log("oi");
+    }
+  };
 
   const registerUser = async (formData: iUserFormValue) => {
     try {
@@ -48,10 +49,10 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     } catch (_) {
       toast.error("Email já cadastrado");
     }
-    LoginRequest
+    LoginRequest;
   };
 
-  const value = { registerUser };
+  const value = { registerUser, LoginRequest };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
