@@ -5,11 +5,18 @@ import { StyledContainer, StyledMain } from './style';
 import contato from '../../../assets/contato.svg';
 
 interface iForm {
-  contato: string;
+  name: string;
+  email: string;
+  contact: string;
 }
 
 const schema = yup.object({
-  contato: yup.string().required('Sua dúvida é obrigatória'),
+  name: yup.string().required('Seu nome é obrigatório'),
+  email: yup
+    .string()
+    .email('Deve ser um e-mail válido')
+    .required('Seu e-mail é obrigatório'),
+  contact: yup.string().required('Sua dúvida é obrigatória'),
 });
 
 const Main = () => {
@@ -32,13 +39,29 @@ const Main = () => {
             console.log(data);
           })}
         >
-          <label htmlFor='contato'>Contato</label>
-          <textarea
-            id='contato'
-            placeholder='Digite aqui a sua duvida'
-            {...register('contato')}
+          <label htmlFor='name'>Nome</label>
+          <input
+            id='name'
+            type='text'
+            placeholder='Digite seu nome'
+            {...register('name')}
           />
-          {errors.contato && <span>{errors.contato.message}</span>}
+          {errors.name && <span>{errors.name.message}</span>}
+          <label htmlFor='email'>Email</label>
+          <input
+            id='email'
+            type='text'
+            placeholder='Digite seu email'
+            {...register('email')}
+          />
+          {errors.email && <span>{errors.email.message}</span>}
+          <label htmlFor='contact'>Mensagem</label>
+          <textarea
+            id='contact'
+            placeholder='Digite aqui a sua duvida'
+            {...register('contact')}
+          />
+          {errors.contact && <span>{errors.contact.message}</span>}
           <p>Sua duvida será respondida em breve!</p>
           <button type='submit'>Enviar</button>
         </form>

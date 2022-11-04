@@ -4,7 +4,7 @@ export const StyledMain = styled.main`
   width: 100vw;
   margin-top: 20px;
 
-  @media (min-width: 500px){
+  @media (min-width: 500px) {
     margin-top: 40px;
   }
 
@@ -79,15 +79,37 @@ export const StyledContainer = styled.div`
       font-size: 12px;
     }
 
+    input {
+      width: 100%;
+      height: 20px;
+      padding-left: 5px;
+      font-size: 10px;
+    }
+
+    input::placeholder {
+      color: var(--color-grey-2);
+    }
+
     textarea {
       width: 100%;
       height: 120px;
       padding-top: 5px;
       padding-left: 5px;
+      font-size: 10px;
     }
 
     textarea::placeholder {
       color: var(--color-grey-2);
+    }
+
+    @media (min-width: 500px) {
+      input {
+        font-size: 12px;
+      }
+
+      textarea {
+        font-size: 12px;
+      }
     }
 
     span {
