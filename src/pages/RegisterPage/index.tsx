@@ -8,7 +8,7 @@ import Logo from "../../assets/logo.png";
 import Input from "../../components/Input";
 import { Container, Content } from "./style";
 import { Button } from "../../components/Button";
-import { iUserContext, UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export interface iUserFormValue {
   name: string;

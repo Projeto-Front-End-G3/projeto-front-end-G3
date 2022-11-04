@@ -8,11 +8,11 @@ type iProvidersProps = {
 
 const Providers = ({ children }: iProvidersProps) => {
   return (
-    <UserProviderNormal>
-      <UserProvider>
+    <UserProvider>
+      <UserProviderNormal>
         <AnnouncementProvider>{children}</AnnouncementProvider>
-      </UserProvider>
-    </UserProviderNormal>
+      </UserProviderNormal>
+    </UserProvider>
   );
 };
 
