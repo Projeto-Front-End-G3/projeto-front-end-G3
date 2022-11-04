@@ -120,14 +120,16 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
         return css`
           width: 100vw;
           position: relative;
-          ${({ user }: iStyledViewMenuProps) => {
-            if (user) {
-              return css`
-                height: 110px;
-              `;
+          background-color: var(--color-white);
+          ${({ isClick, user }: iStyledViewMenuProps) => {
+            if (isClick) {
+              if (user) {
+                return css`
+                  height: 110px;
+                `;
+              }
             }
           }}
-
           display: flex;
           justify-content: center;
 
