@@ -7,7 +7,7 @@ import ModalCriarPost from "../../components/Modal/ModalCriarPost";
 import { useContext, useState } from "react";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
-const DashboardLogged = () => {
+const DashboardPage = () => {
   const { openClose } = useContext(AnnouncementContext);
 
   return (
@@ -20,4 +20,4 @@ const DashboardLogged = () => {
   );
 };
 
-export default DashboardLogged;
+export default DashboardPage;

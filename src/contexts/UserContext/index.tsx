@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 import { iUserFormValue } from "../../pages/RegisterPage";
 import api from "../../services/api";
 
@@ -11,7 +12,7 @@ type iUserProviderProps = {
 interface iUser {
   email: string;
   name: string;
-  img: string;
+  profilePicture: string;
   description: string;
   cep: string;
   link: string;
@@ -50,7 +51,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
       setUserData(user);
       setAuthorized(true);
 
-      navigate("/");
+      navigate("/dashboard");
 
       toast.success("Acesso autorizado!");
     } catch (_) {
@@ -97,7 +98,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
           setUserData(data);
           setAuthorized(true);
 
-          // navigate("/dashboard");
+          navigate("/dashboard");
         } catch (_) {
           localStorage.removeItem("@Disclosure:token");
           localStorage.removeItem("@Disclosure:userId");

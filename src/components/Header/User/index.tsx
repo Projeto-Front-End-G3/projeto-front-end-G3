@@ -32,7 +32,7 @@ const User = () => {
         <StyledUser isClick={isClick}>
           <StyledContainer>
             <figure>
-              <img src={userData?.img} alt="user" />
+              <img src={userData?.profilePicture} alt="user" />
             </figure>
             <button
               type="button"

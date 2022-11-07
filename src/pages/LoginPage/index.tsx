@@ -17,15 +17,15 @@ import { iLogin, UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "../LoginPage/validation";
 import Input from "../../components/Input";
+import { loginFormSchema } from "../../validations/login";
 
 const LoginPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLogin>({ resolver: yupResolver(schema) });
+  } = useForm<iLogin>({ resolver: yupResolver(loginFormSchema) });
 
   const { loginUser } = useContext(UserContext);
 

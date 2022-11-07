@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { StyledMenu } from "./style";
+import Buttons from "../Buttons";
 
 interface iMenuProps {
   isClick?: boolean;
@@ -13,6 +14,7 @@ const Menu = ({ isClick, setIsClick }: iMenuProps) => (
       <Link to="/">Inicio</Link>
       <Link to="/about">Quem Somos</Link>
       <Link to="/contact">Contato</Link>
+      <Buttons />
       {setIsClick && (
         <button
           type="button"

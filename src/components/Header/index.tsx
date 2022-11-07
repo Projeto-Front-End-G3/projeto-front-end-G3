@@ -54,9 +54,9 @@ const Header = () => {
           <User />
         </StyledViewUser>
       </StyledViewMenu>
-      <StyledViewButtons mediaView="small">
+      {/* <StyledViewButtons mediaView="small">
         <Buttons />
-      </StyledViewButtons>
+      </StyledViewButtons> */}
     </>
   );
 };

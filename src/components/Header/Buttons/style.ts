@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButtons = styled.nav`
+export const StyledButtons = styled.div`
   display: flex;
   gap: 10px;
   a {
