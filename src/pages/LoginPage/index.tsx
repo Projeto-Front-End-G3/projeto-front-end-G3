@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
-  ButtonBack,
+  BackButton,
   SignUpButton,
   LoginButton,
   ButtonContainer,
@@ -48,7 +48,7 @@ const LoginPage = () => {
       <Content>
         <LoginHeader>
           <LoginText>Login</LoginText>
-          <ButtonBack to={"/"}>Voltar</ButtonBack>
+          <BackButton to={"/"}>Voltar</BackButton>
         </LoginHeader>
         <LoginForm onSubmit={handleSubmit(loginUser)}>
           <Input

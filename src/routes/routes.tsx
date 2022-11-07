@@ -6,13 +6,16 @@ import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
+import ProtectedRoutes from "../components/ProtectedRoutes";
 
 export default () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
-    <Route path="/dashboard" element={<DashboardPage />} />
+    <Route element={<ProtectedRoutes />}>
+      <Route path="/dashboard" element={<DashboardPage />} />
+    </Route>
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/about" element={<AboutPage />} />
     <Route path="*" element={<Navigate to="/" />} />

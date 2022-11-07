@@ -92,7 +92,7 @@ export const LoginText = styled.h1`
   font: var(--font-title-0);
 `;
 
-export const ButtonBack = styled(Link)`
+export const BackButton = styled(Link)`
   font: var(--font-text-0);
   text-decoration: none;
   font-size: 15px;

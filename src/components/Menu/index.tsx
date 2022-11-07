@@ -1,7 +1,6 @@
-import { MenuContainer } from "./style"
+import { MenuContainer } from "./style";
 
-const DefaultMenu = () => {
-
+const Menu = () => {
   return (
     <>
       <MenuContainer>
@@ -10,7 +9,7 @@ const DefaultMenu = () => {
         <p>Contato</p>
       </MenuContainer>
     </>
-  )
-}
+  );
+};
 
-export default DefaultMenu
+export default Menu;
