@@ -10,10 +10,10 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <AnnouncementContext>
         <Providers>
-          < GlobalLoading>
+          <GlobalLoading>
             <AppRouter />
           </GlobalLoading>
         </Providers>

@@ -1,5 +1,4 @@
 import UserProvider from "./UserContext";
-import UserProviderNormal from "./UserContextNormal";
 import AnnouncementProvider from "./AnnouncementContext";
 
 type iProvidersProps = {
@@ -9,9 +8,7 @@ type iProvidersProps = {
 const Providers = ({ children }: iProvidersProps) => {
   return (
     <UserProvider>
-      <UserProviderNormal>
-        <AnnouncementProvider>{children}</AnnouncementProvider>
-      </UserProviderNormal>
+      <AnnouncementProvider>{children}</AnnouncementProvider>
     </UserProvider>
   );
 };

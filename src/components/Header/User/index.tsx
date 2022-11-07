@@ -4,20 +4,20 @@ import { MdMenuOpen } from 'react-icons/md';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import perfil from '../../../assets/moeda.png';
-import { UserContextNormal } from '../../../contexts/UserContextNormal';
 import { StyledContainer, StyledUser } from './style';
+import { UserContext } from '../../../contexts/UserContext';
 
 const User = () => {
-  const { user, setUser } = useContext(UserContextNormal);
+  const { authorized, setAuthorized } = useContext(UserContext);
   const [isClick, setIsClick] = useState(false);
   const modalRef = useRef();
 
   useEffect(() => {
     const handleOutclick = (event) => {
       const target = event.target;
-      if (!modalRef.current.contains(target)) {
-        setIsClick(false);
-      }
+      // if (!modalRef.current.contains(target)) {
+      //   setIsClick(false);
+      // }
     };
 
     document.addEventListener('mousedown', handleOutclick);
@@ -29,34 +29,34 @@ const User = () => {
 
   return (
     <>
-      {user && (
+      {authorized && (
         <StyledUser isClick={isClick}>
           <StyledContainer>
             <figure>
-              <img src={perfil} alt='user' />
+              <img src={perfil} alt="user" />
             </figure>
             <button
-              type='button'
+              type="button"
               onClick={() => {
-                setIsClick(true);
+                setIsClick(!isClick);
               }}
             >
               <MdMenuOpen />
             </button>
           </StyledContainer>
           <nav ref={modalRef}>
-            <Link to='/'>Minha Conta</Link>
+            <Link to="/">Minha Conta</Link>
             <button
-              type='button'
+              type="button"
               onClick={() => {
-                setUser(false);
+                setAuthorized(false);
               }}
             >
               Sair &nbsp; <RiLogoutCircleRLine />
             </button>
             <button
-              className='close'
-              type='button'
+              className="close"
+              type="button"
               onClick={() => {
                 setIsClick(false);
               }}

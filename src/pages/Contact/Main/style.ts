@@ -2,11 +2,6 @@ import styled from 'styled-components';
 
 export const StyledMain = styled.main`
   width: 100vw;
-  margin-top: 20px;
-
-  @media (min-width: 500px) {
-    margin-top: 40px;
-  }
 
   display: flex;
   justify-content: center;
@@ -24,6 +19,14 @@ export const StyledMain = styled.main`
       object-fit: cover;
       object-position: -140px;
     }
+  }
+
+  > div {
+    margin-top: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
   }
 
   @media (min-width: 500px) {

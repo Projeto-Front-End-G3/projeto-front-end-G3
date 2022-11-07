@@ -2,12 +2,6 @@ import styled from 'styled-components';
 
 export const StyledMain = styled.main`
   width: 100%;
-  margin-top: 30px;
-
-  @media (min-width: 500px) {
-    margin-top: 50px;
-  }
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +14,7 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  margin-top: 96px;
 
   h1 {
     font-size: 20px;
