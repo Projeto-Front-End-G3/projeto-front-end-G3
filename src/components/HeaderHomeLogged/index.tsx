@@ -1,12 +1,11 @@
 import { FaBars } from 'react-icons/fa'
 import logo from '../../assets/logo.png'
 import { Container } from './styled'
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import casa from '../../assets/casa.png'
 import { TiArrowSortedDown } from 'react-icons/ti'
 import { FiEdit } from 'react-icons/fi'
 import { MdOutlineExitToApp } from 'react-icons/md'
-
 
 const Header = () => {
     const [headerOpenClose, setHeaderOpenClose] = useState(false)
@@ -42,7 +41,6 @@ const Header = () => {
                     <div id="profile">
                         <img src={casa} alt="Imagem Perfil" />
                         <TiArrowSortedDown className='options' onClick={() => setOptions(!options)} />
-
                         {options &&
                             <div className="exitProfile" >
                                 <div className='two'>
@@ -55,7 +53,6 @@ const Header = () => {
                                 </div>
                             </div>
                         }
-
                     </div>
                 </div>
             </div>

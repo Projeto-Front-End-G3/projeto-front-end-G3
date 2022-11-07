@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Main = styled.main`
+export const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
