@@ -2,14 +2,20 @@ import Header from "../../components/HeaderHomeLogged";
 import Filters from "../../components/Filters";
 import { ContainerGeneral } from "./styled";
 import Cards from "../../components/Cards";
-import DefaultHeader2 from "../../components/DefaultHeader/DefaultHeader2";
+import DefaultHeader2 from "../../components/DefaultHeader";
+import ModalCriarPost from "../../components/Modal/ModalCriarPost";
+import { useContext, useState } from "react";
+import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const DashboardLogged = () => {
+  const { openClose } = useContext(AnnouncementContext);
+
   return (
     <ContainerGeneral>
-      <DefaultHeader2 />
+      <Header />
       <Filters />
       <Cards />
+      {openClose && <ModalCriarPost />}
     </ContainerGeneral>
   );
 };
