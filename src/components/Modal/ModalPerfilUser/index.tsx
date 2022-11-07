@@ -1,5 +1,5 @@
 import { MouseEventHandler, useState } from "react";
-import {HomeModalStyled} from "./styles";
+import { HomeModalStyled } from "./styles";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -46,7 +46,7 @@ const ModalHomePage = () => {
       </section>
       <section className="sectionForm">
         <h2>Editando perfil</h2>
-        <form onSubmit={handleSubmit()}>
+        <form >
           <label className="label">Novo nome:</label>
           <input
             type="text"

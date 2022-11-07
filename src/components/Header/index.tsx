@@ -43,9 +43,11 @@ const Header = () => {
           <StyledViewUser mediaView="medium" isClick={isClick}>
             <User />
           </StyledViewUser>
-          <StyledViewButtons mediaView="big">
-            <Buttons />
-          </StyledViewButtons>
+          {!authorized && (
+            <StyledViewButtons mediaView="big">
+              <Buttons />
+            </StyledViewButtons>
+          )}
         </StyledContainer>
       </StyledHeader>
       <StyledViewMenu user={authorized} mediaView="small" isClick={isClick}>
