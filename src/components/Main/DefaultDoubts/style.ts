@@ -7,11 +7,11 @@ export const DefaultDoubtsBox = styled.div`
   padding: 10px;
   border-radius: 5px;
   text-align: center;
-  
+
   span {
     color: var(--color-blue-2);
   }
-  
+
   h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -21,7 +21,7 @@ export const DefaultDoubtsBox = styled.div`
     margin-bottom: 20px;
     line-height: 28px;
   }
-  
+
   a {
     background-color: var(--color-blue-1);
     color: var(--color-white);
@@ -33,4 +33,4 @@ export const DefaultDoubtsBox = styled.div`
   a:hover {
     filter: brightness(120%);
   }
-`
+`;

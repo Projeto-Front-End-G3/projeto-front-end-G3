@@ -12,11 +12,11 @@ const App = () => {
     <>
       <GlobalStyle />
       <ToastContainer autoClose={2000} />
-        <Providers>
-          <Loading>
-            <AppRouter />
-          </Loading>
-        </Providers>
+      <Providers>
+        <Loading>
+          <AppRouter />
+        </Loading>
+      </Providers>
     </>
   );
 };

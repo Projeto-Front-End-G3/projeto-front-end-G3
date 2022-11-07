@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const DefaultAboutUsBox = styled.div`
   margin-top: 50px;
-  
+
   h2 {
     margin: 80px 0 45px 0;
     text-align: center;
   }
-  
+
   div {
     margin-bottom: 40px;
     padding: 10px 10px 30px 10px;
@@ -16,7 +16,7 @@ export const DefaultAboutUsBox = styled.div`
     background-color: var(--color-white);
     position: relative;
   }
-  
+
   span {
     color: var(--color-blue-2);
   }
@@ -41,4 +41,4 @@ export const DefaultAboutUsBox = styled.div`
   div a:hover {
     color: var(--color-blue-2);
   }
-`
+`;

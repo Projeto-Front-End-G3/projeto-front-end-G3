@@ -1,8 +1,8 @@
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { StyledContainer, StyledMain } from './style';
-import contato from '../../../assets/contato.svg';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { StyledContainer, StyledMain } from "./style";
+import contato from "../../../assets/contato.svg";
 
 interface iForm {
   name: string;
@@ -11,12 +11,12 @@ interface iForm {
 }
 
 const schema = yup.object({
-  name: yup.string().required('Seu nome é obrigatório'),
+  name: yup.string().required("Seu nome é obrigatório"),
   email: yup
     .string()
-    .email('Deve ser um e-mail válido')
-    .required('Seu e-mail é obrigatório'),
-  contact: yup.string().required('Sua dúvida é obrigatória'),
+    .email("Deve ser um e-mail válido")
+    .required("Seu e-mail é obrigatório"),
+  contact: yup.string().required("Sua dúvida é obrigatória"),
 });
 
 const Main = () => {
@@ -31,7 +31,7 @@ const Main = () => {
     <StyledMain>
       <div>
         <figure>
-          <img src={contato} alt='Contato' />
+          <img src={contato} alt="Contato" />
         </figure>
         <StyledContainer>
           <h1>Como podemos te ajudar? :)</h1>
@@ -40,31 +40,31 @@ const Main = () => {
               console.log(data);
             })}
           >
-            <label htmlFor='name'>Nome</label>
+            <label htmlFor="name">Nome</label>
             <input
-              id='name'
-              type='text'
-              placeholder='Digite seu nome'
-              {...register('name')}
+              id="name"
+              type="text"
+              placeholder="Digite seu nome"
+              {...register("name")}
             />
             {errors.name && <span>{errors.name.message}</span>}
-            <label htmlFor='email'>Email</label>
+            <label htmlFor="email">Email</label>
             <input
-              id='email'
-              type='text'
-              placeholder='Digite seu email'
-              {...register('email')}
+              id="email"
+              type="text"
+              placeholder="Digite seu email"
+              {...register("email")}
             />
             {errors.email && <span>{errors.email.message}</span>}
-            <label htmlFor='contact'>Mensagem</label>
+            <label htmlFor="contact">Mensagem</label>
             <textarea
-              id='contact'
-              placeholder='Digite aqui a sua duvida'
-              {...register('contact')}
+              id="contact"
+              placeholder="Digite aqui a sua duvida"
+              {...register("contact")}
             />
             {errors.contact && <span>{errors.contact.message}</span>}
             <p>Sua duvida será respondida em breve!</p>
-            <button type='submit'>Enviar</button>
+            <button type="submit">Enviar</button>
           </form>
         </StyledContainer>
       </div>

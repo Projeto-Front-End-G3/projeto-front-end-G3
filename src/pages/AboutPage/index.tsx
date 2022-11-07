@@ -1,14 +1,14 @@
 import Header from "../../components/Header";
 import Main from "./Main";
-import { StyledAbout } from "./style";
+import { Container } from "./style";
 
-const Sobre = () => {
+const AboutPage = () => {
   return (
-    <StyledAbout>
+    <Container>
       <Header />
       <Main />
-    </StyledAbout>
+    </Container>
   );
 };
 
-export default Sobre;
+export default AboutPage;

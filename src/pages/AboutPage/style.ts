@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import imagem from '../../assets/quemsomos.svg';
+import styled from "styled-components";
+import imagem from "../../assets/quemsomos.svg";
 
-export const StyledAbout = styled.article`
+export const Container = styled.article`
   width: 100vw;
   height: 100vh;
 

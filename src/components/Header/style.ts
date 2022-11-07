@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 interface iStyledContainerProps {
   isClick?: boolean;
@@ -37,7 +37,7 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
     }
 
     h1 {
-      font-family: 'Revalia', cursive;
+      font-family: "Revalia", cursive;
       font-size: 12px;
     }
   }
@@ -98,7 +98,7 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
 `;
 
 interface iStyledViewMenuProps {
-  mediaView: 'small' | 'medium';
+  mediaView: "small" | "medium";
   isClick?: boolean;
   user?: boolean;
 }
@@ -116,7 +116,7 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
 
   ${({ mediaView }) => {
     switch (mediaView) {
-      case 'small':
+      case "small":
         return css`
           width: 100vw;
           position: relative;
@@ -137,7 +137,7 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
             display: none;
           }
         `;
-      case 'medium':
+      case "medium":
         return css`
           display: flex;
           flex-direction: column;
@@ -147,7 +147,7 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
 `;
 
 interface iStyledViewButtonsProps {
-  mediaView: 'small' | 'medium' | 'big';
+  mediaView: "small" | "medium" | "big";
 }
 
 export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
@@ -157,7 +157,7 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
 
   ${({ mediaView }) => {
     switch (mediaView) {
-      case 'small':
+      case "small":
         return css`
           width: 100vw;
           margin-top: 10px;
@@ -169,7 +169,7 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
             display: none;
           }
         `;
-      case 'medium':
+      case "medium":
         return css`
           @media (max-width: 500px) {
             display: none;
@@ -178,7 +178,7 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
             display: none;
           }
         `;
-      case 'big':
+      case "big":
         return css`
           @media (max-width: 650px) {
             display: none;
@@ -189,7 +189,7 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
 `;
 
 interface iStyledViewUserProps {
-  mediaView: 'small' | 'medium';
+  mediaView: "small" | "medium";
   isClick: boolean;
 }
 
@@ -205,7 +205,7 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
 
   ${({ mediaView }) => {
     switch (mediaView) {
-      case 'small':
+      case "small":
         return css`
           ${({ isClick }: iStyledViewUserProps) => {
             if (!isClick) {
@@ -218,7 +218,7 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
           bottom: 5px;
           right: 5px;
         `;
-      case 'medium':
+      case "medium":
         return css`
           @media (max-width: 500px) {
             display: none;
