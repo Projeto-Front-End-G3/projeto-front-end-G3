@@ -2,7 +2,6 @@ import { AnnouncementContext } from '../../contexts/AnnouncementContext';
 import { useContext, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
-
 interface iGlobalLoadingProps {
     children: ReactNode;
 }

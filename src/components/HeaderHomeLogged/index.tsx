@@ -7,7 +7,6 @@ import { TiArrowSortedDown } from 'react-icons/ti'
 import { FiEdit } from 'react-icons/fi'
 import { MdOutlineExitToApp } from 'react-icons/md'
 
-
 const Header = () => {
     const [headerOpenClose, setHeaderOpenClose] = useState(false)
     const [options, setOptions] = useState(false)

@@ -9,6 +9,8 @@ const DashboardLogged = () => {
             <Header />
             <Filters />
             <Cards />
+
+            
         </ContainerGeneral>
     )
 }

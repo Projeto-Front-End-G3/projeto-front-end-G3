@@ -28,10 +28,8 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
 
   const [announcement, setAnnouncement] = useState<iAnnouncement[]>([])
   const [globalLoading, setGlobalLoading] = useState(false)
-  console.log(globalLoading)
+
   useEffect(() => {
-
-
 
     const getAnnouncement = async () => {
       setGlobalLoading(true)
@@ -51,8 +49,18 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     }
     getAnnouncement()
 
-
   }, [])
+
+  const addAnnouncement = async () => {
+    
+    try {
+      const response = api.post('/announcement')
+    } catch (error) {
+
+    }
+
+
+  }
 
 
   const value = {
