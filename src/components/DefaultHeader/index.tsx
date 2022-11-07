@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 
 import { Header } from "./style";
 import Logo from "../../assets/logo.png";
-import { StyledViewMenu, StyledViewUser } from "../Header/style";
+import {
+  StyledViewButtons,
+  StyledViewMenu,
+  StyledViewUser,
+} from "../Header/style";
 import User from "../Header/User";
 import { UserContext } from "../../contexts/UserContext";
 import Menu from "../Header/Menu";
+import Buttons from "../Header/Buttons";
 
 const DefaultHeader = () => {
   const { authorized } = useContext(UserContext);
@@ -31,16 +36,18 @@ const DefaultHeader = () => {
           </StyledViewUser>
         ) : (
           <>
-            <span>
-              <Link to="/login">Logar</Link>
-              <Link to="/register">Cadastrar</Link>
-            </span>
-            <FiMenu
-              className="menu"
-              onClick={() => {
-                setClick(!isClick);
-              }}
-            />
+            <StyledViewMenu mediaView="medium">
+              <span>
+                <Link to="/login">Logar</Link>
+                <Link to="/register">Cadastrar</Link>
+              </span>
+              <FiMenu
+                className="menu"
+                onClick={() => {
+                  setClick(!isClick);
+                }}
+              />
+            </StyledViewMenu>
           </>
         )}
       </Header>

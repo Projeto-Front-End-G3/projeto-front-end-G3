@@ -25,7 +25,7 @@ export const UserContext = createContext({} as iValuesTypes);
 
 const UserProvider = ({ children }: iUserProviderProps) => {
   const [userData, setUserData] = useState(null);
-  const [authorized, setAuthorized] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
   const navigate = useNavigate();
 
   const loginUser = async (formData: iLogin) => {
