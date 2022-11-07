@@ -1,65 +1,55 @@
 import styled from "styled-components";
 
-export const ServicesBox = styled.div`
-  padding: 20px 0;
+export const DefaultServicesBox = styled.ul`
+  list-style: none;
+  background-color: var(--color-blue-1);
+  color: var(--color-white);
+  padding: 30px 10px;
+  margin-top: 100px;
+  border-radius: 5px;
+  width: 100%;
+  height: 800px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  height: 180px;
 
-  section {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  section button {
-    width: 47%;
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
+  span {
     color: var(--color-white);
-    background-color: var(--color-blue-1);
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
   }
-
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  ul li {
+  
+  li {
     text-align: center;
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  li svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  li p {
+
+  }
+
+  button {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1;
     cursor: pointer;
   }
-  
-  ul li img {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-  }
 
-  ul li p {
-    font-size: 9px;
-    font-weight: bold;
-    color: var(--color-blue-1);
-  }
-
-  div {
-    position: relative;
-  }
-  
-  div input {
-    width: 100%;
-    padding: 5px 35px 5px 5px;
-  }
-
-  .searchImg {
-    width: 20px;
-    position: absolute;
-    top: 7px;
-    right: 7px;
+  button:hover {
+    border: 1px solid var(--color-white);
+    background-color: var(--color-blue-1);
+    color: var(--color-white);
+    transition: 0.3s;
   }
 `

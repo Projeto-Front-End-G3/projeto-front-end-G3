@@ -6,7 +6,22 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    button{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        background: transparent;
+        border: transparent;
+        
+        cursor: pointer;
     }
 
     :root {
@@ -14,6 +29,7 @@ export default createGlobalStyle`
         --color-blue-2: #0000CD;
         --color-blue-3: #4169e1;
         --color-blue-4: #e8eaf5;
+        --color-blue-5: #483D8B;
         --color-black: #000000;
         --color-grey-1: #868e96;
         --color-grey-2: #B5B5B5;
@@ -39,14 +55,14 @@ export const Container = styled.div`
     margin: 0 auto;
 
     @media (min-width: 500px) {
-        width: 70%;
+        width: 80%;
     }
 
     @media (min-width: 1024px) {
-        width: 80%;
+        width: 70%;
     }
 
-    @media (min-width: 1350px) {
-        width: 80%;
+    @media (min-width: 1360px) {
+        width: 63%;
     }
 `

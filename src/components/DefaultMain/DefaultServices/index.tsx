@@ -1,46 +1,41 @@
-import { Container } from '../../../styles/global'
-import imoveis from '../../../assets/casa.png'
-import moeda from '../../../assets/moeda.png'
-import carro from '../../../assets/carro.png'
-import rolo from '../../../assets/rolo.png'
-import pesquisar from '../../../assets/pesquisar.png'
-import { ServicesBox } from './style'
+import { AiOutlineCar } from "react-icons/ai"
+import { BsCoin } from "react-icons/bs"
+import { GoHome } from "react-icons/go"
+import { TfiPaintRoller } from "react-icons/tfi"
+import { Container } from "../../../styles/global"
+import { DefaultServicesBox } from "./style"
 
 const DefaultServices = () => {
 
   return (
     <>
       <Container>
-        <ServicesBox>
-          <section>
-            <button>Logar</button>
-            <button>Cadastrar</button>
-          </section>
+        <DefaultServicesBox>
+          <h2>Aqui você encontra os <span>melhores</span> serviços</h2>
 
-          <ul>
-            <li>
-              <img src={imoveis} alt="imóveis" />
-              <p>Imóveis</p>
-            </li>
-            <li>
-              <img src={moeda} alt="finanças" />
-              <p>Finanças</p>
-            </li>
-            <li>
-              <img src={carro} alt="auto-peças" />
-              <p>Peças</p>
-            </li>
-            <li>
-              <img src={rolo} alt="serviços" />
-              <p>Serviços</p>
-            </li>
-          </ul>
+          <li>
+            <GoHome className='homeIcon' />
+            <p><span>Imóveis</span></p>
+            <p>Casas, apartamentos, predios</p>
+          </li>
+          <li>
+            <BsCoin className='coinIcon' />
+            <p><span>Finanças</span></p>
+            <p>Banco, consutoria, empreendedorismo</p>
+          </li>
+          <li>
+            <AiOutlineCar className='carIcon' />
+            <p><span>Peças</span></p>
+            <p>Automóveis, motocicletas</p>
+          </li>
+          <li>
+            <TfiPaintRoller className='paintIcon' />
+            <p><span>Serviços</span></p>
+            <p>Mão de obra em geral</p>
+          </li>
 
-          <div>
-            <input type="text" placeholder='Estou procurando por...' />
-            <img src={pesquisar} alt="" className='searchImg' />
-          </div>
-        </ServicesBox>
+          <button>Quero contratar um serviço</button>
+        </DefaultServicesBox>
       </Container>
     </>
   )

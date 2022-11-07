@@ -9,7 +9,7 @@ export const Header = styled.header`
   align-items: center;
   padding: 10px 15px;
   border-bottom: 1px solid var(--color-grey-2);
-  z-index: 1;
+  z-index: 2;
 
   div {
     color: var(--color-blue-1);
@@ -29,11 +29,11 @@ export const Header = styled.header`
   }
 
   @media (min-width: 500px) {
-    padding: 10px 75px;
+    padding: 10px 50px;
   }
 
   @media (min-width: 1024px) {
-    padding: 10px 100px;
+    padding: 10px 155px;
   }
 
   @media (min-width: 1350px) {

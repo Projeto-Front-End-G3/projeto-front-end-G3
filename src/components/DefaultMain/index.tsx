@@ -1,16 +1,18 @@
-import Disclosures from "./DefaultDisclosures"
-import DefaultFooter from "./DefaultFooter"
-import DefaultServices from "./DefaultServices"
+import DefaultStart from "./DefaultStart"
+import DefaultAboutUs from "./DefaultAboutUs"
+import DefaultDoubts from "./DefaultDoubts"
 import { MainContainer } from "./style"
+import DefaultServices from "./DefaultServices"
 
 const DefaultMain = () => {
 
   return (
     <>
       <MainContainer>
+        <DefaultStart />
         <DefaultServices />
-        <Disclosures />
-        <DefaultFooter />
+        <DefaultAboutUs />
+        <DefaultDoubts />
       </MainContainer>
     </>
   )

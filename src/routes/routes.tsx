@@ -1,10 +1,20 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import DashboardLogged from "../pages/dashboardUserLogado/index";
+// import Header from "../components/Header";
+import Contato from "../pages/Contato";
+import Sobre from "../pages/Sobre";
+import Login from "../pages/Login";
+import RegisterPage from "../pages/RegisterPage";
 import DefaultHome from "../pages/DefaultHome";
 
-export default () => {
-  return (
+export default () => (
   <Routes>
     <Route path="/" element={<DefaultHome />} />
+    <Route path="/contato" element={<Contato />} />
+    <Route path="/sobre" element={<Sobre />} />
+    <Route path="*" element={<Navigate to="/" />} />
+    <Route path="/register" element={<RegisterPage />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/dashboardLogged" element={<DashboardLogged />} />
   </Routes>
-  )
-};
+);
