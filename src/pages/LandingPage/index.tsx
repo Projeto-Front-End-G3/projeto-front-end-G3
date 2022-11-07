@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import DefaultHeader from "../../components/DefaultHeader";
+import Header from "../../components/Header";
 import DefaultMenu from "../../components/DefaultMenu";
 import DefaultMain from "../../components/DefaultMain";
-import Header from "../../components/Header";
 
-const DefaultHome = () => {
+const LandingPage = () => {
   return (
     <>
       <Header />
@@ -15,4 +12,4 @@ const DefaultHome = () => {
   );
 };
 
-export default DefaultHome;
+export default LandingPage;

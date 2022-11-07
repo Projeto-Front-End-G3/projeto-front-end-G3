@@ -7,26 +7,26 @@ import {
   Contain,
   ContainDesktop,
   Description,
-  FormFields,
-  FormFieldsName,
   HeaderLogin,
   LoginForm,
   LoginText,
   LogoCompany,
-  MessageError
-} from './style'
-import Logo from '../../assets/logo.png'
-import { iLogin ,UserContext } from '../../contexts/UserContext'
-import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import schema from '../Login/validation'
-import Input from '../../components/Input'
+} from "./style";
+import Logo from "../../assets/logo.png";
+import { iLogin, UserContext } from "../../contexts/UserContext";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "../LoginPage/validation";
+import Input from "../../components/Input";
 
-const Login = () => {
+const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iLogin>({ resolver: yupResolver(schema) });
 
-  const {register, handleSubmit, formState: { errors }} = useForm<iLogin>({resolver: yupResolver(schema)})
-  
   const { loginUser } = useContext(UserContext);
 
   return (
@@ -66,6 +66,6 @@ const Login = () => {
       </ContainDesktop>
     </Contain>
   );
-}
+};
 
-export default Login
+export default LoginPage;

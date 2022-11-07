@@ -1,12 +1,13 @@
-import DefaultHeader from '../../components/DefaultHeader';
-import Header from '../../components/Header';
-import Main from './Main';
+import Header from "../../components/Header";
+import Main from "./Main";
 
-const Contato = () => (
-  <article>
-    <Header />
-    <Main />
-  </article>
-);
+const ContactPage = () => {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
+};
 
-export default Contato;
+export default ContactPage;

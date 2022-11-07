@@ -1,13 +1,14 @@
-import DefaultHeader from "../../components/DefaultHeader";
 import Header from "../../components/Header";
 import Main from "./Main";
-import { StyledSobre } from "./style";
+import { StyledAbout } from "./style";
 
-const Sobre = () => (
-  <StyledSobre>
-    <Header />
-    <Main />
-  </StyledSobre>
-);
+const Sobre = () => {
+  return (
+    <StyledAbout>
+      <Header />
+      <Main />
+    </StyledAbout>
+  );
+};
 
 export default Sobre;

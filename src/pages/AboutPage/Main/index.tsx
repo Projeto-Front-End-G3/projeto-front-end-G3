@@ -1,4 +1,4 @@
-import { StyledContainer, StyledMain } from './style';
+import { StyledContainer, StyledMain } from "./style";
 
 const Main = () => (
   <StyledMain>

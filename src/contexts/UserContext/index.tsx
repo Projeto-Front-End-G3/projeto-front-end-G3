@@ -106,6 +106,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     authorized,
     setAuthorized,
   };
+  
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 

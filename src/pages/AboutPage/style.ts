@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import imagem from '../../assets/quemsomos.svg';
 
-export const StyledSobre = styled.article`
+export const StyledAbout = styled.article`
   width: 100vw;
   height: 100vh;
 
