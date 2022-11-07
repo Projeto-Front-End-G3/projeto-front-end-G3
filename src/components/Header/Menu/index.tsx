@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { IoMdClose } from 'react-icons/io';
-import { StyledMenu } from './style';
+import { Link } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
+import { StyledMenu } from "./style";
 
 interface iMenuProps {
   isClick?: boolean;
@@ -10,12 +10,12 @@ interface iMenuProps {
 const Menu = ({ isClick, setIsClick }: iMenuProps) => (
   <StyledMenu isClick={isClick}>
     <nav>
-      <Link to='/'>Inicio</Link>
-      <Link to='/sobre'>Quem Somos</Link>
-      <Link to='/contato'>Contato</Link>
+      <Link to="/">Inicio</Link>
+      <Link to="/about">Quem Somos</Link>
+      <Link to="/contact">Contato</Link>
       {setIsClick && (
         <button
-          type='button'
+          type="button"
           onClick={() => {
             setIsClick(false);
           }}

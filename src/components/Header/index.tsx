@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
-import logo from "../../assets/logo.svg";
+import Logo from "../../assets/logo.svg";
 import {
   StyledContainer,
   StyledHeader,
@@ -23,8 +23,8 @@ const Header = () => {
       <StyledHeader isClick={isClick}>
         <StyledContainer isClick={isClick}>
           <Link to="/">
-            <img src={logo} alt="Disclosure" />
-            <h1>Disclosure</h1>
+            <img src={Logo} alt="Disclosure " />
+            <p>Disclosure</p>
           </Link>
           <button
             type="button"

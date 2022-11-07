@@ -16,14 +16,14 @@ export const StyledContainer = styled.div`
   gap: 30px;
   margin-top: 96px;
 
-  h1 {
+  h3 {
     font-size: 20px;
     text-align: center;
     color: var(--color-white);
   }
 
   @media (min-width: 650px) {
-    h1 {
+    h3 {
       text-align: unset;
     }
   }

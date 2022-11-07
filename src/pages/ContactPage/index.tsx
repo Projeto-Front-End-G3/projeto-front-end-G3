@@ -1,9 +1,10 @@
 import DefaultHeader from '../../components/DefaultHeader';
+import Header from '../../components/Header';
 import Main from './Main';
 
 const Contato = () => (
   <article>
-    <DefaultHeader />
+    <Header />
     <Main />
   </article>
 );

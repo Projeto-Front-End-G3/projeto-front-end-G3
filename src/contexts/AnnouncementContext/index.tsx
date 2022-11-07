@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { FaDoorClosed } from "react-icons/fa";
-import api from '../../services/api'
+import api from "../../services/api";
 
 type iAnnouncementProviderProps = {
   children: ReactNode;
@@ -18,7 +18,7 @@ interface iAnnouncementContext {
 }
 
 interface iAnnouncement {
-  user: iUserDate
+  user: iUserDate;
   body: string;
 }
 
@@ -35,52 +35,42 @@ interface iAddAnnouncement {
 export const AnnouncementContext = createContext({} as iAnnouncementContext);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
+  const [announcement, setAnnouncement] = useState<iAnnouncement[]>([]);
+  const [globalLoading, setGlobalLoading] = useState(false);
+  const [openClose, setOpenClose] = useState(false);
+  const [profile, setProfile] = useState(false);
 
-  const [announcement, setAnnouncement] = useState<iAnnouncement[]>([])
-  const [globalLoading, setGlobalLoading] = useState(false)
-  const [openClose, setOpenClose] = useState(false)
-  const [profile, setProfile] = useState(false)
-
-  const token = localStorage.getItem("@Disclosure:token")
+  const token = localStorage.getItem("@Disclosure:token");
 
   useEffect(() => {
-
     const getAnnouncement = async () => {
-      setGlobalLoading(true)
+      setGlobalLoading(true);
       try {
-
-        const response = await api.get('/announcement?_expand=user')
-        setAnnouncement(response.data)
-
+        const response = await api.get("/announcement?_expand=user");
+        setAnnouncement(response.data);
       } catch (error) {
-
-        console.error(error)
-
+        console.error(error);
       } finally {
-        setGlobalLoading(false)
+        setGlobalLoading(false);
       }
-
-    }
-    getAnnouncement()
-
-  }, [])
+    };
+    getAnnouncement();
+  }, []);
 
   const addAnnouncement = async (body: iAddAnnouncement): Promise<void> => {
-
-    setGlobalLoading(true)
+    setGlobalLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-      const response = await api.post('/announcement', body)
+      const response = await api.post("/announcement", body);
 
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
-      setGlobalLoading(false)
+      setGlobalLoading(false);
     }
-  }
-
+  };
 
   const value = {
     announcement,
@@ -90,8 +80,8 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     openClose,
     setOpenClose,
     profile,
-    setProfile
-  }
+    setProfile,
+  };
 
   return (
     <AnnouncementContext.Provider value={value}>
