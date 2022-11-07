@@ -1,46 +1,55 @@
-import {
-  ButtonBack,
-  ButtonCadastrar,
-  ButtonEntrar,
-  ButtonsDiv,
-  CompanyDescription,
-  Contain,
-  ContainDesktop,
-  Description,
-  HeaderLogin,
-  LoginForm,
-  LoginText,
-  LogoCompany,
-} from "./style";
-import Logo from "../../assets/logo.png";
-import { iLogin, UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import {
+  ButtonBack,
+  SignUpButton,
+  LoginButton,
+  ButtonContainer,
+  CompanyDescription,
+  Container,
+  Content,
+  Description,
+  LoginHeader,
+  LoginForm,
+  LoginText,
+  CompanyLogo,
+} from "./style";
 import Input from "../../components/Input";
+import { UserContext } from "../../contexts/UserContext";
 import { loginFormSchema } from "../../validations/login";
+import Logo from "../../assets/logo.png";
+
+export interface iLoginFormValue {
+  email: string;
+  password: string;
+}
 
 const LoginPage = () => {
+  const { loginUser } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLogin>({ resolver: yupResolver(loginFormSchema) });
-
-  const { loginUser } = useContext(UserContext);
+  } = useForm<iLoginFormValue>({
+    resolver: yupResolver(loginFormSchema),
+    mode: "onChange",
+  });
 
   return (
-    <Contain>
+    <Container>
       <CompanyDescription>
-        <LogoCompany src={Logo} />
+        <CompanyLogo src={Logo} />
         <Description>Disclosure</Description>
         <Description>Divulgação nunca é demais!</Description>
       </CompanyDescription>
-      <ContainDesktop>
-        <HeaderLogin>
+      <Content>
+        <LoginHeader>
           <LoginText>Login</LoginText>
           <ButtonBack to={"/"}>Voltar</ButtonBack>
-        </HeaderLogin>
+        </LoginHeader>
         <LoginForm onSubmit={handleSubmit(loginUser)}>
           <Input
             name="email"
@@ -58,13 +67,13 @@ const LoginPage = () => {
             register={register}
             error={errors["password"]?.message}
           />
-          <ButtonsDiv>
-            <ButtonEntrar type="submit">Entrar</ButtonEntrar>
-            <ButtonCadastrar to={"/register"}>Cadastrar</ButtonCadastrar>
-          </ButtonsDiv>
+          <ButtonContainer>
+            <LoginButton type="submit">Entrar</LoginButton>
+            <SignUpButton to={"/register"}>Cadastrar</SignUpButton>
+          </ButtonContainer>
         </LoginForm>
-      </ContainDesktop>
-    </Contain>
+      </Content>
+    </Container>
   );
 };
 

@@ -10,7 +10,7 @@ import { Button } from "../../components/Button";
 import { UserContext } from "../../contexts/UserContext";
 import { signUpFormSchema } from "../../validations/signUp";
 
-export interface iUserFormValue {
+export interface iSignUpFormValue {
   name: string;
   email: string;
   password: string;
@@ -28,12 +28,12 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<iUserFormValue>({
+  } = useForm<iSignUpFormValue>({
     resolver: yupResolver(signUpFormSchema),
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<iUserFormValue> = (data) => {
+  const onSubmit: SubmitHandler<iSignUpFormValue> = (data) => {
     delete data["passwordConfirm"];
 
     registerUser(data);

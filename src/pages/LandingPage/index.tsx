@@ -1,13 +1,13 @@
 import Header from "../../components/Header";
-import DefaultMenu from "../../components/DefaultMenu";
-import DefaultMain from "../../components/DefaultMain";
+import Menu from "../../components/DefaultMenu";
+import Main from "../../components/DefaultMain";
 
 const LandingPage = () => {
   return (
     <>
       <Header />
-      <DefaultMenu />
-      <DefaultMain />
+      <Menu />
+      <Main />
     </>
   );
 };

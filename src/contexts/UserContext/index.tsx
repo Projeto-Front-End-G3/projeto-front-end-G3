@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { iLoginFormValue } from "../../pages/LoginPage";
 
-import { iUserFormValue } from "../../pages/RegisterPage";
+import { iSignUpFormValue } from "../../pages/RegisterPage";
 import api from "../../services/api";
 
 type iUserProviderProps = {
@@ -19,14 +20,9 @@ interface iUser {
   id: number;
 }
 
-export interface iLogin {
-  email: string;
-  password: string;
-}
-
 interface iValuesTypes {
-  loginUser: (data: iLogin) => void;
-  registerUser: (formData: iUserFormValue) => Promise<void>;
+  loginUser: (data: iLoginFormValue) => void;
+  registerUser: (formData: iSignUpFormValue) => Promise<void>;
   userData: iUser | null;
   authorized: boolean;
   logout: () => void;
@@ -39,7 +35,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
   const [authorized, setAuthorized] = useState(false);
   const navigate = useNavigate();
 
-  const loginUser = async (formData: iLogin) => {
+  const loginUser = async (formData: iLoginFormValue) => {
     try {
       const { data } = await api.post("/login", formData);
       const { user, accessToken } = data;
@@ -59,7 +55,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  const registerUser = async (formData: iUserFormValue) => {
+  const registerUser = async (formData: iSignUpFormValue) => {
     try {
       await api.post("/register", formData);
 

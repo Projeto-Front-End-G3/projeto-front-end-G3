@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Contain = styled.main`
+export const Container = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -42,7 +42,7 @@ export const CompanyDescription = styled.div`
   }
 `;
 
-export const LogoCompany = styled.img`
+export const CompanyLogo = styled.img`
   display: none;
 
   @media (min-width: 1024px) {
@@ -64,7 +64,7 @@ export const Description = styled.p`
   }
 `;
 
-export const ContainDesktop = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -82,7 +82,7 @@ export const ContainDesktop = styled.div`
   }
 `;
 
-export const HeaderLogin = styled.div`
+export const LoginHeader = styled.div`
   display: flex;
   justify-content: space-between;
 `;
@@ -111,13 +111,13 @@ export const LoginForm = styled.form`
   gap: 20px;
 `;
 
-export const ButtonsDiv = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
   flex-direction: column;
 `;
 
-export const ButtonEntrar = styled.button`
+export const LoginButton = styled.button`
   font: var(--font-text-0);
   cursor: pointer;
   background-color: var(--color-blue-2);
@@ -129,7 +129,7 @@ export const ButtonEntrar = styled.button`
   font-size: 17px;
 `;
 
-export const ButtonCadastrar = styled(Link)`
+export const SignUpButton = styled(Link)`
   font: var(--font-text-0);
   font-size: 15px;
   text-decoration: none;
