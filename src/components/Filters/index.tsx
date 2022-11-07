@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ContainerFilters } from './styled'
 import { MdAddCircleOutline } from 'react-icons/md'
-import casa from '../../assets/casa.png'
-import moeda from '../../assets/moeda.png'
-import carro from '../../assets/carro.png'
-import rolo from '../../assets/rolo.png'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { GoHome } from 'react-icons/go'
 import { BsCoin } from 'react-icons/bs'
 import { AiOutlineCar } from 'react-icons/ai'
 import { TfiPaintRoller } from 'react-icons/tfi'
+import { AnnouncementContext } from '../../contexts/AnnouncementContext'
 
 
 const Filters = () => {
+
+    const { setOpenClose } = useContext(AnnouncementContext)
+    
     return (
         <ContainerFilters>
-            <div className='newAdd'>
+            <div onClick={() => setOpenClose(true)} className='newAdd'>
                 <p>Novo anúncio</p>
                 <MdAddCircleOutline />
             </div>

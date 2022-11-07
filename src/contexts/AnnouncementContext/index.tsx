@@ -1,15 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { FaDoorClosed } from "react-icons/fa";
 import api from '../../services/api'
 
 type iAnnouncementProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 interface iAnnouncementContext {
   announcement: iAnnouncement[];
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  addAnnouncement: (body: iAddAnnouncement) => void;
+  openClose: boolean;
+  setOpenClose: React.Dispatch<React.SetStateAction<boolean>>;
+  profile: boolean;
+  setProfile: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface iAnnouncement {
@@ -22,12 +27,21 @@ interface iUserDate {
   img: string;
 }
 
+interface iAddAnnouncement {
+  publicationText?: string;
+  announceType?: string;
+}
+
 export const AnnouncementContext = createContext({} as iAnnouncementContext);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
 
   const [announcement, setAnnouncement] = useState<iAnnouncement[]>([])
   const [globalLoading, setGlobalLoading] = useState(false)
+  const [openClose, setOpenClose] = useState(false)
+  const [profile, setProfile] = useState(false)
+
+  const token = localStorage.getItem("@Disclosure:token")
 
   useEffect(() => {
 
@@ -51,22 +65,32 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
 
   }, [])
 
-  const addAnnouncement = async () => {
-    
+  const addAnnouncement = async (body: iAddAnnouncement): Promise<void> => {
+
+    setGlobalLoading(true)
     try {
-      const response = api.post('/announcement')
+      api.defaults.headers.common.authorization = `Bearer ${token}`
+
+      const response = await api.post('/announcement', body)
+
+      console.log(response.data)
     } catch (error) {
-
+      console.error(error)
+    } finally {
+      setGlobalLoading(false)
     }
-
-
   }
 
 
   const value = {
     announcement,
     globalLoading,
-    setGlobalLoading
+    setGlobalLoading,
+    addAnnouncement,
+    openClose,
+    setOpenClose,
+    profile,
+    setProfile
   }
 
   return (
