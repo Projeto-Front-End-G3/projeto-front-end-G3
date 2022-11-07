@@ -1,15 +1,22 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { StyledModalPost } from "./styles";
+import StyledModalPost from "./styled";
+import { useContext } from "react";
+import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
+
 
 const ModalCriarPost = () => {
+
+  const { addAnnouncement, setOpenClose } = useContext(AnnouncementContext)
+
   const formSchema = yup.object().shape({
     publicationText: yup
       .string()
       .min(6, "No minimo 6 caracteres")
-      .max(300, "Máximo de 300 caracteres"),
-      announceType: yup
+      .max(300, "Máximo de 300 caracteres")
+      .required(),
+    announceType: yup
       .string()
       .required()
       .oneOf(["Imóveis", "Finanças", "Autos-peças", "Serviços"]),
@@ -26,9 +33,10 @@ const ModalCriarPost = () => {
   return (
     <StyledModalPost>
       <div>
-        <p>Olá {}! O que você gostaria de postar?</p>
+        <p>Olá { }! O que você gostaria de postar?</p>
+        <p onClick={() => setOpenClose(false)}>X</p>
         {/* <img src={}>/>*/}
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={handleSubmit(addAnnouncement)}>
           <input
             type="text"
             placeholder="Digite seu novo nome!"
@@ -44,7 +52,7 @@ const ModalCriarPost = () => {
           <button type="submit">Postar</button>
         </form>
       </div>
-    </StyledModalPost>
+    </StyledModalPost >
   );
 };
 

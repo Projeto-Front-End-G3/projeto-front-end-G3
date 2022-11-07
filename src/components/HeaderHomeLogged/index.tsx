@@ -1,15 +1,18 @@
 import { FaBars } from 'react-icons/fa'
 import logo from '../../assets/logo.png'
 import { Container } from './styled'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import casa from '../../assets/casa.png'
 import { TiArrowSortedDown } from 'react-icons/ti'
 import { FiEdit } from 'react-icons/fi'
 import { MdOutlineExitToApp } from 'react-icons/md'
+import { AnnouncementContext } from '../../contexts/AnnouncementContext'
+import ModalHomePage from '../Modal/ModalPerfilUser'
 
 const Header = () => {
     const [headerOpenClose, setHeaderOpenClose] = useState(false)
     const [options, setOptions] = useState(false)
+    const { profile, setProfile } = useContext(AnnouncementContext)
 
     return (
         <Container isOpen={headerOpenClose} options={options}>
@@ -32,7 +35,7 @@ const Header = () => {
 
                             <li className="contact">Contato</li>
 
-                            <li className="edit display">Minha conta</li>
+                            <li className="edit display" onClick={() => setProfile(true)}>Minha conta</li>
 
                             <li className="exit display">Sair</li>
 
@@ -43,9 +46,9 @@ const Header = () => {
                         <TiArrowSortedDown className='options' onClick={() => setOptions(!options)} />
                         {options &&
                             <div className="exitProfile" >
-                                <div className='two'>
+                                <div onClick={() => setProfile(true)} className='two'>
                                     <FiEdit />
-                                    <p>Minha conta</p>
+                                    <p >Minha conta</p>
                                 </div>
                                 <div className='two'>
                                     <MdOutlineExitToApp />
@@ -55,6 +58,7 @@ const Header = () => {
                         }
                     </div>
                 </div>
+                {profile && <ModalHomePage />}
             </div>
         </Container >
     )
