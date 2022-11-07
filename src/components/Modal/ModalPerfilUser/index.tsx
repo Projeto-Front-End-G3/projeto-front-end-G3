@@ -5,12 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import lapis from "../../../assets/lapis.png";
 
-interface IModal {
-  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  onRequestClose: boolean;
-}
-
 const ModalHomePage = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [editProfile, setEditProfile] = useState(false);
@@ -46,6 +40,9 @@ const ModalHomePage = () => {
         <span>{}</span>
       </section>
       <section className="sectionForm">
+        <button type="button" className="returnBtn" onClick={setIsOpen(false)}>
+          Voltar
+        </button>
         <h2>Editando perfil</h2>
         <form onSubmit={handleSubmit()}>
           <label className="label">Novo nome:</label>
