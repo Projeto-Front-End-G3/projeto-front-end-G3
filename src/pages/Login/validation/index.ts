@@ -1,14 +1,11 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
 const schema = yup.object({
-  email: yup
-    .string()
-    .email('E-mail deve ser válido!')
-    .required('E-mail é um campo obrigatório!'),
+  email: yup.string().email("Email inválido").required("Campo obrigatório"),
   password: yup
     .string()
-    .min(5, 'Sua senha deve conter no minimo 5 caractéres!')
-    .required('Senha é um campo obrigatório')
-})
+    .min(8, "Mínimo de 8 dígitos")
+    .required("Campo obrigatório"),
+});
 
-export default schema
+export default schema;

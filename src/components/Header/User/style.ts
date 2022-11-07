@@ -13,7 +13,7 @@ export const StyledUser = styled.div<iStyledUserProps>`
   nav {
     width: 100px;
     position: absolute;
-    bottom: -56px;
+    /* bottom: -56px; */
 
     display: flex;
     flex-direction: column;

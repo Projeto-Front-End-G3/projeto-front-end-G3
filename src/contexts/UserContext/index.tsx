@@ -16,7 +16,7 @@ export interface iLogin {
 interface iValuesTypes {
   loginUser: (data: iLogin) => void;
   registerUser: (formData: iUserFormValue) => Promise<void>;
-  userData: object | undefined;
+  userData: object | null;
   authorized: boolean;
   setAuthorized: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -24,7 +24,7 @@ interface iValuesTypes {
 export const UserContext = createContext({} as iValuesTypes);
 
 const UserProvider = ({ children }: iUserProviderProps) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
   const [authorized, setAuthorized] = useState(true);
   const navigate = useNavigate();
 
@@ -60,6 +60,14 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("@Disclosure:token");
+    localStorage.removeItem("@Disclosure:userId");
+
+    setUserData(null);
+    setAuthorized(false);
+  }
+
   useEffect(() => {
     const loadUser = async () => {
       const token: string = JSON.parse(
@@ -79,7 +87,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
           setUserData(data);
           setAuthorized(true);
 
-          navigate("/dashboard");
+          // navigate("/dashboard");
         } catch (_) {
           localStorage.removeItem("@Disclosure:token");
           localStorage.removeItem("@Disclosure:userId");

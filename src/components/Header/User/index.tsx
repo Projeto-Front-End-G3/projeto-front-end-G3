@@ -46,6 +46,9 @@ const User = () => {
           </StyledContainer>
           <nav ref={modalRef}>
             <Link to="/">Minha Conta</Link>
+            <Link to="/">Inicio</Link>
+            <Link to="/about">Sobre nós</Link>
+            <Link to="/contact">Contato</Link>
             <button
               type="button"
               onClick={() => {

@@ -1,10 +1,9 @@
-import DefaultHeader2 from '../../components/DefaultHeader/DefaultHeader2';
-import Header from '../../components/Header';
+import DefaultHeader from '../../components/DefaultHeader';
 import Main from './Main';
 
 const Contato = () => (
   <article>
-    <DefaultHeader2 />
+    <DefaultHeader />
     <Main />
   </article>
 );

@@ -1,11 +1,10 @@
-import DefaultHeader2 from "../../components/DefaultHeader/DefaultHeader2";
-import Header from "../../components/Header";
+import DefaultHeader from "../../components/DefaultHeader";
 import Main from "./Main";
 import { StyledSobre } from "./style";
 
 const Sobre = () => (
   <StyledSobre>
-    <DefaultHeader2 />
+    <DefaultHeader />
     <Main />
   </StyledSobre>
 );

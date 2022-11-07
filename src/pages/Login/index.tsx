@@ -21,6 +21,7 @@ import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import schema from '../Login/validation'
+import Input from '../../components/Input'
 
 const Login = () => {
 
@@ -35,32 +36,28 @@ const Login = () => {
         <Description>Disclosure</Description>
         <Description>Divulgação nunca é demais!</Description>
       </CompanyDescription>
-
       <ContainDesktop>
         <HeaderLogin>
           <LoginText>Login</LoginText>
           <ButtonBack to={"/"}>Voltar</ButtonBack>
         </HeaderLogin>
-
         <LoginForm onSubmit={handleSubmit(loginUser)}>
-          <FormFieldsName id="email">E-mail:</FormFieldsName>
-          <FormFields
-            id="email"
-            type="email"
-            placeholder="Digite seu e-mail"
-            {...register("email")}
+          <Input
+            name="email"
+            label="Email"
+            placeholder="Digite seu email"
+            type="text"
+            register={register}
+            error={errors["email"]?.message}
           />
-          <MessageError>{errors.email?.message}</MessageError>
-
-          <FormFieldsName id="password">Senha:</FormFieldsName>
-          <FormFields
-            id="password"
-            type="password"
+          <Input
+            name="password"
+            label="Senha"
             placeholder="Digite sua senha"
-            {...register("password")}
+            type="password"
+            register={register}
+            error={errors["password"]?.message}
           />
-          <MessageError>{errors.password?.message}</MessageError>
-
           <ButtonsDiv>
             <ButtonEntrar type="submit">Entrar</ButtonEntrar>
             <ButtonCadastrar to={"/register"}>Cadastrar</ButtonCadastrar>

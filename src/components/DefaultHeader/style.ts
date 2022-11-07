@@ -21,6 +21,14 @@ export const Header = styled.header`
     cursor: pointer;
   }
 
+  nav {
+    display: none;
+  }
+
+  span {
+    display: none;
+  }
+
   .menu {
     width: 25px;
     height: 25px;
@@ -34,9 +42,50 @@ export const Header = styled.header`
 
   @media (min-width: 1024px) {
     padding: 10px 155px;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+    }
+
+    nav p {
+      cursor: pointer;
+      border-bottom: 1px solid var(--color-white);
+    }
+
+    nav p:hover {
+      border-bottom: 1px solid var(--color-blue-1);
+      color: var(--color-blue-1);
+      transition: 0.5s;
+    }
+
+    span {
+      display: flex;
+      justify-content: space-between;
+      width: 230px;
+    }
+
+    span a {
+      background-color: var(--color-blue-1);
+      color: var(--color-white);
+      font-weight: bold;
+      padding: 5px;
+      width: 100px;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    span button:hover {
+      filter: brightness(120%);
+    }
+
+    svg {
+      display: none;
+    }
   }
 
   @media (min-width: 1350px) {
     padding: 10px 135px;
   }
-`
+`;
