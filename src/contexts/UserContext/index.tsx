@@ -8,6 +8,16 @@ type iUserProviderProps = {
   children: React.ReactNode;
 };
 
+interface iUser {
+  email: string;
+  name: string;
+  img: string;
+  description: string;
+  cep: string;
+  link: string;
+  id: number;
+}
+
 export interface iLogin {
   email: string;
   password: string;
@@ -16,9 +26,9 @@ export interface iLogin {
 interface iValuesTypes {
   loginUser: (data: iLogin) => void;
   registerUser: (formData: iUserFormValue) => Promise<void>;
-  userData: object | null;
+  userData: iUser | null;
   authorized: boolean;
-  setAuthorized: React.Dispatch<React.SetStateAction<boolean>>;
+  logout: () => void;
 }
 
 export const UserContext = createContext({} as iValuesTypes);
@@ -40,7 +50,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
       setUserData(user);
       setAuthorized(true);
 
-      navigate("/")
+      navigate("/");
 
       toast.success("Acesso autorizado!");
     } catch (_) {
@@ -66,7 +76,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
 
     setUserData(null);
     setAuthorized(false);
-  }
+  };
 
   useEffect(() => {
     const loadUser = async () => {
@@ -104,9 +114,9 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     loginUser,
     userData,
     authorized,
-    setAuthorized,
+    logout,
   };
-  
+
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
