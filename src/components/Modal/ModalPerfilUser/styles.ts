@@ -11,17 +11,32 @@ export const HomeModalStyled = styled.div`
   background-color: #ffffff;
   display: flex;
   z-index: 2;
+
+  figure {
+    padding: 16px;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
   .blueSide {
     height: 100%;
     width: 25%;
     max-width: 220px;
     background: #191970;
     border-radius: 5px 0px 0px 5px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
     .textDescription {
       display: flex;
+      justify-content: center;
       font-family: "Roboto";
       font-size: 14px;
-      text-align: center;
       color: #ffffff;
     }
   }
@@ -32,6 +47,7 @@ export const HomeModalStyled = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
+
     .divGreetings {
       display: flex;
       width: 90%;
@@ -49,6 +65,7 @@ export const HomeModalStyled = styled.div`
         font-size: 18px;
         color: #ffffff;
       }
+
       .divEdit {
         margin-top: 5px;
         display: flex;
@@ -64,6 +81,7 @@ export const HomeModalStyled = styled.div`
       h2 {
         margin-bottom: 5px;
       }
+
       .divPosts {
         width: 100%;
         height: 80%;
@@ -84,12 +102,14 @@ export const EditModalStyled = styled.div`
   background-color: #ffffff;
   display: flex;
   z-index: 2;
+
   .blueSideForm {
     height: 100%;
     width: 25%;
     max-width: 220px;
     background: #191970;
     border-radius: 5px 0px 0px 5px;
+
     .textDescription {
       display: flex;
       font-family: "Roboto";
@@ -99,6 +119,7 @@ export const EditModalStyled = styled.div`
       color: #ffffff;
     }
   }
+
   .sectionForm {
     width: 100%;
     display: flex;
@@ -123,6 +144,7 @@ export const EditModalStyled = styled.div`
         color: #ffffff;
       }
     }
+
     form {
       height: 80%;
       width: 90%;
@@ -133,6 +155,7 @@ export const EditModalStyled = styled.div`
       h2 {
         margin-bottom: 5px;
       }
+
       .label {
         margin-bottom: 08px;
         font-family: "Roboto";
@@ -140,6 +163,7 @@ export const EditModalStyled = styled.div`
         font-size: 16.5px;
         color: #757575;
       }
+
       input {
         margin-bottom: 20px;
         height: 30px;
@@ -147,12 +171,14 @@ export const EditModalStyled = styled.div`
         border: 0;
       }
     }
+
     .divGreetings {
       height: 20%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-left: 15px;
+
       .returnBtn {
         width: 100px;
         height: 30px;
@@ -165,12 +191,14 @@ export const EditModalStyled = styled.div`
       }
     }
   }
+
   .divSaveBtn {
     height: 30px;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
     margin-right: 20px;
+
     .saveBtn {
       width: 100px;
       height: 30px;

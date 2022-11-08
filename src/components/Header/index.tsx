@@ -13,10 +13,13 @@ import Menu from "./Menu";
 import Buttons from "./Buttons";
 import User from "./User";
 import { UserContext } from "../../contexts/UserContext";
+import ModalHomePage from "../Modal/ModalPerfilUser";
+import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Header = () => {
   const { authorized } = useContext(UserContext);
   const [isClick, setIsClick] = useState(false);
+  const { profile } = useContext(AnnouncementContext);
 
   return (
     <>
@@ -56,6 +59,7 @@ const Header = () => {
           <User />
         </StyledViewUser>
       </StyledViewMenu>
+      {profile && <ModalHomePage />}
     </>
   );
 };

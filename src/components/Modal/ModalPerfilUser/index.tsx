@@ -1,10 +1,11 @@
-import { MouseEventHandler, useContext, useState } from 'react';
-import { HomeModalStyled, EditModalStyled } from './styles';
-import { AnnouncementContext } from '../../../contexts/AnnouncementContext';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import lapis from '../../../assets/lapis.png';
+import { MouseEventHandler, useContext, useState } from "react";
+import { HomeModalStyled, EditModalStyled } from "./styles";
+import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import lapis from "../../../assets/lapis.png";
+import { UserContext } from "../../../contexts/UserContext";
 
 interface IModal {
   onClick: MouseEventHandler<HTMLButtonElement> | undefined;
@@ -15,18 +16,17 @@ interface IModal {
 const ModalHomePage = () => {
   const [editProfile, setEditProfile] = useState(false);
   const { setProfile } = useContext(AnnouncementContext);
+  const { userData } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
-    name: yup.string().default(''),
+    name: yup.string().default(""),
     description: yup
       .string()
-      .min(6, 'No minimo 6 caracteres')
-      .max(300, 'Máximo de 300 caracteres')
-      .default(''),
-    profileImgLink: yup
-    .string()
-    .url('URL não valida'),
-    link: yup.string().url('URL não valida').default(''),
+      .min(6, "No minimo 6 caracteres")
+      .max(300, "Máximo de 300 caracteres")
+      .default(""),
+    profileImgLink: yup.string().url("URL não valida"),
+    link: yup.string().url("URL não valida").default(""),
   });
 
   const {
@@ -39,96 +39,82 @@ const ModalHomePage = () => {
 
   return editProfile ? (
     <EditModalStyled>
-      <section className='blueSideForm'>
+      <section className="blueSideForm">
         {/* <img src={}>/>*/}
-        
-        <span className='textDescription'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-          mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-          voluptatum laborum numquam blanditiis harum quisquam eius sed odit
-          fugiat iusto fuga praesentium optio, eaque rerum! Provident similique
-          accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut
-          molestias architecto voluptate aliquam nihil, eveniet aliquid culpa
-          officia aut!
-        </span>
+        <span className="textDescription">{userData?.description}</span>
       </section>
-      <section className='sectionForm'>
-        <div className='divGreetings'>
-          <h1>Olá {}!</h1>
+      <section className="sectionForm">
+        <div className="divGreetings">
+          <h1>Olá {userData?.name}!</h1>
           <button
-            type='button'
-            className='returnBtn'
+            type="button"
+            className="returnBtn"
             onClick={() => setEditProfile(false)}
           >
             Voltar
           </button>
         </div>
-
         <form /* onSubmit={handleSubmit()} */>
           <h2>Editando perfil</h2>
-          <label className='label'>Novo nome:</label>
+          <label className="label">Novo nome:</label>
           <input
-            type='text'
-            className='inputPlaceHolder'
-            placeholder='Digite seu novo nome!'
-            {...register('name')}
+            type="text"
+            className="inputPlaceHolder"
+            placeholder="Digite seu novo nome!"
+            {...register("name")}
           />
-          <label className='label'>Nova descrição:</label>
+          <label className="label">Nova descrição:</label>
           <input
-            type='text'
-            placeholder='Digite sua nova descrição!'
-            {...register('description')}
+            type="text"
+            placeholder="Digite sua nova descrição!"
+            {...register("description")}
           />
-          <label className='label'>Novo link para imagem de perfil:</label>
+          <label className="label">Novo link para imagem de perfil:</label>
           <input
-            type='text'
-            placeholder='Digite seu novo link imagem de perfil!'
-            {...register('profileImgLink')}
+            type="text"
+            placeholder="Digite seu novo link imagem de perfil!"
+            {...register("profileImgLink")}
           />
-          <label className='label'>Novo link para saiba mais:</label>
+          <label className="label">Novo link para saiba mais:</label>
           <input
-            type='text'
-            placeholder='Digite seu novo link de saiba mais!'
-            {...register('link')}
+            type="text"
+            placeholder="Digite seu novo link de saiba mais!"
+            {...register("link")}
           />
-          <div className='divSaveBtn'>
-            <button className='saveBtn' type='submit'>Salvar</button>
+          <div className="divSaveBtn">
+            <button className="saveBtn" type="submit">
+              Salvar
+            </button>
           </div>
         </form>
       </section>
     </EditModalStyled>
   ) : (
     <HomeModalStyled>
-      <section className='blueSide'>
-        {/* <img src={}>/>*/}
-        <span className='textDescription'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-          mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-          voluptatum laborum numquam blanditiis harum quisquam eius sed odit
-          fugiat iusto fuga praesentium optio, eaque rerum! Provident similique
-          accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut
-          molestias architecto voluptate aliquam nihil, eveniet aliquid culpa
-          officia aut!
-        </span>
+      <section className="blueSide">
+        <figure>
+          <img src={userData?.profilePicture} />
+        </figure>
+        <span className="textDescription">{userData?.description}</span>
       </section>
-      <section className='sectionPosts'>
-        <div className='divGreetings'>
-          <div className='divEdit'>
-            <h1>Olá {}!</h1>
+      <section className="sectionPosts">
+        <div className="divGreetings">
+          <div className="divEdit">
+            <h1>Olá {userData?.name}!</h1>
             <button onClick={() => setEditProfile(true)}>Editar perfil</button>
           </div>
           <button
-            type='button'
-            className='returnBtn'
+            type="button"
+            className="returnBtn"
             onClick={() => setProfile(false)}
           >
             Voltar
           </button>
         </div>
 
-        <div className='divContainerPosts'>
+        <div className="divContainerPosts">
           <h2>Seus posts</h2>
-          <div className='divPosts'>{/* map */}</div>
+          <div className="divPosts">{/* map */}</div>
         </div>
       </section>
     </HomeModalStyled>

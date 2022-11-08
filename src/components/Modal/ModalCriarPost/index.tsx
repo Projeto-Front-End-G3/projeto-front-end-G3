@@ -4,9 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { StyledModalPost } from "./styles";
 import { useContext } from "react";
 import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 const ModalCriarPost = () => {
   const { addAnnouncement, setOpenClose } = useContext(AnnouncementContext);
+  const { userData } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
     publicationText: yup
@@ -33,19 +35,17 @@ const ModalCriarPost = () => {
       <div className="firstDiv">
         <div className="containerDiv">
           <p className="textGreetings">
-            Olá {}! O que você gostaria de postar?
+            Olá {userData?.name}! O que você gostaria de postar?
           </p>
           <p className="closeTag" onClick={() => setOpenClose(false)}>
             X
           </p>
         </div>
-        {/* <img src={}>/>*/}
       </div>
-
       <form onSubmit={handleSubmit(addAnnouncement)}>
         <input
           type="text"
-          placeholder="Digite a descrição da sua publicação...!"
+          placeholder="Digite a sua publicação...!"
           {...register("publicationText")}
         />
         <div className="divSelect">
@@ -57,9 +57,7 @@ const ModalCriarPost = () => {
             <option>Serviços</option>
           </select>
         </div>
-        <div className="divButton">
           <button type="submit">Postar</button>
-        </div>
       </form>
     </StyledModalPost>
   );

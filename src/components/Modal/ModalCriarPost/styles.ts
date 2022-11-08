@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StyledModalPost = styled.div`
-  height: 450px;
+  max-height: 450px;
   width: 60%;
+  min-width: 300px;
   border-radius: 5px;
   position: fixed;
   left: 50%;
@@ -12,6 +13,7 @@ export const StyledModalPost = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 16px;
 
   .firstDiv {
     width: 100%;
@@ -21,19 +23,22 @@ export const StyledModalPost = styled.div`
     align-items: center;
     justify-content: center;
     gap: 15px;
+
     .containerDiv {
       width: 90%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+
       .closeTag {
         cursor: pointer;
       }
+
       .textGreetings {
         font-family: "Roboto";
         font-style: normal;
         font-weight: 400;
-        font-size: 28px;
+        font-size: 24px;
         color: #191970;
       }
     }
@@ -43,8 +48,9 @@ export const StyledModalPost = styled.div`
     height: 70%;
     display: flex;
     flex-direction: column;
+
     input {
-      width: 90%;
+      width: 100%;
       height: 60%;
       padding: 6px 5px 120px 5px;
       background-color: #f3f3f3;
@@ -58,11 +64,13 @@ export const StyledModalPost = styled.div`
         font-size: 15px;
       }
     }
+
     .divSelect {
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin-top: 15px;
+
       label {
         font-family: "Roboto";
         font-weight: 300;
@@ -78,6 +86,7 @@ export const StyledModalPost = styled.div`
         font-weight: 300;
         font-size: 15px;
         color: #9d9b9b;
+
         options {
           font-family: "Roboto";
           font-weight: 400;
@@ -88,19 +97,18 @@ export const StyledModalPost = styled.div`
       }
     }
 
-    .divButton {
+    > button {
+      margin-top: 16px;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
-      margin-right: 25px;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--color-white);
+      background-color: var(--color-blue-1);
       button {
-        height: 40px;
-        width: 100px;
-        background-color: #191970;
-        color: #ffff;
-        font-family: "Roboto";
-        font-weight: 400;
-        font-size: 18px;
       }
     }
   }
