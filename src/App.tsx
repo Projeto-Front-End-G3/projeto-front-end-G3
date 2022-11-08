@@ -1,23 +1,22 @@
-import AnnouncementContext from "./contexts/AnnouncementContext";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import GlobalStyle from "./styles/global";
-import AppRouter from "./routes/routes";
 import Providers from "./contexts";
-import GlobalLoading from "./components/GlobalLoading";
+import Loading from "./components/Loading";
+import AppRouter from "./routes/routes";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer />
-      <AnnouncementContext>
-        <Providers>
-          < GlobalLoading>
-            <AppRouter />
-          </GlobalLoading>
-        </Providers>
-      </AnnouncementContext>
+      <ToastContainer autoClose={2000} />
+      <Providers>
+        <Loading>
+          <AppRouter />
+        </Loading>
+      </Providers>
     </>
   );
 };

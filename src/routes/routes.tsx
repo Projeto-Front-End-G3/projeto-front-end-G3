@@ -1,19 +1,23 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import DashboardLogged from "../pages/dashboardUserLogado/index";
-import Header from "../components/Header";
-import Contato from "../pages/Contato";
-import Sobre from "../pages/Sobre";
-import Login from "../pages/Login";
+
+import LandingPage from "../pages/LandingPage";
+import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import DashboardPage from "../pages/DashboardPage";
+import AboutPage from "../pages/AboutPage";
+import ContactPage from "../pages/ContactPage";
+import ProtectedRoutes from "../components/ProtectedRoutes";
 
 export default () => (
   <Routes>
-    <Route path="/" element={<Header />} />
-    <Route path="/contato" element={<Contato />} />
-    <Route path="/sobre" element={<Sobre />} />
-    <Route path="*" element={<Navigate to="/" />} />
+    <Route path="/" element={<LandingPage />} />
+    <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/dashboardLogged" element={<DashboardLogged />} />
+    <Route element={<ProtectedRoutes />}>
+      <Route path="/dashboard" element={<DashboardPage />} />
+    </Route>
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route path="*" element={<Navigate to="/" />} />
   </Routes>
 );

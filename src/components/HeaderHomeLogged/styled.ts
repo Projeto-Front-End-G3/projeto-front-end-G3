@@ -45,7 +45,7 @@ export const Container = styled.header<iContainerProps>`
   .headers-general div h2 {
     color: var(--color-blue-1);
     font-size: 1.2rem;
-    font-family: 'Revalia', cursive;
+    font-family: "Revalia", cursive;
     font-weight: 700;
   }
 
@@ -81,8 +81,8 @@ export const Container = styled.header<iContainerProps>`
     color: var(--color-blue-1);
   }
 
-  .nav-animation ul li:hover{
-    color:var(--color-blue-3);
+  .nav-animation ul li:hover {
+    color: var(--color-blue-3);
   }
 
   #profile {
@@ -132,7 +132,7 @@ export const Container = styled.header<iContainerProps>`
         return css`
           .nav-animation {
             animation: qualquerNomeTwo 500ms forwards;
-            display:none;
+            display: none;
           }
         `;
       }
