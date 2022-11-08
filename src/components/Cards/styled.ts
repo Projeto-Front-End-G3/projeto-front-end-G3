@@ -59,6 +59,11 @@ export const CardList = styled.ul`
     border-radius: var(--radius-1);
     background-color: var(--color-blue-1);
     color: var(--color-grey-3);
+    transition: 0.3s;
+
+    :hover {
+      background-color: var(--color-blue-2);
+    }
   }
 
   @media (min-width: 768px) {

@@ -20,6 +20,11 @@ export const ContainerFilters = styled.div`
     border-radius: 3px;
     margin: 1rem 0;
     cursor: pointer;
+    transition: 0.3s;
+
+    :hover {
+      background-color: var(--color-blue-2);
+    }
   }
 
   .newAdd p {
@@ -57,10 +62,11 @@ export const ContainerFilters = styled.div`
     transform: scale(2.5);
     color: var(--color-blue-1);
     cursor: pointer;
-  }
+    transition: 0.3s;
 
-  .filtersCenter ul li svg:hover {
-    color: var(--color-blue-3);
+    :hover {
+      color: var(--color-blue-3);
+    }
   }
 
   .filtersCenter ul li p {
