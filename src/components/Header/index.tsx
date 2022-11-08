@@ -24,7 +24,7 @@ const Header = () => {
         <StyledContainer isClick={isClick}>
           <Link to={authorized ? "/dashboard" : "/"}>
             <img src={Logo} alt="Disclosure " />
-            <p>Disclosure</p>
+            <h1>Disclosure</h1>
           </Link>
           <button
             type="button"
