@@ -4,9 +4,9 @@ export const ContainerFilters = styled.div`
   width: 85%;
   margin: 0 auto;
   max-width: 1200px;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  gap:2rem;
+  gap: 2rem;
 
   .newAdd {
     width: 140px;
@@ -51,14 +51,14 @@ export const ContainerFilters = styled.div`
     gap: 1.1rem;
   }
 
-  .filtersCenter ul li svg{
-    transform:scale(2.5);
-    color:var(--color-blue-1);
+  .filtersCenter ul li svg {
+    transform: scale(2.5);
+    color: var(--color-blue-1);
     cursor: pointer;
   }
 
-  .filtersCenter ul li svg:hover{
-    color:var(--color-blue-3);
+  .filtersCenter ul li svg:hover {
+    color: var(--color-blue-3);
   }
 
   .filtersCenter ul li p {
@@ -103,7 +103,7 @@ export const ContainerFilters = styled.div`
 
   @media (min-width: 425px) {
     .filtersCenter ul {
-      gap:4rem;
+      gap: 4rem;
     }
   }
 
@@ -115,7 +115,7 @@ export const ContainerFilters = styled.div`
     }
 
     .filtersCenter ul {
-      gap:3rem;
+      gap: 3rem;
     }
 
     .filtersCenter div {

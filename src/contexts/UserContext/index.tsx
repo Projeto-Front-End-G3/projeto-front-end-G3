@@ -1,29 +1,41 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { iLoginFormValue } from "../../pages/LoginPage";
 
-import { iUserFormValue } from "../../pages/RegisterPage";
+import { iSignUpFormValue } from "../../pages/RegisterPage";
 import api from "../../services/api";
 
 type iUserProviderProps = {
   children: React.ReactNode;
 };
-export interface iLogin {
+
+interface iUser {
   email: string;
-  password: string;
+  name: string;
+  profilePicture: string;
+  description: string;
+  cep: string;
+  link: string;
+  id: number;
 }
-export interface iValuesTypes {
-  loginUser: (data: iLogin) => void;
-  registerUser: (formData: iUserFormValue) => Promise<void>;
+
+interface iValuesTypes {
+  loginUser: (data: iLoginFormValue) => void;
+  registerUser: (formData: iSignUpFormValue) => Promise<void>;
+  userData: iUser | null;
+  authorized: boolean;
+  logout: () => void;
 }
 
 export const UserContext = createContext({} as iValuesTypes);
 
 const UserProvider = ({ children }: iUserProviderProps) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
+  const [authorized, setAuthorized] = useState(false);
   const navigate = useNavigate();
 
-  const loginUser = async (formData: iLogin) => {
+  const loginUser = async (formData: iLoginFormValue) => {
     try {
       const { data } = await api.post("/login", formData);
       const { user, accessToken } = data;
@@ -33,14 +45,17 @@ const UserProvider = ({ children }: iUserProviderProps) => {
       localStorage.setItem("@Disclosure:userId", JSON.stringify(user["id"]));
 
       setUserData(user);
+      setAuthorized(true);
 
-      toast.success("Acesso autorizado!", { autoClose: 2000 });
+      navigate("/dashboard");
+
+      toast.success("Acesso autorizado!");
     } catch (_) {
-      toast.error("Usuário não existe!", { autoClose: 2000 });
+      toast.error("Usuário não existe!");
     }
   };
 
-  const registerUser = async (formData: iUserFormValue) => {
+  const registerUser = async (formData: iSignUpFormValue) => {
     try {
       await api.post("/register", formData);
 
@@ -50,6 +65,14 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     } catch (_) {
       toast.error("Email já cadastrado");
     }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("@Disclosure:token");
+    localStorage.removeItem("@Disclosure:userId");
+
+    setUserData(null);
+    setAuthorized(false);
   };
 
   useEffect(() => {
@@ -69,11 +92,13 @@ const UserProvider = ({ children }: iUserProviderProps) => {
           const { data } = await api.get(`/users/${id}`);
 
           setUserData(data);
+          setAuthorized(true);
 
           navigate("/dashboard");
         } catch (_) {
           localStorage.removeItem("@Disclosure:token");
           localStorage.removeItem("@Disclosure:userId");
+          navigate("/");
         }
       }
     };
@@ -81,7 +106,14 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     loadUser();
   }, []);
 
-  const value = { registerUser, loginUser };
+  const value = {
+    registerUser,
+    loginUser,
+    userData,
+    authorized,
+    logout,
+  };
+
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 

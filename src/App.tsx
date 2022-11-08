@@ -1,16 +1,21 @@
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import GlobalStyle from "./styles/global";
-import AppRouter from "./routes/routes";
 import Providers from "./contexts";
+import Loading from "./components/Loading";
+import AppRouter from "./routes/routes";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <Providers>
-        <AppRouter />
+        <Loading>
+          <AppRouter />
+        </Loading>
       </Providers>
     </>
   );

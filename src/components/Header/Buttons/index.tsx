@@ -1,16 +1,16 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { UserContextNormal } from '../../../contexts/UserContextNormal';
-import { StyledButtons } from './style';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../../contexts/UserContext";
+import { StyledButtons } from "./style";
 
 const Buttons = () => {
-  const { user } = useContext(UserContextNormal);
+  const { authorized } = useContext(UserContext);
   return (
     <>
-      {!user && (
+      {!authorized && (
         <StyledButtons>
-          <Link to='/'>Logar</Link>
-          <Link to='/'>Cadastrar</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Cadastrar-se</Link>
         </StyledButtons>
       )}
     </>

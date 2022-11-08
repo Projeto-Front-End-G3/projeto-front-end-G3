@@ -1,61 +1,23 @@
-import React from 'react'
-import { Main } from './styled'
-import santander from '../../assets/santander 1.png'
-import { Link } from 'react-router-dom'
+import { CardList } from "./styled";
+import { useContext } from "react";
+import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Cards = () => {
-    return (
-        <Main>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-            <div className = "cardContainer">
-                <div className = "nickName">
-                    <img src={santander} alt="Santander" />
-                    <p>Santander</p>
-                </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro laborum assumenda quae, quasi explicabo quos necessitatibus culpa cumque facere voluptates perspiciatis, hic illum delectus! Obcaecati amet eaque sapiente quibusdam optio.</p>
-                <button>Saiba mais</button>
-            </div>
-        </Main>
-    )
-}
+  const { announcement } = useContext(AnnouncementContext);
+  return (
+    <CardList>
+      {announcement.map((elem, index) => (
+        <li key={index} className="cardContainer">
+          <div className="nickName">
+            <img src={elem?.user.img} alt="Santander" />
+            <p>{elem?.user.name}</p>
+          </div>
+          <p>{elem?.body}</p>
+          <button>Saiba mais</button>
+        </li>
+      ))}
+    </CardList>
+  );
+};
 
-export default Cards
+export default Cards;
