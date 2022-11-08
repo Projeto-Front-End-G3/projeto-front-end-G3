@@ -19,9 +19,10 @@ interface iAnnouncementTypes {
   profile: boolean;
   setProfile: React.Dispatch<React.SetStateAction<boolean>>;
   deleteAnnouncement: (announcementId: number) => Promise<void>;
-  filterAnnouncements: (announcementType: string) => Promise<void>;
-  filter: string;
+  filterAnnouncements: () => iAnnouncement[];
   getAnnouncement: () => Promise<void>;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+  filter: string;
 }
 
 export interface iAnnouncement {
@@ -36,8 +37,8 @@ export const AnnouncementContext = createContext({} as iAnnouncementTypes);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   const [announcements, setAnnouncements] = useState<iAnnouncement[]>([]);
-  const [filter, setFilter] = useState("");
   const [globalLoading, setGlobalLoading] = useState(false);
+  const [filter, setFilter] = useState("todos");
   const [openClose, setOpenClose] = useState(false);
   const [profile, setProfile] = useState(false);
 
@@ -84,11 +85,15 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     }
   };
 
-  const filterAnnouncements = async (announcementType: string) => {
-    if (announcementType === "todos") {
-      setFilter("");
+  const filterAnnouncements = () => {
+    if (filter === "todos" || filter === "") {
+      return announcements;
     } else {
-      setFilter(announcementType);
+      return announcements.filter(
+        (announcement) =>
+          announcement["type"] == filter ||
+          announcement["user"]["name"].toLocaleLowerCase().includes(filter)
+      );
     }
   };
 
@@ -107,8 +112,9 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     setProfile,
     deleteAnnouncement,
     filterAnnouncements,
-    filter,
     getAnnouncement,
+    setFilter,
+    filter,
   };
 
   return (

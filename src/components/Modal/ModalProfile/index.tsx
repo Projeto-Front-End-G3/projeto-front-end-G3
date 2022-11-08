@@ -15,18 +15,15 @@ export interface iEditUserInfoFormValue {
 
 const ModalProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
-  const { setProfile, announcements, deleteAnnouncement } =
+  const { setProfile, announcements, deleteAnnouncement, getAnnouncement } =
     useContext(AnnouncementContext);
   const { userData, editUserInfo } = useContext(UserContext);
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm<iEditUserInfoFormValue>({
+  const { register, handleSubmit } = useForm<iEditUserInfoFormValue>({
     resolver: yupResolver(editUserInfoFormSchema),
   });
 
-  const onSubmit: SubmitHandler<iEditUserInfoFormValue> = (formData) => {
+  const onSubmit: SubmitHandler<iEditUserInfoFormValue> = async (formData) => {
     const data = {
       ...(formData.name && { name: formData.name }),
       ...(formData.description && { description: formData.description }),
@@ -35,7 +32,9 @@ const ModalProfile = () => {
       }),
       ...(formData.link && { link: formData.link }),
     };
-    editUserInfo(data);
+
+    await editUserInfo(data);
+    getAnnouncement();
   };
 
   return editProfile ? (

@@ -73,10 +73,11 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     const id: number = JSON.parse(localStorage.getItem("@Disclosure:userId")!);
 
     try {
-      await api.patch(`/users/${id}`, formData);
+      const { data } = await api.patch(`/users/${id}`, formData);
+
+      setUserData(data);
 
       toast.success("Informações editadas com sucesso!");
-      navigate(0);
     } catch (_) {
       toast.error("Algo deu errado :(");
     }

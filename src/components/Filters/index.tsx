@@ -9,10 +9,10 @@ import { TfiPaintRoller } from "react-icons/tfi";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Filters = () => {
-  const { setOpenClose, filterAnnouncements } = useContext(AnnouncementContext);
+  const { setOpenClose, setFilter } = useContext(AnnouncementContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    filterAnnouncements(event.target.value.toLocaleLowerCase());
+    setFilter(event.target.value.toLocaleLowerCase());
   };
 
   return (
@@ -23,23 +23,23 @@ const Filters = () => {
       </div>
       <div className="filtersCenter">
         <ul>
-          <li onClick={() => filterAnnouncements("todos")}>
+          <li onClick={() => setFilter("todos")}>
             <AiOutlineUnorderedList />
             <p>Todos</p>
           </li>
-          <li onClick={() => filterAnnouncements("imoveis")}>
+          <li onClick={() => setFilter("imoveis")}>
             <GoHome />
             <p>Imóveis</p>
           </li>
-          <li onClick={() => filterAnnouncements("ficancas")}>
+          <li onClick={() => setFilter("ficancas")}>
             <BsCoin />
             <p>Finanças</p>
           </li>
-          <li onClick={() => filterAnnouncements("auto-pecas")}>
+          <li onClick={() => setFilter("auto-pecas")}>
             <AiOutlineCar />
             <p>Auto-peças</p>
           </li>
-          <li onClick={() => filterAnnouncements("servicos")}>
+          <li onClick={() => setFilter("servicos")}>
             <TfiPaintRoller />
             <p>Serviços</p>
           </li>
