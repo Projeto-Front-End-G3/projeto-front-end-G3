@@ -9,8 +9,8 @@ const Buttons = () => {
     <>
       {!authorized && (
         <StyledButtons>
-          <Link to="/login">Logar</Link>
-          <Link to="/register">Cadastrar</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Cadastrar-se</Link>
         </StyledButtons>
       )}
     </>

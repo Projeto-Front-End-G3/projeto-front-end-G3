@@ -1,8 +1,9 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const ContainerGeneral = styled.div`
+  height: 100vh;
   background-color: var(--color-blue-4);
-  display:flex;
+  display: flex;
   flex-direction: column;
-  padding-bottom:4rem;
+  padding-bottom: 4rem;
 `;

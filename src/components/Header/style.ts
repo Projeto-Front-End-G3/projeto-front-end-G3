@@ -4,11 +4,25 @@ interface iStyledContainerProps {
   isClick?: boolean;
 }
 
+interface iStyledViewMenuProps {
+  mediaView: "small" | "medium";
+  isClick?: boolean;
+  user?: boolean;
+}
+
+interface iStyledViewButtonsProps {
+  mediaView: "small" | "medium" | "big";
+}
+
+interface iStyledViewUserProps {
+  mediaView: "small" | "medium";
+  isClick: boolean;
+}
+
 export const StyledContainer = styled.div<iStyledContainerProps>`
   width: 80%;
   height: 100%;
   padding: 0.5rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,16 +34,13 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
   }
 
   a {
-    width: 100%;
     max-width: 200px;
     height: 80%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
-
     color: var(--color-blue-1);
 
     img {
@@ -53,7 +64,7 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
     }
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 650px) {
     button {
       display: none;
     }
@@ -74,6 +85,11 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
 export const StyledHeader = styled.header<iStyledContainerProps>`
   width: 100vw;
   height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white);
+  border-bottom: 0.5px solid var(--color-blue-5);
 
   @media (max-width: 200px) {
     height: 150px;
@@ -88,22 +104,15 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
       `;
     }
   }}
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: var(--color-white);
-  border-bottom: 0.5px solid var(--color-blue-5);
 `;
 
-interface iStyledViewMenuProps {
-  mediaView: "small" | "medium";
-  isClick?: boolean;
-  user?: boolean;
-}
-
 export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
+  > div {
+    a {
+      width: 50%;
+    }
+  }
+
   ${({ isClick }) => {
     if (isClick) {
       return css`
@@ -120,6 +129,8 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
         return css`
           width: 100vw;
           position: relative;
+          display: flex;
+          justify-content: center;
           background-color: var(--color-white);
           ${({ isClick, user }: iStyledViewMenuProps) => {
             if (isClick) {
@@ -130,25 +141,23 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
               }
             }
           }}
-          display: flex;
-          justify-content: center;
 
-          @media (min-width: 500px) {
+          @media (min-width: 650px) {
             display: none;
           }
         `;
       case "medium":
         return css`
-          display: flex;
+          display: none;
           flex-direction: column;
+
+          @media (min-width: 650px) {
+            display: flex;
+          }
         `;
     }
   }}
 `;
-
-interface iStyledViewButtonsProps {
-  mediaView: "small" | "medium" | "big";
-}
 
 export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
   a {
@@ -188,11 +197,6 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
   }}
 `;
 
-interface iStyledViewUserProps {
-  mediaView: "small" | "medium";
-  isClick: boolean;
-}
-
 export const StyledViewUser = styled.div<iStyledViewUserProps>`
   a {
     width: unset;
@@ -220,8 +224,10 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
         `;
       case "medium":
         return css`
-          @media (max-width: 500px) {
-            display: none;
+          display: none;
+
+          @media (min-width: 650px) {
+            display: flex;
           }
         `;
     }

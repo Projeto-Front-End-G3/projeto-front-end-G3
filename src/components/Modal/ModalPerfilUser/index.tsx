@@ -50,15 +50,8 @@ const ModalHomePage = () => {
         </span>
       </section>
       <section className="sectionForm">
-        <div className="divGreetings">
-          <h1>Olá {}!</h1>
-          <button type="button" className="returnBtn">
-            Voltar
-          </button>
-        </div>
-
-        <form /* onSubmit={handleSubmit()} */>
-          <h2>Editando perfil</h2>
+        <h2>Editando perfil</h2>
+        <form onSubmit={handleSubmit()}>
           <label className="label">Novo nome:</label>
           <input
             type="text"

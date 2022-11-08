@@ -22,9 +22,9 @@ const Header = () => {
     <>
       <StyledHeader isClick={isClick}>
         <StyledContainer isClick={isClick}>
-          <Link to="/">
+          <Link to={authorized ? "/dashboard" : "/"}>
             <img src={Logo} alt="Disclosure " />
-            <p>Disclosure</p>
+            <h1>Disclosure</h1>
           </Link>
           <button
             type="button"
@@ -43,9 +43,11 @@ const Header = () => {
           <StyledViewUser mediaView="medium" isClick={isClick}>
             <User />
           </StyledViewUser>
-          <StyledViewButtons mediaView="big">
-            <Buttons />
-          </StyledViewButtons>
+          {!authorized && (
+            <StyledViewButtons mediaView="big">
+              <Buttons />
+            </StyledViewButtons>
+          )}
         </StyledContainer>
       </StyledHeader>
       <StyledViewMenu user={authorized} mediaView="small" isClick={isClick}>
