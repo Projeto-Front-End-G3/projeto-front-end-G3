@@ -90,6 +90,8 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
   align-items: center;
   background-color: var(--color-white);
   border-bottom: 0.5px solid var(--color-blue-5);
+  position: fixed;
+  z-index: 5;
 
   @media (max-width: 200px) {
     height: 150px;

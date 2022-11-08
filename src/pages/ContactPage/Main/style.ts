@@ -22,7 +22,7 @@ export const StyledMain = styled.main`
   }
 
   > div {
-    margin-top: 84px;
+    margin-top: 184px;
     display: flex;
     justify-content: center;
     align-items: center;

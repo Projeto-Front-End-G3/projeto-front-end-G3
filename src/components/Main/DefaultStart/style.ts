@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainFooter = styled.footer`
+export const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,7 @@ export const MainFooter = styled.footer`
   height: 470px;
   padding: 10px;
   text-align: center;
+  margin-top: 100px;
 
   .backgroundImg {
     position: absolute;

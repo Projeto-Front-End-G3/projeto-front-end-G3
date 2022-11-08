@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const ContainerFilters = styled.div`
   width: 85%;
@@ -7,6 +7,7 @@ export const ContainerFilters = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 100px;
 
   .newAdd {
     width: 140px;
@@ -18,6 +19,7 @@ export const ContainerFilters = styled.div`
     gap: 13px;
     border-radius: 3px;
     margin: 1rem 0;
+    cursor: pointer;
   }
 
   .newAdd p {
