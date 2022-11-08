@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HomeModalStyled = styled.div`
-  height: 450px;
+  height: 500px;
   width: 80%;
   border-radius: 5px;
   position: fixed;
@@ -24,20 +24,22 @@ export const HomeModalStyled = styled.div`
   .blueSide {
     height: 100%;
     width: 25%;
-    max-width: 220px;
+    min-width: 220px;
     background: #191970;
     border-radius: 5px 0px 0px 5px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       display: none;
     }
 
     .textDescription {
       display: flex;
       justify-content: center;
-      font-family: "Roboto";
+      font-weight: 400;
       font-size: 14px;
-      color: #ffffff;
+      color: var(--color-white);
+      padding: 0 8px;
+      text-align: center;
     }
   }
 
@@ -104,10 +106,21 @@ export const HomeModalStyled = styled.div`
               border-radius: 50%;
             }
 
-            p {
+            h2 {
               font: var(--font-title-1);
               color: var(--color-blue-1);
             }
+          }
+
+          p {
+            margin-top: 8px;
+            height: 38px;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
           }
 
           a {
@@ -115,8 +128,7 @@ export const HomeModalStyled = styled.div`
             align-items: center;
             justify-content: center;
             height: 35px;
-            width: 200px;
-            margin-top: 8px;
+            width: 50%;
             font: var(--font-text-1);
             border: none;
             border-radius: var(--radius-1);
@@ -127,10 +139,11 @@ export const HomeModalStyled = styled.div`
           .buttonDiv {
             display: flex;
             justify-content: space-between;
+            margin-top: 8px;
 
             button {
               height: 35px;
-              width: 200px;
+              width: 50%;
               background-color: red;
               font: var(--font-text-1);
               border: none;
@@ -145,7 +158,7 @@ export const HomeModalStyled = styled.div`
 `;
 
 export const EditModalStyled = styled.div`
-  height: 450px;
+  height: 500px;
   width: 80%;
   border-radius: 5px;
   position: fixed;
@@ -156,20 +169,33 @@ export const EditModalStyled = styled.div`
   display: flex;
   z-index: 2;
 
+  figure {
+    padding: 16px;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
   .blueSideForm {
     height: 100%;
     width: 25%;
-    max-width: 220px;
+    min-width: 220px;
     background: #191970;
     border-radius: 5px 0px 0px 5px;
 
+    @media (max-width: 800px) {
+      display: none;
+    }
+
     .textDescription {
       display: flex;
-      font-family: "Roboto";
       font-weight: 400;
       font-size: 14px;
       text-align: center;
-      color: #ffffff;
+      padding: 0 8px;
+      color: var(--color-white);
     }
   }
 
@@ -201,10 +227,10 @@ export const EditModalStyled = styled.div`
     form {
       height: 80%;
       width: 90%;
-      margin-left: 20px;
       display: flex;
       flex-direction: column;
-      margin-bottom: 20px;
+      gap: 8px;
+      padding: 8px;
       h2 {
         margin-bottom: 5px;
       }
@@ -218,10 +244,10 @@ export const EditModalStyled = styled.div`
       }
 
       input {
-        margin-bottom: 20px;
-        height: 30px;
+        height: 48px;
         background-color: #f3f3f3;
         border: 0;
+        padding: 0 8px;
       }
     }
 

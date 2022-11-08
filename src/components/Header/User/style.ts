@@ -60,6 +60,7 @@ export const StyledContainer = styled.div`
   img {
     width: 100%;
     object-fit: cover;
+    border-radius: 50%;
   }
   button {
     font-size: 16px;

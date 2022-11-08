@@ -16,6 +16,16 @@ export const CardList = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+
+    p {
+      height: 38px;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
   }
 
   .nickName {
@@ -32,6 +42,9 @@ export const CardList = styled.ul`
     p {
       font: var(--font-title-1);
       color: var(--color-blue-1);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
 

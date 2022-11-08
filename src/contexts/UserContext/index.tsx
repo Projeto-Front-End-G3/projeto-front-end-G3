@@ -1,15 +1,22 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { iLoginFormValue } from "../../pages/LoginPage";
 
-import { iSignUpFormValue } from "../../pages/RegisterPage";
 import api from "../../services/api";
-import { iAnnouncement } from "../AnnouncementContext";
+import { iLoginFormValue } from "../../pages/LoginPage";
+import { iSignUpFormValue } from "../../pages/RegisterPage";
 
 type iUserProviderProps = {
   children: React.ReactNode;
 };
+
+interface iValuesTypes {
+  loginUser: (data: iLoginFormValue) => void;
+  registerUser: (formData: iSignUpFormValue) => Promise<void>;
+  userData: iUser | null;
+  authorized: boolean;
+  logout: () => void;
+}
 
 export interface iUser {
   email: string;
@@ -19,25 +26,6 @@ export interface iUser {
   cep: string;
   link: string;
   id: number;
-}
-
-interface iUserAnnouncements {
-  email: string;
-  name: string;
-  profilePicture: string;
-  description: string;
-  cep: string;
-  link: string;
-  id: number;
-  announcement: iAnnouncement[] | null;
-}
-
-interface iValuesTypes {
-  loginUser: (data: iLoginFormValue) => void;
-  registerUser: (formData: iSignUpFormValue) => Promise<void>;
-  userData: iUser | null;
-  authorized: boolean;
-  logout: () => void;
 }
 
 export const UserContext = createContext({} as iValuesTypes);
@@ -78,6 +66,8 @@ const UserProvider = ({ children }: iUserProviderProps) => {
       toast.error("Email já cadastrado");
     }
   };
+
+  // const editUserInfo = async (formData:)
 
   const logout = () => {
     localStorage.removeItem("@Disclosure:token");

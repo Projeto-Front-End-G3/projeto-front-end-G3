@@ -2,14 +2,16 @@ import { MouseEventHandler, useContext, useState } from "react";
 import { HomeModalStyled, EditModalStyled } from "./styles";
 import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../../contexts/UserContext";
+import { editUserInfoFormSchema } from "../../../validations/editUserInfo";
 
-interface IModal {
-  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  onRequestClose: boolean;
+interface iEditUserInfoFormValue {
+  name: string;
+  description: string;
+  profilePicture: string;
+  link: string;
 }
 
 const ModalProfile = () => {
@@ -18,29 +20,37 @@ const ModalProfile = () => {
     useContext(AnnouncementContext);
   const { userData } = useContext(UserContext);
 
-  const formSchema = yup.object().shape({
-    name: yup.string().default(""),
-    description: yup
-      .string()
-      .min(6, "No minimo 6 caracteres")
-      .max(300, "Máximo de 300 caracteres")
-      .default(""),
-    profileImgLink: yup.string().url("URL não valida"),
-    link: yup.string().url("URL não valida").default(""),
-  });
+  // const formSchema = yup.object().shape({
+  //   name: yup.string().default(""),
+  //   description: yup
+  //     .string()
+  //     .min(6, "No minimo 6 caracteres")
+  //     .max(300, "Máximo de 300 caracteres")
+  //     .default(""),
+  //   profileImgLink: yup.string().url("URL não valida"),
+  //   link: yup.string().url("URL não valida").default(""),
+  // });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(formSchema),
+  } = useForm<iEditUserInfoFormValue>({
+    resolver: yupResolver(editUserInfoFormSchema),
   });
+
+  const onSubmit: SubmitHandler<iEditUserInfoFormValue> = (data) => {
+    const id: number = JSON.parse(localStorage.getItem("@Disclosure:userId")!);
+
+    console.log(data);
+  };
 
   return editProfile ? (
     <EditModalStyled>
       <section className="blueSideForm">
-        {/* <img src={}>/>*/}
+        <figure>
+          <img src={userData?.profilePicture} />
+        </figure>
         <span className="textDescription">{userData?.description}</span>
       </section>
       <section className="sectionForm">
@@ -54,31 +64,31 @@ const ModalProfile = () => {
             Voltar
           </button>
         </div>
-        <form /* onSubmit={handleSubmit()} */>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h2>Editando perfil</h2>
           <label className="label">Novo nome:</label>
           <input
             type="text"
             className="inputPlaceHolder"
-            placeholder="Digite seu novo nome!"
+            placeholder="Digite o novo nome"
             {...register("name")}
           />
           <label className="label">Nova descrição:</label>
           <input
             type="text"
-            placeholder="Digite sua nova descrição!"
+            placeholder="Digite a nova descrição"
             {...register("description")}
           />
           <label className="label">Novo link para imagem de perfil:</label>
           <input
             type="text"
-            placeholder="Digite seu novo link imagem de perfil!"
-            {...register("profileImgLink")}
+            placeholder="Digite o novo link da foto"
+            {...register("profilePicture")}
           />
           <label className="label">Novo link para saiba mais:</label>
           <input
             type="text"
-            placeholder="Digite seu novo link de saiba mais!"
+            placeholder="Digite o novo link do site"
             {...register("link")}
           />
           <div className="divSaveBtn">
@@ -126,7 +136,7 @@ const ModalProfile = () => {
                       src={announcement?.user.profilePicture}
                       alt={announcement.user.name}
                     />
-                    <p>{announcement?.user.name}</p>
+                    <h2>{announcement?.user.name}</h2>
                   </div>
                   <p>{announcement?.body}</p>
                   <div className="buttonDiv">

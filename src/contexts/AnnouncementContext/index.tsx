@@ -1,15 +1,14 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-
-import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
+import { createContext, useEffect, useState } from "react";
 
 import api from "../../services/api";
 import { iUser } from "../UserContext";
+import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
 
 type iAnnouncementProviderProps = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-interface iAnnouncementContext {
+interface iAnnouncementTypes {
   announcements: iAnnouncement[];
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,7 +28,7 @@ export interface iAnnouncement {
   userId: number;
 }
 
-export const AnnouncementContext = createContext({} as iAnnouncementContext);
+export const AnnouncementContext = createContext({} as iAnnouncementTypes);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   const [announcements, setAnnouncements] = useState<iAnnouncement[]>([]);
@@ -93,8 +92,6 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     setProfile,
     deleteAnnouncement,
   };
-
-  console.log(announcements);
 
   return (
     <AnnouncementContext.Provider value={value}>
