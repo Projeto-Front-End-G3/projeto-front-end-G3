@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledModalPost = styled.div`
-  height: 350px;
-  width: 500px;
+  height: 450px;
+  width: 60%;
   border-radius: 5px;
   position: fixed;
   left: 50%;
@@ -14,27 +14,38 @@ export const StyledModalPost = styled.div`
   align-items: center;
 
   .firstDiv {
+    width: 100%;
     display: flex;
     margin-top: 30px;
     margin-bottom: 20px;
     align-items: center;
+    justify-content: center;
     gap: 15px;
-    .closeTag {
-      cursor: pointer;
-    }
-    .textGreetings {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 28px;
-      color: #191970;
+    .containerDiv {
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .closeTag {
+        cursor: pointer;
+      }
+      .textGreetings {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        color: #191970;
+      }
     }
   }
   form {
+    width: 90%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     input {
-      width: 447px;
+      width: 90%;
+      height: 60%;
       padding: 6px 5px 120px 5px;
       background-color: #f3f3f3;
       border-radius: 3.5px;

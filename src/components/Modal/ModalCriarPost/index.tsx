@@ -31,12 +31,17 @@ const ModalCriarPost = () => {
   return (
     <StyledModalPost>
       <div className="firstDiv">
-        <p className="textGreetings">Olá {}! O que você gostaria de postar?</p>
-        <p className="closeTag" onClick={() => setOpenClose(false)}>
-          X
-        </p>
+        <div className="containerDiv">
+          <p className="textGreetings">
+            Olá {}! O que você gostaria de postar?
+          </p>
+          <p className="closeTag" onClick={() => setOpenClose(false)}>
+            X
+          </p>
+        </div>
+        {/* <img src={}>/>*/}
       </div>
-      {/* <img src={}>/>*/}
+
       <form onSubmit={handleSubmit(addAnnouncement)}>
         <input
           type="text"
