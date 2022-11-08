@@ -13,8 +13,8 @@ export const Button = styled.button`
   transition: 0.5s;
 
   :disabled {
-    background: rgba(0, 0, 205, 0.6);
-    border-color: rgba(0, 0, 205, 0.6);
+    background: var(--color-grey-1);
+    border-color: var(--color-grey-1);
     cursor: auto;
   }
 `;
