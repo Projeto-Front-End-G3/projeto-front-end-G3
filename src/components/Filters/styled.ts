@@ -6,7 +6,7 @@ export const ContainerFilters = styled.div`
   max-width: 1200px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 100px;
 
   .newAdd {
@@ -105,7 +105,7 @@ export const ContainerFilters = styled.div`
 
   @media (min-width: 425px) {
     .filtersCenter ul {
-      gap: 4rem;
+      gap: 2rem;
     }
   }
 

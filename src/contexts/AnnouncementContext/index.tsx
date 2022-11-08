@@ -20,6 +20,7 @@ interface iAnnouncementTypes {
   setProfile: React.Dispatch<React.SetStateAction<boolean>>;
   deleteAnnouncement: (announcementId: number) => Promise<void>;
   filterAnnouncements: (announcementType: string) => Promise<void>;
+  filter: string;
 }
 
 export interface iAnnouncement {
@@ -34,6 +35,7 @@ export const AnnouncementContext = createContext({} as iAnnouncementTypes);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   const [announcements, setAnnouncements] = useState<iAnnouncement[]>([]);
+  const [filter, setFilter] = useState("");
   const [globalLoading, setGlobalLoading] = useState(false);
   const [openClose, setOpenClose] = useState(false);
   const [profile, setProfile] = useState(false);
@@ -82,13 +84,11 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   };
 
   const filterAnnouncements = async (announcementType: string) => {
-    try {
-      const response = await api.delete(
-        `/announcement?type=${announcementType}`
-      );
-
-      console.log(response);
-    } catch (error) {}
+    if (announcementType === "todos") {
+      setFilter("");
+    } else {
+      setFilter(announcementType);
+    }
   };
 
   useEffect(() => {
@@ -106,6 +106,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     setProfile,
     deleteAnnouncement,
     filterAnnouncements,
+    filter,
   };
 
   return (
