@@ -21,6 +21,7 @@ interface iAnnouncementTypes {
   deleteAnnouncement: (announcementId: number) => Promise<void>;
   filterAnnouncements: (announcementType: string) => Promise<void>;
   filter: string;
+  getAnnouncement: () => Promise<void>;
 }
 
 export interface iAnnouncement {
@@ -61,7 +62,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     try {
       await api.post("/announcement", body);
 
-      getAnnouncement();
+      await getAnnouncement();
       toast.success("Anúncio criado com sucesso!");
     } catch (_) {
       toast.error("Algo deu errado :(");
@@ -75,11 +76,11 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
 
     try {
       await api.delete(`/announcement/${announcementId}`);
+      await getAnnouncement();
 
-      getAnnouncement();
       toast.success("Anúncio deletado com sucesso!");
-    } catch (error) {
-      console.log(error);
+    } catch (_) {
+      toast.error("Algo deu errado :(");
     }
   };
 
@@ -107,6 +108,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     deleteAnnouncement,
     filterAnnouncements,
     filter,
+    getAnnouncement,
   };
 
   return (

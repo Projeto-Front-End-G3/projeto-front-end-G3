@@ -1,48 +1,41 @@
 import { MouseEventHandler, useContext, useState } from "react";
 import { HomeModalStyled, EditModalStyled } from "./styles";
 import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
-import * as yup from "yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserContext } from "../../../contexts/UserContext";
 import { editUserInfoFormSchema } from "../../../validations/editUserInfo";
 
-interface iEditUserInfoFormValue {
-  name: string;
-  description: string;
-  profilePicture: string;
-  link: string;
+export interface iEditUserInfoFormValue {
+  name?: string;
+  description?: string;
+  profilePicture?: string;
+  link?: string;
 }
 
 const ModalProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
   const { setProfile, announcements, deleteAnnouncement } =
     useContext(AnnouncementContext);
-  const { userData } = useContext(UserContext);
-
-  // const formSchema = yup.object().shape({
-  //   name: yup.string().default(""),
-  //   description: yup
-  //     .string()
-  //     .min(6, "No minimo 6 caracteres")
-  //     .max(300, "Máximo de 300 caracteres")
-  //     .default(""),
-  //   profileImgLink: yup.string().url("URL não valida"),
-  //   link: yup.string().url("URL não valida").default(""),
-  // });
+  const { userData, editUserInfo } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<iEditUserInfoFormValue>({
     resolver: yupResolver(editUserInfoFormSchema),
   });
 
-  const onSubmit: SubmitHandler<iEditUserInfoFormValue> = (data) => {
-    const id: number = JSON.parse(localStorage.getItem("@Disclosure:userId")!);
-
-    console.log(data);
+  const onSubmit: SubmitHandler<iEditUserInfoFormValue> = (formData) => {
+    const data = {
+      ...(formData.name && { name: formData.name }),
+      ...(formData.description && { description: formData.description }),
+      ...(formData.profilePicture && {
+        profilePicture: formData.profilePicture,
+      }),
+      ...(formData.link && { link: formData.link }),
+    };
+    editUserInfo(data);
   };
 
   return editProfile ? (

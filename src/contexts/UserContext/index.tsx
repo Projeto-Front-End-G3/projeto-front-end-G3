@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import api from "../../services/api";
 import { iLoginFormValue } from "../../pages/LoginPage";
 import { iSignUpFormValue } from "../../pages/RegisterPage";
+import { iEditUserInfoFormValue } from "../../components/Modal/ModalProfile";
 
 type iUserProviderProps = {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ interface iValuesTypes {
   userData: iUser | null;
   authorized: boolean;
   logout: () => void;
+  editUserInfo: (formData: iEditUserInfoFormValue) => Promise<void>;
 }
 
 export interface iUser {
@@ -59,7 +61,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     try {
       await api.post("/register", formData);
 
-      toast.success("Conta criada com sucesso");
+      toast.success("Conta criada com sucesso!");
 
       navigate("/login");
     } catch (_) {
@@ -67,7 +69,18 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
-  // const editUserInfo = async (formData:)
+  const editUserInfo = async (formData: iEditUserInfoFormValue) => {
+    const id: number = JSON.parse(localStorage.getItem("@Disclosure:userId")!);
+
+    try {
+      await api.patch(`/users/${id}`, formData);
+
+      toast.success("Informações editadas com sucesso!");
+      navigate(0);
+    } catch (_) {
+      toast.error("Algo deu errado :(");
+    }
+  };
 
   const logout = () => {
     localStorage.removeItem("@Disclosure:token");
@@ -114,6 +127,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     userData,
     authorized,
     logout,
+    editUserInfo,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

@@ -12,8 +12,8 @@ const Cards = () => {
         ? announcements
             .filter(
               (announcement) =>
-                announcement["type"] === filter ||
-                announcement["user"]["name"] === filter
+                announcement["type"] == filter ||
+                announcement["user"]["name"].toLocaleLowerCase() == filter
             )
             .map((announcement, index) => (
               <li key={index} className="cardContainer">
