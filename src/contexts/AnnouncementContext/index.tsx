@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import { iUser } from "../UserContext";
 import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
+import { toast } from "react-toastify";
 
 type iAnnouncementProviderProps = {
   children: React.ReactNode;
@@ -58,8 +59,9 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
       await api.post("/announcement", body);
 
       getAnnouncement();
-    } catch (error) {
-      console.error(error);
+      toast.success("Anúncio criado com sucesso!");
+    } catch (_) {
+      toast.error("Algo deu errado :(");
     } finally {
       setGlobalLoading(false);
     }
@@ -72,6 +74,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
       await api.delete(`/announcement/${announcementId}`);
 
       getAnnouncement();
+      toast.success("Anúncio deletado com sucesso!");
     } catch (error) {
       console.log(error);
     }
