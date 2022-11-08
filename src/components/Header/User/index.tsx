@@ -1,20 +1,17 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { MdMenuOpen, MdOutlineExitToApp } from "react-icons/md";
+import { MdMenuOpen } from "react-icons/md";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
+
+import ModalHomePage from "../../Modal/ModalPerfilUser";
 import { StyledContainer, StyledUser } from "./style";
 import { UserContext } from "../../../contexts/UserContext";
 import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
-import { TiArrowSortedDown } from "react-icons/ti";
-import { FiEdit } from "react-icons/fi";
-import ModalHomePage from "../../Modal/ModalPerfilUser";
 
 const User = () => {
   const { authorized, userData, logout } = useContext(UserContext);
   const { profile, setProfile } = useContext(AnnouncementContext);
   const [isClick, setIsClick] = useState(false);
-  const [headerOpenClose, setHeaderOpenClose] = useState(false);
-  const [options, setOptions] = useState(false);
   // const modalRef = useRef();
 
   // useEffect(() => {

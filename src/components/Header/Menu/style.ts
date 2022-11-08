@@ -33,8 +33,9 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
       }
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 650px) {
       flex-direction: row;
+
       a {
         padding: 10px;
         white-space: nowrap;
@@ -53,7 +54,7 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
     ${({ isClick }) => {
       if (!isClick) {
         return css`

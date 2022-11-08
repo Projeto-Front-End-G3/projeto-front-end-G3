@@ -14,6 +14,10 @@ export const DefaultServicesBox = styled.ul`
   align-items: center;
   justify-content: space-between;
 
+  h2 {
+    text-align: center;
+  }
+
   span {
     color: var(--color-white);
   }

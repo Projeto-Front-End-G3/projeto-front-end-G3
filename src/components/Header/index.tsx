@@ -22,7 +22,7 @@ const Header = () => {
     <>
       <StyledHeader isClick={isClick}>
         <StyledContainer isClick={isClick}>
-          <Link to="/">
+          <Link to={authorized ? "/dashboard" : "/"}>
             <img src={Logo} alt="Disclosure " />
             <p>Disclosure</p>
           </Link>
