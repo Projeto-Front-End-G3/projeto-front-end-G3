@@ -19,6 +19,7 @@ interface iAnnouncementTypes {
   profile: boolean;
   setProfile: React.Dispatch<React.SetStateAction<boolean>>;
   deleteAnnouncement: (announcementId: number) => Promise<void>;
+  filterAnnouncements: (announcementType: string) => Promise<void>;
 }
 
 export interface iAnnouncement {
@@ -80,6 +81,16 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     }
   };
 
+  const filterAnnouncements = async (announcementType: string) => {
+    try {
+      const response = await api.delete(
+        `/announcement?type=${announcementType}`
+      );
+
+      console.log(response);
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getAnnouncement();
   }, []);
@@ -94,6 +105,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     profile,
     setProfile,
     deleteAnnouncement,
+    filterAnnouncements,
   };
 
   return (

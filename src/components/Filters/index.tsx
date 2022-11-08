@@ -9,7 +9,7 @@ import { TfiPaintRoller } from "react-icons/tfi";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Filters = () => {
-  const { setOpenClose } = useContext(AnnouncementContext);
+  const { setOpenClose, filterAnnouncements } = useContext(AnnouncementContext);
 
   return (
     <ContainerFilters>
@@ -17,10 +17,9 @@ const Filters = () => {
         <p>Novo anúncio</p>
         <MdAddCircleOutline />
       </div>
-
       <div className="filtersCenter">
         <ul>
-          <li>
+          <li onClick={() => filterAnnouncements("Finanças")}>
             <GoHome />
             <p>Imóveis</p>
           </li>

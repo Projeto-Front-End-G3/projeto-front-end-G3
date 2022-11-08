@@ -54,10 +54,10 @@ const ModalCreateAnnouncement = () => {
         <div className="divSelect">
           <label>Qual o tipo do seu anuncio?</label>
           <select {...register("type")}>
-            <option>Imóveis</option>
-            <option>Finanças</option>
-            <option>Autos-peças</option>
-            <option>Serviços</option>
+            <option value="imoveis">Imóveis</option>
+            <option value="financas">Finanças</option>
+            <option value="auto-pecas">Auto-peças</option>
+            <option value="servicos">Serviços</option>
           </select>
         </div>
         <button type="submit">Postar</button>

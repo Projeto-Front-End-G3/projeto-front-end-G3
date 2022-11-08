@@ -9,5 +9,5 @@ export const addAnnouncementFormSchema = yup.object().shape({
   type: yup
     .string()
     .required()
-    .oneOf(["Imóveis", "Finanças", "Autos-peças", "Serviços"]),
+    .oneOf(["imoveis", "financas", "auto-pecas", "servicos"]),
 });
