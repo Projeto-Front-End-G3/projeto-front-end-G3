@@ -83,9 +83,62 @@ export const HomeModalStyled = styled.div`
       }
 
       .divPosts {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 80%;
+        height: 252px;
         border: 2px solid black;
+        overflow-y: auto;
+        padding: 16px;
+        gap: 16px;
+
+        li {
+          > div {
+            display: flex;
+            gap: 0.62rem;
+            align-items: center;
+
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+
+            p {
+              font: var(--font-title-1);
+              color: var(--color-blue-1);
+            }
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            width: 200px;
+            margin-top: 8px;
+            font: var(--font-text-1);
+            border: none;
+            border-radius: var(--radius-1);
+            background-color: var(--color-blue-1);
+            color: var(--color-grey-3);
+          }
+
+          .buttonDiv {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+              height: 35px;
+              width: 200px;
+              background-color: red;
+              font: var(--font-text-1);
+              border: none;
+              border-radius: var(--radius-1);
+              color: var(--color-grey-3);
+            }
+          }
+        }
       }
     }
   }

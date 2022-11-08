@@ -24,6 +24,10 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 
+    ul {
+      list-style: none;
+    }
+
     :root {
         --color-blue-1: #191970;
         --color-blue-2: #0000CD;

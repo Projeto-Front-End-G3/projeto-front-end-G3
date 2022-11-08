@@ -10,7 +10,7 @@ type iUserProviderProps = {
   children: React.ReactNode;
 };
 
-interface iUser {
+export interface iUser {
   email: string;
   name: string;
   profilePicture: string;
@@ -81,7 +81,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
         localStorage.getItem("@Disclosure:token")!
       );
 
-      const id: string = JSON.parse(
+      const id: number = JSON.parse(
         localStorage.getItem("@Disclosure:userId")!
       );
 

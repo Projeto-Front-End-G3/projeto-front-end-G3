@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { FaDoorClosed } from "react-icons/fa";
+import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
+
 import api from "../../services/api";
+import { iUser } from "../UserContext";
 
 type iAnnouncementProviderProps = {
   children: ReactNode;
@@ -15,21 +17,15 @@ interface iAnnouncementContext {
   setOpenClose: React.Dispatch<React.SetStateAction<boolean>>;
   profile: boolean;
   setProfile: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteAnnouncement: (announcementId: number) => Promise<void>;
 }
 
 interface iAnnouncement {
-  user: iUserDate;
   body: string;
-}
-
-interface iUserDate {
-  name: string;
-  img: string;
-}
-
-interface iAddAnnouncement {
-  publicationText?: string;
-  announceType?: string;
+  id: number;
+  type: string;
+  user: iUser;
+  userId: number;
 }
 
 export const AnnouncementContext = createContext({} as iAnnouncementContext);
@@ -40,37 +36,50 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   const [openClose, setOpenClose] = useState(false);
   const [profile, setProfile] = useState(false);
 
-  const token = localStorage.getItem("@Disclosure:token");
-
-  useEffect(() => {
-    const getAnnouncement = async () => {
-      setGlobalLoading(true);
-      try {
-        const response = await api.get("/announcement?_expand=user");
-        setAnnouncement(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setGlobalLoading(false);
-      }
-    };
-    getAnnouncement();
-  }, []);
-
-  const addAnnouncement = async (body: iAddAnnouncement): Promise<void> => {
+  const getAnnouncement = async () => {
     setGlobalLoading(true);
+
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const response = await api.get("/announcement?_expand=user");
 
-      const response = await api.post("/announcement", body);
-
-      console.log(response.data);
+      setAnnouncement(response.data);
+      setGlobalLoading(false);
     } catch (error) {
       console.error(error);
     } finally {
       setGlobalLoading(false);
     }
   };
+
+  const addAnnouncement = async (body: iAddAnnouncement): Promise<void> => {
+    setGlobalLoading(true);
+
+    try {
+      await api.post("/announcement", body);
+
+      getAnnouncement();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setGlobalLoading(false);
+    }
+  };
+
+  const deleteAnnouncement = async (announcementId: number) => {
+    setGlobalLoading(true);
+
+    try {
+      await api.delete(`/announcement/${announcementId}`);
+
+      getAnnouncement();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAnnouncement();
+  }, []);
 
   const value = {
     announcement,
@@ -81,6 +90,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     setOpenClose,
     profile,
     setProfile,
+    deleteAnnouncement,
   };
 
   return (

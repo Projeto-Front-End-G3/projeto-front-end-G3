@@ -22,19 +22,23 @@ export const CardList = styled.ul`
     display: flex;
     gap: 0.62rem;
     align-items: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    p {
+      font: var(--font-title-1);
+      color: var(--color-blue-1);
+    }
   }
 
-  .nickName img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .nickName p {
-    font: var(--font-title-1);
-    color: var(--color-blue-1);
-  }
-
-  .cardContainer button {
+  .cardContainer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 35px;
     width: 200px;
     font: var(--font-text-1);

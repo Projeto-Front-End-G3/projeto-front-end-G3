@@ -4,7 +4,6 @@ import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import lapis from "../../../assets/lapis.png";
 import { UserContext } from "../../../contexts/UserContext";
 
 interface IModal {
@@ -13,9 +12,10 @@ interface IModal {
   onRequestClose: boolean;
 }
 
-const ModalHomePage = () => {
+const ModalProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
-  const { setProfile } = useContext(AnnouncementContext);
+  const { setProfile, announcement, deleteAnnouncement } =
+    useContext(AnnouncementContext);
   const { userData } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
@@ -114,11 +114,34 @@ const ModalHomePage = () => {
 
         <div className="divContainerPosts">
           <h2>Seus posts</h2>
-          <div className="divPosts">{/* map */}</div>
+          <ul className="divPosts">
+            {announcement.map((elem, index) => (
+              <li key={index}>
+                <div>
+                  <img src={elem?.user.profilePicture} alt="Santander" />
+                  <p>{elem?.user.name}</p>
+                </div>
+                <p>{elem?.body}</p>
+                <div className="buttonDiv">
+                  <a href={elem.user.link} target="_blank">
+                    Saiba mais
+                  </a>
+                  <button
+                    onClick={() => {
+                      deleteAnnouncement(elem.id);
+                      setProfile(false);
+                    }}
+                  >
+                    Deletar
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </HomeModalStyled>
   );
 };
 
-export default ModalHomePage;
+export default ModalProfile;

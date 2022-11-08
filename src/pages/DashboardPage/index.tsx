@@ -2,9 +2,9 @@ import Header from "../../components/Header";
 import Filters from "../../components/Filters";
 import { ContainerGeneral } from "./styled";
 import Cards from "../../components/Cards";
-import ModalCriarPost from "../../components/Modal/ModalCriarPost";
 import { useContext } from "react";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
+import ModalCreateAnnouncement from "../../components/Modal/ModalCreateAnnouncement";
 
 const DashboardPage = () => {
   const { openClose } = useContext(AnnouncementContext);
@@ -14,7 +14,7 @@ const DashboardPage = () => {
       <Header />
       <Filters />
       <Cards />
-      {openClose && <ModalCriarPost />}
+      {openClose && <ModalCreateAnnouncement />}
     </ContainerGeneral>
   );
 };

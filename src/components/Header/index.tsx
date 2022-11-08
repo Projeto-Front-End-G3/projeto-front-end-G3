@@ -13,8 +13,8 @@ import Menu from "./Menu";
 import Buttons from "./Buttons";
 import User from "./User";
 import { UserContext } from "../../contexts/UserContext";
-import ModalHomePage from "../Modal/ModalPerfilUser";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
+import ModalProfile from "../Modal/ModalProfile";
 
 const Header = () => {
   const { authorized } = useContext(UserContext);
@@ -59,7 +59,7 @@ const Header = () => {
           <User />
         </StyledViewUser>
       </StyledViewMenu>
-      {profile && <ModalHomePage />}
+      {profile && <ModalProfile />}
     </>
   );
 };
