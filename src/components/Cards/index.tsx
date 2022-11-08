@@ -4,18 +4,21 @@ import { CardList } from "./styled";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Cards = () => {
-  const { announcement } = useContext(AnnouncementContext);
+  const { announcements } = useContext(AnnouncementContext);
 
   return (
     <CardList>
-      {announcement.map((elem, index) => (
+      {announcements.map((announcement, index) => (
         <li key={index} className="cardContainer">
           <div className="nickName">
-            <img src={elem?.user.profilePicture} alt="Santander" />
-            <p>{elem?.user.name}</p>
+            <img
+              src={announcement.user.profilePicture}
+              alt={announcement.user.name}
+            />
+            <p>{announcement.user.name}</p>
           </div>
-          <p>{elem?.body}</p>
-          <a href={elem.user.link} target="_blank">
+          <p>{announcement.body}</p>
+          <a href={announcement.user.link} target="_blank">
             Saiba mais
           </a>
         </li>

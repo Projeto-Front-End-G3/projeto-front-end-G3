@@ -5,6 +5,7 @@ import { iLoginFormValue } from "../../pages/LoginPage";
 
 import { iSignUpFormValue } from "../../pages/RegisterPage";
 import api from "../../services/api";
+import { iAnnouncement } from "../AnnouncementContext";
 
 type iUserProviderProps = {
   children: React.ReactNode;
@@ -18,6 +19,17 @@ export interface iUser {
   cep: string;
   link: string;
   id: number;
+}
+
+interface iUserAnnouncements {
+  email: string;
+  name: string;
+  profilePicture: string;
+  description: string;
+  cep: string;
+  link: string;
+  id: number;
+  announcement: iAnnouncement[] | null;
 }
 
 interface iValuesTypes {

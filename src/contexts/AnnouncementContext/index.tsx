@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+
 import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
 
 import api from "../../services/api";
@@ -9,7 +10,7 @@ type iAnnouncementProviderProps = {
 };
 
 interface iAnnouncementContext {
-  announcement: iAnnouncement[];
+  announcements: iAnnouncement[];
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
   addAnnouncement: (body: iAddAnnouncement) => void;
@@ -20,7 +21,7 @@ interface iAnnouncementContext {
   deleteAnnouncement: (announcementId: number) => Promise<void>;
 }
 
-interface iAnnouncement {
+export interface iAnnouncement {
   body: string;
   id: number;
   type: string;
@@ -31,7 +32,7 @@ interface iAnnouncement {
 export const AnnouncementContext = createContext({} as iAnnouncementContext);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
-  const [announcement, setAnnouncement] = useState<iAnnouncement[]>([]);
+  const [announcements, setAnnouncements] = useState<iAnnouncement[]>([]);
   const [globalLoading, setGlobalLoading] = useState(false);
   const [openClose, setOpenClose] = useState(false);
   const [profile, setProfile] = useState(false);
@@ -42,7 +43,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     try {
       const response = await api.get("/announcement?_expand=user");
 
-      setAnnouncement(response.data);
+      setAnnouncements(response.data);
       setGlobalLoading(false);
     } catch (error) {
       console.error(error);
@@ -82,7 +83,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   }, []);
 
   const value = {
-    announcement,
+    announcements,
     globalLoading,
     setGlobalLoading,
     addAnnouncement,
@@ -92,6 +93,8 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     setProfile,
     deleteAnnouncement,
   };
+
+  console.log(announcements);
 
   return (
     <AnnouncementContext.Provider value={value}>

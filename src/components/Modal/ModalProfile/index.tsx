@@ -14,7 +14,7 @@ interface IModal {
 
 const ModalProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
-  const { setProfile, announcement, deleteAnnouncement } =
+  const { setProfile, announcements, deleteAnnouncement } =
     useContext(AnnouncementContext);
   const { userData } = useContext(UserContext);
 
@@ -106,7 +106,9 @@ const ModalProfile = () => {
           <button
             type="button"
             className="returnBtn"
-            onClick={() => setProfile(false)}
+            onClick={() => {
+              setProfile(false);
+            }}
           >
             Voltar
           </button>
@@ -115,28 +117,33 @@ const ModalProfile = () => {
         <div className="divContainerPosts">
           <h2>Seus posts</h2>
           <ul className="divPosts">
-            {announcement.map((elem, index) => (
-              <li key={index}>
-                <div>
-                  <img src={elem?.user.profilePicture} alt="Santander" />
-                  <p>{elem?.user.name}</p>
-                </div>
-                <p>{elem?.body}</p>
-                <div className="buttonDiv">
-                  <a href={elem.user.link} target="_blank">
-                    Saiba mais
-                  </a>
-                  <button
-                    onClick={() => {
-                      deleteAnnouncement(elem.id);
-                      setProfile(false);
-                    }}
-                  >
-                    Deletar
-                  </button>
-                </div>
-              </li>
-            ))}
+            {announcements
+              .filter((announcement) => announcement.userId === userData?.id)
+              .map((announcement, index) => (
+                <li key={index}>
+                  <div>
+                    <img
+                      src={announcement?.user.profilePicture}
+                      alt={announcement.user.name}
+                    />
+                    <p>{announcement?.user.name}</p>
+                  </div>
+                  <p>{announcement?.body}</p>
+                  <div className="buttonDiv">
+                    <a href={announcement.user.link} target="_blank">
+                      Saiba mais
+                    </a>
+                    <button
+                      onClick={() => {
+                        deleteAnnouncement(announcement.id);
+                        setProfile(false);
+                      }}
+                    >
+                      Deletar
+                    </button>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
       </section>
