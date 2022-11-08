@@ -23,6 +23,7 @@ export const Content = styled.div`
 
     > h1 {
       color: var(--color-blue-1);
+      font-family: "Revalia", cursive;
     }
   }
 
