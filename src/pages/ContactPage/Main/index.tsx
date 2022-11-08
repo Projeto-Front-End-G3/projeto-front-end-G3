@@ -3,6 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { StyledContainer, StyledMain } from "./style";
 import contato from "../../../assets/contato.svg";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 interface iForm {
   name: string;
@@ -23,10 +25,15 @@ const Main = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<iForm>({
     resolver: yupResolver(schema),
   });
+  const [submit, setSubmit] = useState({});
+  useEffect(() => {
+    reset({ name: "", email: "", contact: "" });
+  }, [submit]);
   return (
     <StyledMain>
       <div>
@@ -37,7 +44,8 @@ const Main = () => {
           <h1>Como podemos te ajudar? :)</h1>
           <form
             onSubmit={handleSubmit((data) => {
-              console.log(data);
+              toast.success("Mensagem enviada com sucesso!");
+              setSubmit(data);
             })}
           >
             <label htmlFor="name">Nome</label>

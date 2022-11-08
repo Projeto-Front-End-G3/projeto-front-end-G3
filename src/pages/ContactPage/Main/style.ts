@@ -3,6 +3,14 @@ import styled from "styled-components";
 export const StyledMain = styled.main`
   width: 100vw;
 
+  @media (max-width: 200px) {
+    margin-top: 140px;
+  }
+
+  @media (min-width: 200px) {
+    margin-top: 100px;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;

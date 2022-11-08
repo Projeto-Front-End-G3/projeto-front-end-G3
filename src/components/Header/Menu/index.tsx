@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
-
 import { StyledMenu } from "./style";
+import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import Buttons from "../Buttons";
 
 interface iMenuProps {
   isClick?: boolean;
@@ -13,14 +11,12 @@ interface iMenuProps {
 
 const Menu = ({ isClick, setIsClick }: iMenuProps) => {
   const { authorized } = useContext(UserContext);
-
   return (
-    <StyledMenu isClick={isClick}>
+    <StyledMenu user={authorized} isClick={isClick}>
       <nav>
-        <Link to={authorized ? "/dashboard" : "/"}>Inicio</Link>
+        <Link to="/">Inicio</Link>
         <Link to="/about">Quem Somos</Link>
         <Link to="/contact">Contato</Link>
-        <Buttons />
         {setIsClick && (
           <button
             type="button"

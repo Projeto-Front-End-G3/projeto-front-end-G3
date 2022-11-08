@@ -4,25 +4,11 @@ interface iStyledContainerProps {
   isClick?: boolean;
 }
 
-interface iStyledViewMenuProps {
-  mediaView: "small" | "medium";
-  isClick?: boolean;
-  user?: boolean;
-}
-
-interface iStyledViewButtonsProps {
-  mediaView: "small" | "medium" | "big";
-}
-
-interface iStyledViewUserProps {
-  mediaView: "small" | "medium";
-  isClick: boolean;
-}
-
 export const StyledContainer = styled.div<iStyledContainerProps>`
   width: 80%;
   height: 100%;
   padding: 0.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,13 +20,16 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
   }
 
   a {
+    width: 100%;
     max-width: 200px;
     height: 80%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
+
     color: var(--color-blue-1);
 
     img {
@@ -54,17 +43,11 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
   }
 
   button {
-    font-size: 18px;
+    font-size: clamp(1.2rem, 10vw + 0.1rem, 3rem);
     color: var(--color-blue-1);
   }
 
-  @media (min-width: 200px) {
-    button {
-      font-size: 40px;
-    }
-  }
-
-  @media (min-width: 650px) {
+  @media (min-width: 500px) {
     button {
       display: none;
     }
@@ -85,11 +68,9 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
 export const StyledHeader = styled.header<iStyledContainerProps>`
   width: 100vw;
   height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--color-white);
-  border-bottom: 0.5px solid var(--color-blue-5);
+  position: fixed;
+  top: 0;
+  z-index: 10;
 
   @media (max-width: 200px) {
     height: 150px;
@@ -104,75 +85,90 @@ export const StyledHeader = styled.header<iStyledContainerProps>`
       `;
     }
   }}
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--color-white);
+  border-bottom: 0.5px solid var(--color-blue-5);
 `;
 
+interface iStyledViewMenuProps {
+  mediaView: "small" | "medium";
+  isClick?: boolean;
+  user?: boolean;
+}
+
 export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
-  > div {
-    a {
-      width: 50%;
-    }
-  }
-
-  ${({ isClick }) => {
-    if (isClick) {
-      return css`
-        @media (max-width: 500px) {
-          border-bottom: 0.5px solid var(--color-blue-5);
-        }
-      `;
-    }
-  }}
-
-  ${({ mediaView }) => {
+  ${({ mediaView, isClick }) => {
     switch (mediaView) {
       case "small":
+        if (!isClick) {
+          return css`
+            display: none;
+          `;
+        }
         return css`
           width: 100vw;
-          position: relative;
-          display: flex;
-          justify-content: center;
+          position: fixed;
+          top: 100px;
+          z-index: 10;
           background-color: var(--color-white);
           ${({ isClick, user }: iStyledViewMenuProps) => {
             if (isClick) {
               if (user) {
                 return css`
                   height: 110px;
+                  border-bottom: 0.5px solid var(--color-blue-5);
                 `;
               }
             }
           }}
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
 
-          @media (min-width: 650px) {
+          @media (min-width: 500px) {
             display: none;
           }
         `;
       case "medium":
         return css`
-          display: none;
+          display: flex;
           flex-direction: column;
-
-          @media (min-width: 650px) {
-            display: flex;
-          }
         `;
     }
   }}
 `;
+
+interface iStyledViewButtonsProps {
+  user?: boolean;
+  mediaView: "small" | "medium" | "big";
+}
 
 export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
   a {
     color: var(--color-white);
   }
 
-  ${({ mediaView }) => {
+  ${({ mediaView, user }) => {
     switch (mediaView) {
       case "small":
+        if (user) {
+          return css`
+            display: none;
+          `;
+        }
         return css`
           width: 100vw;
-          margin-top: 10px;
-
+          padding: 10px 0;
           display: flex;
           justify-content: center;
+
+          border-top: 0.5px solid var(--color-blue-5);
+          border-bottom: 0.5px solid var(--color-blue-5);
+          background-color: var(--color-white);
 
           @media (min-width: 500px) {
             display: none;
@@ -196,6 +192,11 @@ export const StyledViewButtons = styled.div<iStyledViewButtonsProps>`
     }
   }}
 `;
+
+interface iStyledViewUserProps {
+  mediaView: "small" | "medium";
+  isClick: boolean;
+}
 
 export const StyledViewUser = styled.div<iStyledViewUserProps>`
   a {
@@ -224,10 +225,8 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
         `;
       case "medium":
         return css`
-          display: none;
-
-          @media (min-width: 650px) {
-            display: flex;
+          @media (max-width: 500px) {
+            display: none;
           }
         `;
     }

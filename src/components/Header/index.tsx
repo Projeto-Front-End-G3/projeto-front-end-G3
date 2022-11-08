@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import Logo from "../../assets/logo.svg";
@@ -17,12 +17,28 @@ import { UserContext } from "../../contexts/UserContext";
 const Header = () => {
   const { authorized } = useContext(UserContext);
   const [isClick, setIsClick] = useState(false);
+  const modalRef = useRef();
+
+  useEffect(() => {
+    const handleOutclick = (event) => {
+      const target = event.target;
+      if (!modalRef.current.contains(target)) {
+        setIsClick(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutclick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutclick);
+    };
+  }, []);
 
   return (
     <>
       <StyledHeader isClick={isClick}>
         <StyledContainer isClick={isClick}>
-          <Link to={authorized ? "/dashboard" : "/"}>
+          <Link to="/">
             <img src={Logo} alt="Disclosure " />
             <h1>Disclosure</h1>
           </Link>
@@ -43,18 +59,29 @@ const Header = () => {
           <StyledViewUser mediaView="medium" isClick={isClick}>
             <User />
           </StyledViewUser>
-          {!authorized && (
-            <StyledViewButtons mediaView="big">
-              <Buttons />
-            </StyledViewButtons>
-          )}
+          <StyledViewButtons mediaView="big">
+            <Buttons />
+          </StyledViewButtons>
         </StyledContainer>
+        {!isClick && !authorized && (
+          <StyledViewButtons mediaView="small">
+            <Buttons />
+          </StyledViewButtons>
+        )}
       </StyledHeader>
-      <StyledViewMenu user={authorized} mediaView="small" isClick={isClick}>
+      <StyledViewMenu
+        ref={modalRef}
+        user={authorized}
+        mediaView="small"
+        isClick={isClick}
+      >
         <Menu isClick={isClick} setIsClick={setIsClick} />
         <StyledViewUser mediaView="small" isClick={isClick}>
           <User />
         </StyledViewUser>
+        <StyledViewButtons user={authorized} mediaView="small">
+          <Buttons />
+        </StyledViewButtons>
       </StyledViewMenu>
     </>
   );

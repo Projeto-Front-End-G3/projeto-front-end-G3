@@ -2,6 +2,15 @@ import styled from "styled-components";
 
 export const StyledMain = styled.main`
   width: 100%;
+
+  @media (max-width: 200px) {
+    margin-top: 140px;
+  }
+
+  @media (min-width: 200px) {
+    margin-top: 100px;
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: center;
