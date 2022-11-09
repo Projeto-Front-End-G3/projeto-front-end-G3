@@ -32,7 +32,7 @@ const Filters = () => {
             <GoHome />
             <p>Imóveis</p>
           </li>
-          <li onClick={() => setFilter("ficancas")}>
+          <li onClick={() => setFilter("financas")}>
             <BsCoin />
             <p>Finanças</p>
           </li>
