@@ -8,14 +8,14 @@ import ModalCreateAnnouncement from "../../components/Modal/ModalCreateAnnouncem
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const DashboardPage = () => {
-  const { openClose } = useContext(AnnouncementContext);
+  const { openModalAnnouncement } = useContext(AnnouncementContext);
 
   return (
     <ContainerGeneral>
       <Header />
       <Filters />
       <Cards />
-      {openClose && <ModalCreateAnnouncement />}
+      {openModalAnnouncement && <ModalCreateAnnouncement />}
     </ContainerGeneral>
   );
 };

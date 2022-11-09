@@ -16,7 +16,7 @@ export interface iEditUserInfoFormValue {
 
 const ModalProfile = () => {
   const { userData, editUserInfo } = useContext(UserContext);
-  const { setProfile, announcements, deleteAnnouncement, getAnnouncement } =
+  const { setOpenModalProfile, announcements, deleteAnnouncement, getAnnouncement } =
     useContext(AnnouncementContext);
   const [editProfile, setEditProfile] = useState(false);
 
@@ -111,7 +111,7 @@ const ModalProfile = () => {
             type="button"
             className="returnBtn"
             onClick={() => {
-              setProfile(false);
+              setOpenModalProfile(false);
             }}
           >
             Voltar
@@ -140,7 +140,7 @@ const ModalProfile = () => {
                     <button
                       onClick={() => {
                         deleteAnnouncement(announcement.id);
-                        setProfile(false);
+                        setOpenModalProfile(false);
                       }}
                     >
                       Deletar

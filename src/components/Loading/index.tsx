@@ -13,11 +13,11 @@ const spinTransition = {
 };
 
 const Loading = ({ children }: iLoadingProps) => {
-  const { globalLoading } = useContext(AnnouncementContext);
+  const { loading } = useContext(AnnouncementContext);
 
   return (
     <>
-      {globalLoading ? (
+      {loading ? (
         <div
           style={{
             position: "relative",

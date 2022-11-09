@@ -11,18 +11,17 @@ type iAnnouncementProviderProps = {
 
 interface iAnnouncementTypes {
   announcements: iAnnouncement[];
-  globalLoading: boolean;
-  setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  addAnnouncement: (body: iAddAnnouncement) => void;
-  openClose: boolean;
-  setOpenClose: React.Dispatch<React.SetStateAction<boolean>>;
-  profile: boolean;
-  setProfile: React.Dispatch<React.SetStateAction<boolean>>;
+  filter: string;
+  loading: boolean;
+  openModalAnnouncement: boolean;
+  openModalProfile: boolean;
+  getAnnouncement: () => Promise<void>;
+  addAnnouncement: (formData: iAddAnnouncement) => void;
   deleteAnnouncement: (announcementId: number) => Promise<void>;
   filterAnnouncements: () => iAnnouncement[];
-  getAnnouncement: () => Promise<void>;
   setFilter: React.Dispatch<React.SetStateAction<string>>;
-  filter: string;
+  setOpenModalAnnouncement: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenModalProfile: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface iAnnouncement {
@@ -37,43 +36,42 @@ export const AnnouncementContext = createContext({} as iAnnouncementTypes);
 
 const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
   const [announcements, setAnnouncements] = useState<iAnnouncement[]>([]);
-  const [globalLoading, setGlobalLoading] = useState(false);
   const [filter, setFilter] = useState("todos");
-  const [openClose, setOpenClose] = useState(false);
-  const [profile, setProfile] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [openModalAnnouncement, setOpenModalAnnouncement] = useState(false);
+  const [openModalProfile, setOpenModalProfile] = useState(false)
 
   const getAnnouncement = async () => {
-    setGlobalLoading(true);
+    setLoading(true);
 
     try {
-      const response = await api.get("/announcement?_expand=user");
+      const { data } = await api.get("/announcement?_expand=user");
 
-      setAnnouncements(response.data);
-      setGlobalLoading(false);
+      setAnnouncements(data);
     } catch (error) {
       console.error(error);
     } finally {
-      setGlobalLoading(false);
+      setLoading(false);
     }
   };
 
-  const addAnnouncement = async (body: iAddAnnouncement): Promise<void> => {
-    setGlobalLoading(true);
+  const addAnnouncement = async (formData: iAddAnnouncement) => {
+    setLoading(true);
 
     try {
-      await api.post("/announcement", body);
-
+      await api.post("/announcement", formData);
       await getAnnouncement();
+
       toast.success("Anúncio criado com sucesso!");
     } catch (_) {
       toast.error("Algo deu errado :(");
     } finally {
-      setGlobalLoading(false);
+      setLoading(false);
     }
   };
 
   const deleteAnnouncement = async (announcementId: number) => {
-    setGlobalLoading(true);
+    setLoading(true);
 
     try {
       await api.delete(`/announcement/${announcementId}`);
@@ -82,6 +80,8 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
       toast.success("Anúncio deletado com sucesso!");
     } catch (_) {
       toast.error("Algo deu errado :(");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,18 +103,17 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
 
   const value = {
     announcements,
-    globalLoading,
-    setGlobalLoading,
+    filter,
+    loading,
+    openModalAnnouncement,
+    openModalProfile,
+    getAnnouncement,
     addAnnouncement,
-    openClose,
-    setOpenClose,
-    profile,
-    setProfile,
     deleteAnnouncement,
     filterAnnouncements,
-    getAnnouncement,
     setFilter,
-    filter,
+    setOpenModalAnnouncement,
+    setOpenModalProfile,
   };
 
   return (

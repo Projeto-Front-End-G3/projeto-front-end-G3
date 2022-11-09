@@ -19,7 +19,7 @@ import Logo from "../../assets/logo.png";
 
 const Header = () => {
   const { authorized } = useContext(UserContext);
-  const { profile } = useContext(AnnouncementContext);
+  const { openModalProfile } = useContext(AnnouncementContext);
   const [isClick, setIsClick] = useState(false);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const Header = () => {
           <User />
         </StyledViewUser>
       </StyledViewMenu>
-      {profile && <ModalProfile />}
+      {openModalProfile && <ModalProfile />}
     </>
   );
 };

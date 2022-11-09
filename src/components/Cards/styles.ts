@@ -7,10 +7,16 @@ export const CardList = styled.ul`
   width: 100%;
   max-width: 1200px;
   align-items: center;
+  overflow-y: auto;
+
+  .nothing {
+    font: var(--font-title-1);
+    color: var(--color-blue-1);
+  }
 
   .cardContainer {
     width: 90%;
-    background-color: var(--color-grey-3);
+    background-color: var(--color-white);
     border-radius: var(--radius-2);
     padding: 0.8rem;
     display: flex;

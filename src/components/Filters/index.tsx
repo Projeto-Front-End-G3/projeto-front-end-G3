@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { MdAddCircleOutline } from "react-icons/md";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { GoHome } from "react-icons/go";
-import { BsCoin } from "react-icons/bs";
 import { AiOutlineCar, AiOutlineUnorderedList } from "react-icons/ai";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { BsCoin } from "react-icons/bs";
+import { GoHome } from "react-icons/go";
+import { MdAddCircleOutline } from "react-icons/md";
 import { TfiPaintRoller } from "react-icons/tfi";
 
 import { ContainerFilters } from "./styles";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Filters = () => {
-  const { setOpenClose, setFilter } = useContext(AnnouncementContext);
+  const { setOpenModalAnnouncement, setFilter } = useContext(AnnouncementContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value.toLocaleLowerCase());
@@ -18,7 +18,7 @@ const Filters = () => {
 
   return (
     <ContainerFilters>
-      <div onClick={() => setOpenClose(true)} className="newAdd">
+      <div onClick={() => setOpenModalAnnouncement(true)} className="newAdd">
         <p>Novo anúncio</p>
         <MdAddCircleOutline />
       </div>

@@ -15,7 +15,7 @@ export interface iAddAnnouncement {
 
 const ModalCreateAnnouncement = () => {
   const { userData } = useContext(UserContext);
-  const { addAnnouncement, setOpenClose } = useContext(AnnouncementContext);
+  const { addAnnouncement, setOpenModalAnnouncement } = useContext(AnnouncementContext);
 
   const { register, handleSubmit } = useForm<iAddAnnouncement>({
     resolver: yupResolver(addAnnouncementFormSchema),
@@ -27,7 +27,7 @@ const ModalCreateAnnouncement = () => {
     data["userId"] = id;
 
     addAnnouncement(data);
-    setOpenClose(false);
+    setOpenModalAnnouncement(false);
   };
 
   return (
@@ -37,7 +37,10 @@ const ModalCreateAnnouncement = () => {
           <p className="textGreetings">
             Olá {userData?.name}! O que você gostaria de postar?
           </p>
-          <p className="closeTag" onClick={() => setOpenClose(false)}>
+          <p
+            className="closeTag"
+            onClick={() => setOpenModalAnnouncement(false)}
+          >
             X
           </p>
         </div>

@@ -36,6 +36,7 @@ export const HomeModalStyled = styled.div`
       color: var(--color-white);
       padding: 0 8px;
       text-align: center;
+      word-break: break-all;
     }
 
     @media (max-width: 800px) {
@@ -65,12 +66,25 @@ export const HomeModalStyled = styled.div`
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
+        transition: 0.3s;
+
+        :hover {
+          background-color: var(--color-blue-2);
+        }
       }
 
       .divEdit {
         margin-top: 5px;
         display: flex;
         flex-direction: column;
+
+        button {
+          transition: 0.3s;
+
+          :hover {
+            color: var(--color-blue-2);
+          }
+        }
       }
     }
 
@@ -123,32 +137,42 @@ export const HomeModalStyled = styled.div`
             -webkit-box-orient: vertical;
           }
 
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 35px;
-            width: 50%;
-            font: var(--font-text-1);
-            border: none;
-            border-radius: var(--radius-1);
-            background-color: var(--color-blue-1);
-            color: var(--color-grey-3);
-          }
-
           .buttonDiv {
             display: flex;
             justify-content: space-between;
             margin-top: 8px;
 
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 35px;
+              width: 50%;
+              font: var(--font-text-1);
+              border: none;
+              border-radius: var(--radius-1);
+              background-color: var(--color-blue-1);
+              color: var(--color-grey-3);
+              transition: 0.3s;
+
+              :hover {
+                background-color: var(--color-blue-2);
+              }
+            }
+
             button {
               height: 35px;
               width: 50%;
-              background-color: red;
+              background-color: #cc0000;
               font: var(--font-text-1);
               border: none;
               border-radius: var(--radius-1);
               color: var(--color-grey-3);
+              transition: 0.3s;
+
+              :hover {
+                background-color: red;
+              }
             }
           }
         }
@@ -192,6 +216,7 @@ export const EditModalStyled = styled.div`
       text-align: center;
       padding: 0 8px;
       color: var(--color-white);
+      word-break: break-all;
     }
 
     @media (max-width: 800px) {
@@ -220,6 +245,11 @@ export const EditModalStyled = styled.div`
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
+        transition: 0.3s;
+
+        :hover {
+          background-color: var(--color-blue-2);
+        }
       }
     }
 
@@ -285,6 +315,11 @@ export const EditModalStyled = styled.div`
       font-weight: 700;
       font-size: 18px;
       color: #ffffff;
+      transition: 0.3s;
+
+      :hover {
+        background-color: var(--color-blue-2);
+      }
     }
   }
 `;
