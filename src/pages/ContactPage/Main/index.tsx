@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { StyledContainer, StyledMain } from "./style";
 import { contactFormSchema } from "../../../validations/contact";
+
 import Contact from "../../../assets/contact.svg";
 
 interface iForm {
@@ -16,13 +17,19 @@ const Main = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<iForm>({
     resolver: yupResolver(contactFormSchema),
   });
 
   const onSubmit: SubmitHandler<iForm> = (data) => {
-    console.log(data);
+    reset({
+      name: "",
+      email: "",
+      contact: "",
+    });
+
     toast.success("Mensagem enviada com sucesso!");
   };
 
