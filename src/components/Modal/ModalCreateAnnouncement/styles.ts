@@ -79,6 +79,10 @@ export const StyledModalPost = styled.div`
       gap: 15px;
       margin-top: 15px;
 
+      span {
+        color: red;
+      }
+
       label {
         font-weight: 300;
         font-size: 18px;

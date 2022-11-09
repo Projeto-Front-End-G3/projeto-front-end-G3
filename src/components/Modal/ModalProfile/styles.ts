@@ -22,7 +22,9 @@ export const HomeModalStyled = styled.div`
     figure {
       padding: 16px;
       max-width: 300px;
+      min-width: 200px;
       max-height: 300px;
+      min-height: 200px;
 
       img {
         width: 100%;

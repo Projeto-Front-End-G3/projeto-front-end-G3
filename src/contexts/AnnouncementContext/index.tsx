@@ -47,7 +47,7 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
     try {
       const { data } = await api.get("/announcement?_expand=user");
 
-      setAnnouncements(data);
+      setAnnouncements([...data].reverse());
     } catch (error) {
       console.error(error);
     } finally {

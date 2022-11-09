@@ -193,3 +193,35 @@ Exemplo da resposta:
   "id": 1
 }
 ```
+## Páginas da aplicação
+
+# Página inicial
+
+Está página foi projetada para que o usúario tenha conhecimento sobre o que é a Disclosure
+
+![2022-11-09 (2)](https://user-images.githubusercontent.com/104391972/200872012-f0ecb2ba-d583-493a-85c2-2c35e061e1f6.png)
+
+# Página de Quem somos nós
+
+Está página é uma descrição de todas as informações de como surgiu a disclosure e quem participou do construção da mesma
+
+![2022-11-09 (5)](https://user-images.githubusercontent.com/104391972/200872631-9fbc09aa-f13d-4cfa-9222-a227736ab499.png)
+
+# Página de Contato
+
+Está página foi feita para que pessoas que estiverem com duvidas referente ao site ou serviços, poderam entrar em contato com nossa equipe.
+
+![2022-11-09 (6)](https://user-images.githubusercontent.com/104391972/200872857-2bf239c4-7a7d-4280-9a36-7c45f0e8b38f.png)
+
+# Página de Login
+
+Está página permite que o usuário faça o login para ter acesso a nossa página principal.
+
+![2022-11-09 (9)](https://user-images.githubusercontent.com/104391972/200873217-58f5abb5-dc7f-4ce3-bb7b-c31ce7da0c2a.png)
+
+# Página de Cadasro
+
+Está página permite o cadastro o usuário para ele poder fazer parte da comunidade Disclosure
+
+![2022-11-09 (8)](https://user-images.githubusercontent.com/104391972/200873854-d1dc136b-57a5-488b-aa3c-d8ee7fc398bb.png)
+
