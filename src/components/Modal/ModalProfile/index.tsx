@@ -24,7 +24,11 @@ const ModalProfile = () => {
   } = useContext(AnnouncementContext);
   const [editProfile, setEditProfile] = useState(false);
 
-  const { register, handleSubmit } = useForm<iEditUserInfoFormValue>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iEditUserInfoFormValue>({
     resolver: yupResolver(editUserInfoFormSchema),
   });
 
@@ -65,26 +69,41 @@ const ModalProfile = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Editando perfil</h2>
-            <label className="label">Novo nome:</label>
+            <label className="label">
+              Novo nome{!!errors.name && <span> - {errors.name?.message}</span>}
+            </label>
             <input
               type="text"
               className="inputPlaceHolder"
               placeholder="Digite o novo nome"
               {...register("name")}
             />
-            <label className="label">Nova descrição:</label>
+            <label className="label">
+              Nova descrição
+              {!!errors.description && (
+                <span> - {errors.description?.message}</span>
+              )}
+            </label>
             <input
               type="text"
               placeholder="Digite a nova descrição"
               {...register("description")}
             />
-            <label className="label">Novo link para imagem de perfil:</label>
+            <label className="label">
+              Novo link para imagem de perfil
+              {!!errors.profilePicture && (
+                <span> - {errors.profilePicture?.message}</span>
+              )}
+            </label>
             <input
               type="text"
               placeholder="Digite o novo link da foto"
               {...register("profilePicture")}
             />
-            <label className="label">Novo link para saiba mais:</label>
+            <label className="label">
+              Novo link para saiba mais
+              {!!errors.link && <span> - {errors.link?.message}</span>}
+            </label>
             <input
               type="text"
               placeholder="Digite o novo link do site"
