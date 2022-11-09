@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { iLoginFormValue } from "../../pages/LoginPage";
 
 import { iSignUpFormValue } from "../../pages/RegisterPage";
-import api from "../../services/api";
+import api, { viaCep } from "../../services/api";
 
 type iUserProviderProps = {
   children: React.ReactNode;
@@ -33,6 +33,7 @@ export const UserContext = createContext({} as iValuesTypes);
 const UserProvider = ({ children }: iUserProviderProps) => {
   const [userData, setUserData] = useState(null);
   const [authorized, setAuthorized] = useState(false);
+  const [userCep, setUserCep] = useState(false)
   const navigate = useNavigate();
 
   const loginUser = async (formData: iLoginFormValue) => {
@@ -75,6 +76,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     setAuthorized(false);
   };
 
+  
   useEffect(() => {
     const loadUser = async () => {
       const token: string = JSON.parse(
@@ -92,6 +94,9 @@ const UserProvider = ({ children }: iUserProviderProps) => {
           const { data } = await api.get(`/users/${id}`);
 
           setUserData(data);
+          const response = await viaCep.get(`${data.cep}/json/`)
+          setUserCep(response.data.uf)
+          console.log();
           setAuthorized(true);
 
           navigate("/dashboard");
@@ -112,6 +117,7 @@ const UserProvider = ({ children }: iUserProviderProps) => {
     userData,
     authorized,
     logout,
+    userCep
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

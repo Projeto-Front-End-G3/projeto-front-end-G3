@@ -6,7 +6,7 @@ import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
-import ProtectedRoutes from "../components/ProtectedRoutes";
+import ProtectedRoutes from "../protectedRoutes";
 
 export default () => (
   <Routes>

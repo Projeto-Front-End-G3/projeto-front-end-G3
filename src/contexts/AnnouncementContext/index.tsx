@@ -48,6 +48,8 @@ const AnnouncementProvider = ({ children }: iAnnouncementProviderProps) => {
       try {
         const response = await api.get("/announcement?_expand=user");
         setAnnouncement(response.data);
+        console.log(announcement);
+        
       } catch (error) {
         console.error(error);
       } finally {

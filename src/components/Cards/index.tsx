@@ -1,9 +1,13 @@
 import { CardList } from "./styled";
 import { useContext } from "react";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
+import { UserContext } from "../../contexts/UserContext";
+
 
 const Cards = () => {
   const { announcement } = useContext(AnnouncementContext);
+  const { userCep } = useContext(UserContext)
+
   return (
     <CardList>
       {announcement.map((elem, index) => (
