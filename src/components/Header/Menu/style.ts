@@ -24,6 +24,7 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
       transition: 0.3s;
 
       :hover {
+        font-weight: bold;
         color: var(--color-blue-2);
       }
     }

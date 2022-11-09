@@ -1,23 +1,31 @@
 import styled from "styled-components";
 
 export const HomeModalStyled = styled.div`
-  height: 500px;
-  width: 80%;
-  border-radius: 5px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  display: flex;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  figure {
-    padding: 16px;
+  > div {
+    height: 500px;
+    width: 80%;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    display: flex;
+    z-index: 2;
 
-    img {
-      width: 100%;
-      border-radius: 50%;
+    figure {
+      padding: 16px;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -54,6 +62,7 @@ export const HomeModalStyled = styled.div`
     .divGreetings {
       display: flex;
       width: 90%;
+      height: 100px;
       align-items: center;
       justify-content: space-between;
 
@@ -82,6 +91,7 @@ export const HomeModalStyled = styled.div`
           transition: 0.3s;
 
           :hover {
+            font-weight: bold;
             color: var(--color-blue-2);
           }
         }
@@ -182,23 +192,31 @@ export const HomeModalStyled = styled.div`
 `;
 
 export const EditModalStyled = styled.div`
-  height: 500px;
-  width: 80%;
-  border-radius: 5px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  display: flex;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  figure {
-    padding: 16px;
+  > div {
+    height: 500px;
+    width: 80%;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    display: flex;
+    z-index: 2;
 
-    img {
-      width: 100%;
-      border-radius: 50%;
+    figure {
+      padding: 16px;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -286,7 +304,6 @@ export const EditModalStyled = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-left: 15px;
 
       .returnBtn {
         width: 100px;
