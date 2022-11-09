@@ -15,10 +15,16 @@ export interface iAddAnnouncement {
 
 const ModalCreateAnnouncement = () => {
   const { userData } = useContext(UserContext);
-  const { addAnnouncement, setOpenModalAnnouncement } = useContext(AnnouncementContext);
+  const { addAnnouncement, setOpenModalAnnouncement } =
+    useContext(AnnouncementContext);
 
-  const { register, handleSubmit } = useForm<iAddAnnouncement>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iAddAnnouncement>({
     resolver: yupResolver(addAnnouncementFormSchema),
+    mode: "onChange",
   });
 
   const onSubmit: SubmitHandler<iAddAnnouncement> = (data) => {
@@ -53,6 +59,7 @@ const ModalCreateAnnouncement = () => {
             {...register("body")}
           />
           <div className="divSelect">
+            {!!errors.body && <span> {errors.body?.message}</span>}
             <label>Qual o tipo do seu anuncio?</label>
             <select {...register("type")}>
               <option value="imoveis">Imóveis</option>

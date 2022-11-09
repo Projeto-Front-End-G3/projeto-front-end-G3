@@ -1,4 +1,4 @@
-import { MouseEventHandler, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -16,8 +16,12 @@ export interface iEditUserInfoFormValue {
 
 const ModalProfile = () => {
   const { userData, editUserInfo } = useContext(UserContext);
-  const { setOpenModalProfile, announcements, deleteAnnouncement, getAnnouncement } =
-    useContext(AnnouncementContext);
+  const {
+    setOpenModalProfile,
+    announcements,
+    deleteAnnouncement,
+    getAnnouncement,
+  } = useContext(AnnouncementContext);
   const [editProfile, setEditProfile] = useState(false);
 
   const { register, handleSubmit } = useForm<iEditUserInfoFormValue>({
@@ -44,7 +48,7 @@ const ModalProfile = () => {
       <div>
         <section className="blueSideForm">
           <figure>
-            <img src={userData?.profilePicture} />
+            <img src={userData?.profilePicture} alt={userData?.name} />
           </figure>
           <span className="textDescription">{userData?.description}</span>
         </section>
@@ -100,7 +104,7 @@ const ModalProfile = () => {
       <div>
         <section className="blueSide">
           <figure>
-            <img src={userData?.profilePicture} />
+            <img src={userData?.profilePicture} alt={userData?.name} />
           </figure>
           <span className="textDescription">{userData?.description}</span>
         </section>
@@ -108,7 +112,9 @@ const ModalProfile = () => {
           <div className="divGreetings">
             <div className="divEdit">
               <h1>Olá {userData?.name}!</h1>
-              <button onClick={() => setEditProfile(true)}>Editar perfil</button>
+              <button onClick={() => setEditProfile(true)}>
+                Editar perfil
+              </button>
             </div>
             <button
               type="button"
@@ -120,7 +126,7 @@ const ModalProfile = () => {
               Voltar
             </button>
           </div>
-  
+
           <div className="divContainerPosts">
             <h2>Seus posts</h2>
             <ul className="divPosts">

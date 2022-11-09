@@ -80,7 +80,6 @@ export const StyledModalPost = styled.div`
       margin-top: 15px;
 
       label {
-        font-family: "Roboto";
         font-weight: 300;
         font-size: 18px;
         color: #000000;
@@ -90,13 +89,11 @@ export const StyledModalPost = styled.div`
         width: 100px;
         height: 40px;
         background: #f3f3f3;
-        font-family: "Roboto";
         font-weight: 300;
         font-size: 15px;
         color: #9d9b9b;
 
         options {
-          font-family: "Roboto";
           font-weight: 400;
           font-size: 24px;
           color: #000000;

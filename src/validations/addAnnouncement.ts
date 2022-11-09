@@ -3,6 +3,7 @@ import * as yup from "yup";
 export const addAnnouncementFormSchema = yup.object().shape({
   body: yup
     .string()
+    .min(6, "Mínimo de 6 caracteres")
     .max(300, "Máximo de 300 caracteres")
     .required(),
   type: yup
