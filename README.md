@@ -144,7 +144,7 @@ Exemplo do body:
 {
   "body": "Muito bom os testes",
   "type": "finança",
-  "userId": 8
+  "userId": 1
 }
 ```
 

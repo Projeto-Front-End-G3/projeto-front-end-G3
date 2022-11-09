@@ -21,6 +21,8 @@ export const HomeModalStyled = styled.div`
 
     figure {
       padding: 16px;
+      max-width: 300px;
+      max-height: 300px;
 
       img {
         width: 100%;
@@ -212,6 +214,8 @@ export const EditModalStyled = styled.div`
 
     figure {
       padding: 16px;
+      max-width: 300px;
+      max-height: 300px;
 
       img {
         width: 100%;
@@ -231,7 +235,7 @@ export const EditModalStyled = styled.div`
       display: flex;
       font-weight: 400;
       font-size: 14px;
-      text-align: center;
+      justify-content: center;
       padding: 0 8px;
       color: var(--color-white);
       word-break: break-all;
@@ -277,15 +281,18 @@ export const EditModalStyled = styled.div`
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding: 8px;
+      padding: 8px 0;
+
+      span {
+        font-size: 12px;
+        color: red;
+      }
 
       h2 {
         margin-bottom: 5px;
       }
 
       .label {
-        margin-bottom: 08px;
-        font-family: "Roboto";
         font-weight: 400;
         font-size: 16.5px;
         color: #757575;
