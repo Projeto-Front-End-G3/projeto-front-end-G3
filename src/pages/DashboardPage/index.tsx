@@ -1,10 +1,11 @@
+import { useContext } from "react";
+
+import { ContainerGeneral } from "./styled";
 import Header from "../../components/Header";
 import Filters from "../../components/Filters";
-import { ContainerGeneral } from "./styled";
 import Cards from "../../components/Cards";
-import { useContext } from "react";
-import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 import ModalCreateAnnouncement from "../../components/Modal/ModalCreateAnnouncement";
+import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const DashboardPage = () => {
   const { openClose } = useContext(AnnouncementContext);

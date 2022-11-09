@@ -28,10 +28,6 @@ export const HomeModalStyled = styled.div`
     background: #191970;
     border-radius: 5px 0px 0px 5px;
 
-    @media (max-width: 800px) {
-      display: none;
-    }
-
     .textDescription {
       display: flex;
       justify-content: center;
@@ -40,6 +36,10 @@ export const HomeModalStyled = styled.div`
       color: var(--color-white);
       padding: 0 8px;
       text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      display: none;
     }
   }
 
@@ -62,7 +62,6 @@ export const HomeModalStyled = styled.div`
         height: 30px;
         background: #191970;
         border-radius: 5px;
-        font-family: "Roboto";
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
@@ -80,6 +79,7 @@ export const HomeModalStyled = styled.div`
       height: 100%;
       margin-top: 50px;
       margin-bottom: 20px;
+
       h2 {
         margin-bottom: 5px;
       }
@@ -185,10 +185,6 @@ export const EditModalStyled = styled.div`
     background: #191970;
     border-radius: 5px 0px 0px 5px;
 
-    @media (max-width: 800px) {
-      display: none;
-    }
-
     .textDescription {
       display: flex;
       font-weight: 400;
@@ -196,6 +192,10 @@ export const EditModalStyled = styled.div`
       text-align: center;
       padding: 0 8px;
       color: var(--color-white);
+    }
+
+    @media (max-width: 800px) {
+      display: none;
     }
   }
 
@@ -217,7 +217,6 @@ export const EditModalStyled = styled.div`
         height: 30px;
         background: #191970;
         border-radius: 5px;
-        font-family: "Roboto";
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
@@ -231,6 +230,7 @@ export const EditModalStyled = styled.div`
       flex-direction: column;
       gap: 8px;
       padding: 8px;
+
       h2 {
         margin-bottom: 5px;
       }
@@ -263,7 +263,6 @@ export const EditModalStyled = styled.div`
         height: 30px;
         background: #191970;
         border-radius: 5px;
-        font-family: "Roboto";
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
@@ -283,7 +282,6 @@ export const EditModalStyled = styled.div`
       height: 30px;
       background: #191970;
       border-radius: 5px;
-      font-family: "Roboto";
       font-weight: 700;
       font-size: 18px;
       color: #ffffff;

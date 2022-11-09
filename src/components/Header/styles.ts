@@ -29,10 +29,6 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
   justify-content: space-between;
   gap: 10px;
 
-  @media (min-width: 200px) {
-    flex-direction: unset;
-  }
-
   a {
     max-width: 200px;
     height: 80%;
@@ -59,6 +55,8 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
   }
 
   @media (min-width: 200px) {
+    flex-direction: unset;
+
     button {
       font-size: 40px;
     }
@@ -221,7 +219,8 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
             }
           }}
           position: absolute;
-          bottom: 5px;
+          top: 120px;
+          z-index: 8;
           right: 5px;
         `;
       case "medium":

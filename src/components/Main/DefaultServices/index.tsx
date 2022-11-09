@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsCoin } from "react-icons/bs";
 import { GoHome } from "react-icons/go";
 import { TfiPaintRoller } from "react-icons/tfi";
-import { Link } from "react-router-dom";
-import { Container } from "../../../styles/global";
+
 import { DefaultServicesBox } from "./style";
+import { Container } from "../../../styles/global";
 
 const DefaultServices = () => {
   return (
@@ -19,14 +20,14 @@ const DefaultServices = () => {
             <p>
               <span>Imóveis</span>
             </p>
-            <p>Casas, apartamentos, predios</p>
+            <p>Casas, apartamentos, prédios</p>
           </li>
           <li>
             <BsCoin className="coinIcon" />
             <p>
               <span>Finanças</span>
             </p>
-            <p>Banco, consutoria, empreendedorismo</p>
+            <p>Banco, consultoria, empreendedorismo</p>
           </li>
           <li>
             <AiOutlineCar className="carIcon" />

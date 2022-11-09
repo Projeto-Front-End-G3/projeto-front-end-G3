@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CardList } from "./styled";
+import { CardList } from "./styles";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
 
 const Cards = () => {

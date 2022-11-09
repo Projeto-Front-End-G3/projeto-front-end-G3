@@ -46,7 +46,7 @@ export const ContainerFilters = styled.div`
 
   .filtersCenter ul {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     list-style: none;
   }
 
@@ -111,7 +111,7 @@ export const ContainerFilters = styled.div`
 
   @media (min-width: 425px) {
     .filtersCenter ul {
-      gap: 2rem;
+      gap: 1rem;
     }
   }
 

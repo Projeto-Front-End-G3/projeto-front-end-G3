@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledMain = styled.main`
   width: 100vw;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,15 +64,8 @@ export const StyledContainer = styled.div`
     text-align: center;
   }
 
-  @media (max-width: 170px) {
-    h1 {
-      font-size: 15px;
-    }
-  }
-
   form {
     margin-top: 20px;
-
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -127,12 +119,16 @@ export const StyledContainer = styled.div`
     button {
       align-self: flex-end;
       padding: 5px 15px;
-
       font-size: 10px;
       color: var(--color-white);
-
       background-color: var(--color-blue-1);
       border-radius: 5px;
+    }
+  }
+
+  @media (max-width: 170px) {
+    h1 {
+      font-size: 15px;
     }
   }
 `;

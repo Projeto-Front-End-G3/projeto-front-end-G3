@@ -1,25 +1,26 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
-import Logo from "../../assets/logo.svg";
+
 import {
   StyledContainer,
   StyledHeader,
   StyledViewButtons,
   StyledViewMenu,
   StyledViewUser,
-} from "./style";
+} from "./styles";
 import Menu from "./Menu";
 import Buttons from "./Buttons";
 import User from "./User";
+import ModalProfile from "../Modal/ModalProfile";
 import { UserContext } from "../../contexts/UserContext";
 import { AnnouncementContext } from "../../contexts/AnnouncementContext";
-import ModalProfile from "../Modal/ModalProfile";
+import Logo from "../../assets/logo.png";
 
 const Header = () => {
   const { authorized } = useContext(UserContext);
-  const [isClick, setIsClick] = useState(false);
   const { profile } = useContext(AnnouncementContext);
+  const [isClick, setIsClick] = useState(false);
 
   return (
     <>

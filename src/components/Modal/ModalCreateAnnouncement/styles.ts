@@ -35,7 +35,6 @@ export const StyledModalPost = styled.div`
       }
 
       .textGreetings {
-        font-family: "Roboto";
         font-style: normal;
         font-weight: 400;
         font-size: 24px;
@@ -43,6 +42,7 @@ export const StyledModalPost = styled.div`
       }
     }
   }
+
   form {
     width: 90%;
     height: 70%;

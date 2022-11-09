@@ -14,13 +14,11 @@ export const StyledUser = styled.div<iStyledUserProps>`
     width: 100px;
     position: absolute;
     bottom: -56px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0.5rem;
     gap: 10px;
-
     background-color: var(--color-blue-1);
     border-radius: 5px;
 
@@ -28,16 +26,19 @@ export const StyledUser = styled.div<iStyledUserProps>`
       font-size: 12px;
       color: var(--color-white);
     }
+
     button {
       font-size: 12px;
       color: var(--color-white);
     }
+
     .close {
       position: absolute;
       top: 5px;
       right: 5px;
     }
   }
+
   ${({ isClick }) => {
     if (!isClick) {
       return css`
@@ -52,16 +53,19 @@ export const StyledUser = styled.div<iStyledUserProps>`
 export const StyledContainer = styled.div`
   display: flex;
   align-items: flex-end;
+
   figure {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
+
   img {
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
   }
+
   button {
     font-size: 16px;
     color: var(--color-blue-1);

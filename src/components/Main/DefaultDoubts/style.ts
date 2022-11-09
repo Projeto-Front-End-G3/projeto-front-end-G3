@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const DefaultDoubtsBox = styled.div`
-  /* background-color: var(--color-blue-1); */
-  /* color: var(--color-white); */
   margin-top: 60px;
   padding: 10px;
   border-radius: 5px;

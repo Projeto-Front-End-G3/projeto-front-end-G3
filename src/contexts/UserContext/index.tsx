@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -12,12 +12,12 @@ type iUserProviderProps = {
 };
 
 interface iValuesTypes {
+  authorized: boolean;
+  userData: iUser | null;
   loginUser: (data: iLoginFormValue) => void;
   registerUser: (formData: iSignUpFormValue) => Promise<void>;
-  userData: iUser | null;
-  authorized: boolean;
-  logout: () => void;
   editUserInfo: (formData: iEditUserInfoFormValue) => Promise<void>;
+  logout: () => void;
 }
 
 export interface iUser {
@@ -123,12 +123,12 @@ const UserProvider = ({ children }: iUserProviderProps) => {
   }, []);
 
   const value = {
-    registerUser,
-    loginUser,
-    userData,
     authorized,
-    logout,
+    userData,
+    loginUser,
+    registerUser,
     editUserInfo,
+    logout,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

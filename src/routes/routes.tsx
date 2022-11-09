@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import DashboardPage from "../pages/DashboardPage";
-import AboutPage from "../pages/AboutPage";
-import ContactPage from "../pages/ContactPage";
 import ProtectedRoutes from "../components/ProtectedRoutes";
+import DashboardPage from "../pages/DashboardPage";
+import ContactPage from "../pages/ContactPage";
+import AboutPage from "../pages/AboutPage";
 
 export default () => (
   <Routes>

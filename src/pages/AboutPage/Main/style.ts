@@ -22,16 +22,16 @@ export const StyledContainer = styled.div`
     color: var(--color-white);
   }
 
-  @media (min-width: 650px) {
-    h3 {
-      text-align: unset;
-    }
-  }
-
   p {
     font-size: 16px;
     font-weight: 300;
     text-align: justify;
     color: var(--color-white);
+  }
+
+  @media (min-width: 650px) {
+    h3 {
+      text-align: unset;
+    }
   }
 `;

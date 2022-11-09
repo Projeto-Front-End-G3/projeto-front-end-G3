@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { StyledModalPost } from "./styles";
 import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 import { UserContext } from "../../../contexts/UserContext";
-import { StyledModalPost } from "./styles";
 import { addAnnouncementFormSchema } from "../../../validations/addAnnouncement";
 
 export interface iAddAnnouncement {
@@ -14,14 +14,10 @@ export interface iAddAnnouncement {
 }
 
 const ModalCreateAnnouncement = () => {
-  const { addAnnouncement, setOpenClose } = useContext(AnnouncementContext);
   const { userData } = useContext(UserContext);
+  const { addAnnouncement, setOpenClose } = useContext(AnnouncementContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<iAddAnnouncement>({
+  const { register, handleSubmit } = useForm<iAddAnnouncement>({
     resolver: yupResolver(addAnnouncementFormSchema),
   });
 
@@ -29,6 +25,7 @@ const ModalCreateAnnouncement = () => {
     const id: number = JSON.parse(localStorage.getItem("@Disclosure:userId")!);
 
     data["userId"] = id;
+
     addAnnouncement(data);
     setOpenClose(false);
   };

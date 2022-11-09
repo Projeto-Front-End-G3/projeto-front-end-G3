@@ -1,9 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { StyledContainer, StyledMain } from "./style";
-import contato from "../../../assets/contato.svg";
 import { toast } from "react-toastify";
+
+import { StyledContainer, StyledMain } from "./style";
+import { contactFormSchema } from "../../../validations/contact";
+import Contact from "../../../assets/contact.svg";
 
 interface iForm {
   name: string;
@@ -11,22 +12,13 @@ interface iForm {
   contact: string;
 }
 
-const schema = yup.object({
-  name: yup.string().required("Seu nome é obrigatório"),
-  email: yup
-    .string()
-    .email("Deve ser um e-mail válido")
-    .required("Seu e-mail é obrigatório"),
-  contact: yup.string().required("Sua dúvida é obrigatória"),
-});
-
 const Main = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<iForm>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(contactFormSchema),
   });
 
   const onSubmit: SubmitHandler<iForm> = (data) => {
@@ -38,7 +30,7 @@ const Main = () => {
     <StyledMain>
       <div>
         <figure>
-          <img src={contato} alt="Contato" />
+          <img src={Contact} alt="Contato" />
         </figure>
         <StyledContainer>
           <h1>Como podemos te ajudar? :)</h1>

@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import executivos from "../../../assets/executivos.png";
+
 import { Container } from "./style";
+import SiteArt1 from "../../../assets/siteart1.png";
 
 const DefaultStart = () => {
   return (
     <>
       <Container>
-        <img src={executivos} alt="" className="backgroundImg" />
+        <img src={SiteArt1} alt="" className="backgroundImg" />
         <h1>
           Anuncie seu serviço na <span>Disclosure</span>
         </h1>

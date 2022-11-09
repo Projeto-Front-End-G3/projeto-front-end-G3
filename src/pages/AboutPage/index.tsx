@@ -1,6 +1,6 @@
+import { Container } from "./style";
 import Header from "../../components/Header";
 import Main from "./Main";
-import { Container } from "./style";
 
 const AboutPage = () => {
   return (

@@ -33,9 +33,6 @@ export const DefaultServicesBox = styled.ul`
     height: 35px;
   }
 
-  li p {
-  }
-
   button {
     width: 200px;
     padding: 5px;

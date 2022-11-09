@@ -1,9 +1,10 @@
 import { MouseEventHandler, useContext, useState } from "react";
-import { HomeModalStyled, EditModalStyled } from "./styles";
-import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { HomeModalStyled, EditModalStyled } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
+import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 import { editUserInfoFormSchema } from "../../../validations/editUserInfo";
 
 export interface iEditUserInfoFormValue {
@@ -14,10 +15,10 @@ export interface iEditUserInfoFormValue {
 }
 
 const ModalProfile = () => {
-  const [editProfile, setEditProfile] = useState(false);
+  const { userData, editUserInfo } = useContext(UserContext);
   const { setProfile, announcements, deleteAnnouncement, getAnnouncement } =
     useContext(AnnouncementContext);
-  const { userData, editUserInfo } = useContext(UserContext);
+  const [editProfile, setEditProfile] = useState(false);
 
   const { register, handleSubmit } = useForm<iEditUserInfoFormValue>({
     resolver: yupResolver(editUserInfoFormSchema),

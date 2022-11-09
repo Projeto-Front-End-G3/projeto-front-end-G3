@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Container } from "../../../styles/global";
+
 import { DefaultAboutUsBox } from "./style";
+import { Container } from "../../../styles/global";
 
 const DefaultAboutUs = () => {
   return (

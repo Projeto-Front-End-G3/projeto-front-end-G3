@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 
+import Buttons from "../Buttons";
 import { StyledMenu } from "./style";
 import { UserContext } from "../../../contexts/UserContext";
-import Buttons from "../Buttons";
 
 interface iMenuProps {
   isClick?: boolean;

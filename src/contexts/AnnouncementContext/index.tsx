@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import api from "../../services/api";
 import { iUser } from "../UserContext";
 import { iAddAnnouncement } from "../../components/Modal/ModalCreateAnnouncement";
-import { toast } from "react-toastify";
 
 type iAnnouncementProviderProps = {
   children: React.ReactNode;
