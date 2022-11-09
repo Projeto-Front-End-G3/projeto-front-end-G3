@@ -9,15 +9,23 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
 
   nav {
     width: 100%;
-    position: relative;
+    position: fixed;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    top: 100px;
+    z-index: 7;
+    background-color: var(--color-white);
 
     > a {
       color: var(--color-blue-1);
       font-size: 12px;
+      transition: 0.3s;
+
+      :hover {
+        color: var(--color-blue-2);
+      }
     }
 
     > button {
@@ -35,6 +43,11 @@ export const StyledMenu = styled.div<iStyledMenuProps>`
 
     @media (min-width: 650px) {
       flex-direction: row;
+      position: relative;
+      gap: 5px;
+      top: 0;
+      z-index: 7;
+      background-color: var(--color-white);
 
       a {
         padding: 10px;

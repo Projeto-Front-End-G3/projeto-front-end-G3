@@ -34,6 +34,7 @@ const ModalProfile = () => {
     };
 
     await editUserInfo(data);
+    setEditProfile(false);
     getAnnouncement();
   };
 

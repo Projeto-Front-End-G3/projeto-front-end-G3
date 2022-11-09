@@ -28,9 +28,10 @@ export const DefaultDoubtsBox = styled.div`
     padding: 5px 30px;
     border-radius: 3px;
     font-weight: bold;
-  }
+    transition: 0.3s;
 
-  a:hover {
-    filter: brightness(120%);
+    :hover {
+      background-color: var(--color-blue-2);
+    }
   }
 `;

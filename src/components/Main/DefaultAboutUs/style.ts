@@ -36,9 +36,10 @@ export const DefaultAboutUsBox = styled.div`
     bottom: 5px;
     right: 40px;
     color: var(--color-black);
-  }
+    transition: 0.3s;
 
-  div a:hover {
-    color: var(--color-blue-2);
+    :hover {
+      color: var(--color-blue-2);
+    }
   }
 `;

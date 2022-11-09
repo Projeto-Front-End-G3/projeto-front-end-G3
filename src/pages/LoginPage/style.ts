@@ -98,11 +98,19 @@ export const BackButton = styled(Link)`
   font-size: 15px;
   display: flex;
   padding: 10px 15px;
+  border: 2px solid var(--color-blue-2);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   color: var(--color-white);
   background-color: var(--color-blue-2);
+  transition: 0.3s;
+
+  :hover {
+    border: 2px solid var(--color-white);
+    background-color: var(--color-blue-1);
+    color: var(--color-white);
+  }
 `;
 
 export const LoginForm = styled.form`
@@ -120,13 +128,20 @@ export const ButtonContainer = styled.div`
 export const LoginButton = styled.button`
   font: var(--font-text-0);
   cursor: pointer;
+  border: 2px solid var(--color-blue-2);
   background-color: var(--color-blue-2);
   color: var(--color-white);
-  border: none;
   height: 50px;
   border-radius: 5px;
   font-weight: bold;
   font-size: 17px;
+  transition: 0.3s;
+
+  :hover {
+    border: 2px solid var(--color-white);
+    background-color: var(--color-blue-1);
+    color: var(--color-white);
+  }
 `;
 
 export const SignUpButton = styled(Link)`
@@ -135,9 +150,17 @@ export const SignUpButton = styled(Link)`
   text-decoration: none;
   border-radius: 5px;
   height: 50px;
+  border: 2px solid var(--color-blue-2);
   background-color: var(--color-blue-2);
   color: var(--color-white);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
+
+  :hover {
+    border: 2px solid var(--color-white);
+    background-color: var(--color-blue-1);
+    color: var(--color-white);
+  }
 `;

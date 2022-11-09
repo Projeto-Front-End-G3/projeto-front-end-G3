@@ -22,7 +22,7 @@ interface iStyledViewUserProps {
 export const StyledContainer = styled.div<iStyledContainerProps>`
   width: 80%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -3,14 +3,18 @@ import styled from "styled-components";
 export const StyledButtons = styled.div`
   display: flex;
   gap: 10px;
+  
   a {
     padding: 5px 15px;
-
     font-size: 12px;
     color: var(--color-white);
-
     background-color: var(--color-blue-1);
     border-radius: 5px;
+    transition: 0.3s;
+
+    :hover {
+      background-color: var(--color-blue-2);
+    }
   }
 
   @media (max-width: 170px) {

@@ -35,6 +35,11 @@ export const Container = styled.div`
     font-weight: bold;
     z-index: 1;
     color: white;
+    transition: 0.3s;
+
+    :hover {
+      background-color: var(--color-blue-2);
+    }
   }
 
   button:hover {

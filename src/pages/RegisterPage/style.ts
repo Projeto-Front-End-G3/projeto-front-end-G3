@@ -57,7 +57,14 @@ export const Content = styled.div`
         font-weight: 600;
         line-height: 28px;
         color: var(--color-white);
-        background: var(--color-blue-2);
+        background-color: var(--color-blue-2);
+        transition: 0.3s;
+
+        :hover {
+          border: 2px solid var(--color-white);
+          background-color: var(--color-blue-1);
+          color: var(--color-white);
+        }
       }
     }
   }
