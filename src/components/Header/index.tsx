@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 
@@ -21,6 +21,16 @@ const Header = () => {
   const { authorized } = useContext(UserContext);
   const { profile } = useContext(AnnouncementContext);
   const [isClick, setIsClick] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 650) {
+        setIsClick(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
