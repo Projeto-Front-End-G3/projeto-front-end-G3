@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 
@@ -19,8 +19,18 @@ import Logo from "../../assets/logo.png";
 
 const Header = () => {
   const { authorized } = useContext(UserContext);
-  const { profile } = useContext(AnnouncementContext);
+  const { openModalProfile } = useContext(AnnouncementContext);
   const [isClick, setIsClick] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 650) {
+        setIsClick(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -60,7 +70,7 @@ const Header = () => {
           <User />
         </StyledViewUser>
       </StyledViewMenu>
-      {profile && <ModalProfile />}
+      {openModalProfile && <ModalProfile />}
     </>
   );
 };

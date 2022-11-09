@@ -10,7 +10,7 @@ const Cards = () => {
   return (
     <CardList>
       {announcements.length == 0 ? (
-        <p>Nenhum anúncio encontrado</p>
+        <p className="nothing">Nenhum anúncio encontrado</p>
       ) : (
         announcements.map((announcement) => (
           <li key={announcement.id} className="cardContainer">

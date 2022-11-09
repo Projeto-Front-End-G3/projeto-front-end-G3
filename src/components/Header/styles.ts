@@ -128,10 +128,12 @@ export const StyledViewMenu = styled.div<iStyledViewMenuProps>`
       case "small":
         return css`
           width: 100vw;
-          position: relative;
+          position: fixed;
           display: flex;
           justify-content: center;
           background-color: var(--color-white);
+          z-index: 3;
+          
           ${({ isClick, user }: iStyledViewMenuProps) => {
             if (isClick) {
               if (user) {
@@ -218,7 +220,7 @@ export const StyledViewUser = styled.div<iStyledViewUserProps>`
               `;
             }
           }}
-          position: absolute;
+          position: fixed;
           top: 120px;
           z-index: 8;
           right: 5px;

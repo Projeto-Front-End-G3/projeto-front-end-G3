@@ -9,7 +9,7 @@ import { AnnouncementContext } from "../../../contexts/AnnouncementContext";
 
 const User = () => {
   const { authorized, userData, logout } = useContext(UserContext);
-  const { setProfile } = useContext(AnnouncementContext);
+  const { setOpenModalProfile } = useContext(AnnouncementContext);
   const [isClick, setIsClick] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const User = () => {
         <StyledUser isClick={isClick}>
           <StyledContainer>
             <figure>
-              <img src={userData?.profilePicture} alt="user" />
+              <img src={userData?.profilePicture} alt={userData?.name} />
             </figure>
             <button
               type="button"
@@ -30,7 +30,9 @@ const User = () => {
             </button>
           </StyledContainer>
           <nav>
-            <button onClick={() => setProfile(true)}>Minha Conta</button>
+            <button onClick={() => setOpenModalProfile(true)}>
+              Minha Conta
+            </button>
             <button
               type="button"
               onClick={() => {

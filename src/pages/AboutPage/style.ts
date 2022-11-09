@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import SiteArt2 from "../../assets/siteart2.svg";
 
 export const Container = styled.article`

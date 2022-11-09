@@ -12,8 +12,8 @@ type iUserProviderProps = {
 };
 
 interface iValuesTypes {
-  authorized: boolean;
   userData: iUser | null;
+  authorized: boolean;
   loginUser: (data: iLoginFormValue) => void;
   registerUser: (formData: iSignUpFormValue) => Promise<void>;
   editUserInfo: (formData: iEditUserInfoFormValue) => Promise<void>;

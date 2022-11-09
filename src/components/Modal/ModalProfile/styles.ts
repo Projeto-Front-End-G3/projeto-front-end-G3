@@ -1,23 +1,31 @@
 import styled from "styled-components";
 
 export const HomeModalStyled = styled.div`
-  height: 500px;
-  width: 80%;
-  border-radius: 5px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  display: flex;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  figure {
-    padding: 16px;
+  > div {
+    height: 500px;
+    width: 80%;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    display: flex;
+    z-index: 2;
 
-    img {
-      width: 100%;
-      border-radius: 50%;
+    figure {
+      padding: 16px;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -36,6 +44,7 @@ export const HomeModalStyled = styled.div`
       color: var(--color-white);
       padding: 0 8px;
       text-align: center;
+      word-break: break-all;
     }
 
     @media (max-width: 800px) {
@@ -53,6 +62,7 @@ export const HomeModalStyled = styled.div`
     .divGreetings {
       display: flex;
       width: 90%;
+      height: 100px;
       align-items: center;
       justify-content: space-between;
 
@@ -65,12 +75,26 @@ export const HomeModalStyled = styled.div`
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
+        transition: 0.3s;
+
+        :hover {
+          background-color: var(--color-blue-2);
+        }
       }
 
       .divEdit {
         margin-top: 5px;
         display: flex;
         flex-direction: column;
+
+        button {
+          transition: 0.3s;
+
+          :hover {
+            font-weight: bold;
+            color: var(--color-blue-2);
+          }
+        }
       }
     }
 
@@ -123,32 +147,42 @@ export const HomeModalStyled = styled.div`
             -webkit-box-orient: vertical;
           }
 
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 35px;
-            width: 50%;
-            font: var(--font-text-1);
-            border: none;
-            border-radius: var(--radius-1);
-            background-color: var(--color-blue-1);
-            color: var(--color-grey-3);
-          }
-
           .buttonDiv {
             display: flex;
             justify-content: space-between;
             margin-top: 8px;
 
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 35px;
+              width: 50%;
+              font: var(--font-text-1);
+              border: none;
+              border-radius: var(--radius-1);
+              background-color: var(--color-blue-1);
+              color: var(--color-grey-3);
+              transition: 0.3s;
+
+              :hover {
+                background-color: var(--color-blue-2);
+              }
+            }
+
             button {
               height: 35px;
               width: 50%;
-              background-color: red;
+              background-color: #cc0000;
               font: var(--font-text-1);
               border: none;
               border-radius: var(--radius-1);
               color: var(--color-grey-3);
+              transition: 0.3s;
+
+              :hover {
+                background-color: red;
+              }
             }
           }
         }
@@ -158,23 +192,31 @@ export const HomeModalStyled = styled.div`
 `;
 
 export const EditModalStyled = styled.div`
-  height: 500px;
-  width: 80%;
-  border-radius: 5px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  display: flex;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  figure {
-    padding: 16px;
+  > div {
+    height: 500px;
+    width: 80%;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    display: flex;
+    z-index: 2;
 
-    img {
-      width: 100%;
-      border-radius: 50%;
+    figure {
+      padding: 16px;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -192,6 +234,7 @@ export const EditModalStyled = styled.div`
       text-align: center;
       padding: 0 8px;
       color: var(--color-white);
+      word-break: break-all;
     }
 
     @media (max-width: 800px) {
@@ -220,6 +263,11 @@ export const EditModalStyled = styled.div`
         font-weight: 700;
         font-size: 18px;
         color: #ffffff;
+        transition: 0.3s;
+
+        :hover {
+          background-color: var(--color-blue-2);
+        }
       }
     }
 
@@ -256,7 +304,6 @@ export const EditModalStyled = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-left: 15px;
 
       .returnBtn {
         width: 100px;
@@ -285,6 +332,11 @@ export const EditModalStyled = styled.div`
       font-weight: 700;
       font-size: 18px;
       color: #ffffff;
+      transition: 0.3s;
+
+      :hover {
+        background-color: var(--color-blue-2);
+      }
     }
   }
 `;

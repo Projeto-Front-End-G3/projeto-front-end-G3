@@ -1,19 +1,27 @@
 import styled from "styled-components";
 
 export const StyledModalPost = styled.div`
-  max-height: 450px;
-  width: 60%;
-  min-width: 300px;
-  border-radius: 5px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  > div {
+    max-height: 450px;
+    width: 60%;
+    min-width: 300px;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
 
   .firstDiv {
     width: 100%;
@@ -72,7 +80,6 @@ export const StyledModalPost = styled.div`
       margin-top: 15px;
 
       label {
-        font-family: "Roboto";
         font-weight: 300;
         font-size: 18px;
         color: #000000;
@@ -82,13 +89,11 @@ export const StyledModalPost = styled.div`
         width: 100px;
         height: 40px;
         background: #f3f3f3;
-        font-family: "Roboto";
         font-weight: 300;
         font-size: 15px;
         color: #9d9b9b;
 
         options {
-          font-family: "Roboto";
           font-weight: 400;
           font-size: 24px;
           color: #000000;
@@ -108,7 +113,10 @@ export const StyledModalPost = styled.div`
       font-size: 18px;
       color: var(--color-white);
       background-color: var(--color-blue-1);
-      button {
+      transition: 0.3s;
+
+      :hover {
+        background-color: var(--color-blue-2);
       }
     }
   }
